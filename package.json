@@ -23,7 +23,7 @@
     "mocha": "2.5.3"
   },
   "engines": {
-    "node": ">=5.0.0"
+    "node": ">=4.0.0"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
