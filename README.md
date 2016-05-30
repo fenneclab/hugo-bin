@@ -1,6 +1,6 @@
 # hugo-bin [![Build Status](https://travis-ci.org/fenneclab/hugo-bin.svg?branch=master)](https://travis-ci.org/fenneclab/hugo-bin)
 
-> Binary wrapper for [Hugo](https://github.com/spf13/hugo)
+> Binary wrapper for [Hugo](gohugo.io)
 
 ## Install
 
@@ -40,7 +40,7 @@ npm run create -- 'post/my-new-post' # see below 'npm-run-script'
 }
 ```
 
-See the [Hugo Documentation](http://gohugo.io) for more information.
+See the [Hugo Documentation](gohugo.io) for more information.
 
 ## Super Inspired By
 
@@ -48,4 +48,4 @@ See the [Hugo Documentation](http://gohugo.io) for more information.
 
 ## License
 
-MIT © [Shun Sato](http://blog.fenneclab.com)
+MIT © [Shun Sato](blog.fenneclab.com)
