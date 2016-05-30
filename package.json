@@ -1,0 +1,42 @@
+{
+  "name": "hugo-bin",
+  "version": "0.1.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "pretest": "rm -rf vendor && npm run postinstall",
+    "test": "eslint . && mocha",
+    "postinstall": "node lib/install"
+  },
+  "repository": "fenneclab/hugo-bin",
+  "author": "satoshun00 <shun.sato@fenneclab.com>",
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "bin": {
+    "hugo": "lib/cli.js"
+  },
+  "devDependencies": {
+    "bin-check": "3.0.0",
+    "eslint": "2.11.0",
+    "mocha": "2.5.3"
+  },
+  "engines": {
+    "node": ">=5.0.0"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "node": true,
+      "mocha": true
+    },
+    "parserOptions": {
+      "sourceType": "module"
+    }
+  },
+  "dependencies": {
+    "bin-wrapper": "3.0.2",
+    "logalot": "2.1.0"
+  }
+}
