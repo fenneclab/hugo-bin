@@ -34,7 +34,7 @@ npm run create -- 'post/my-new-post' # see below 'npm-run-script'
 {
   "scripts": {
     "build": "hugo",
-    "create":  "hugo new",
+    "create": "hugo new",
     "serve": "hugo server -ws"
   }
 }
