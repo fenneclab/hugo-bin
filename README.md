@@ -42,6 +42,10 @@ npm run create -- 'post/my-new-post' # see below 'npm-run-script'
 
 See the [Hugo Documentation](https://gohugo.io/) for more information.
 
+## Full example
+
+- [fenneclab/blog.fenneclab.com](https://github.com/fenneclab/blog.fenneclab.com)
+
 ## Super Inspired By
 
 - [mastilver/apex-bin](https://github.com/mastilver/apex-bin)
