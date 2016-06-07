@@ -42,6 +42,6 @@
     "semver": "5.1.0"
   },
   "hugoBin": {
-    "hugoVersion": "0.14"
+    "hugoVersion": "0.16"
   }
 }
