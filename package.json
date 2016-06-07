@@ -4,9 +4,8 @@
   "description": "Binary wrapper for Hugo",
   "main": "lib/index.js",
   "scripts": {
-    "pretest": "rm -rf vendor && npm run postinstall",
     "test": "eslint . && mocha",
-    "postinstall": "node lib/install"
+    "postinstall": "rm -rf vendor && node lib/install"
   },
   "repository": "fenneclab/hugo-bin",
   "author": "satoshun00 <shun.sato@fenneclab.com>",
@@ -20,6 +19,7 @@
   "devDependencies": {
     "bin-check": "3.0.0",
     "eslint": "2.11.0",
+    "lodash": "4.13.1",
     "mocha": "2.5.3"
   },
   "engines": {
@@ -37,6 +37,11 @@
   },
   "dependencies": {
     "bin-wrapper": "3.0.2",
-    "logalot": "2.1.0"
+    "logalot": "2.1.0",
+    "pkg-conf": "1.1.3",
+    "semver": "5.1.0"
+  },
+  "hugoBin": {
+    "hugoVersion": "0.14"
   }
 }
