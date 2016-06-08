@@ -1,6 +1,7 @@
 {
   "name": "hugo-bin",
   "version": "0.2.1",
+  "hugoVersion": "0.16",
   "description": "Binary wrapper for Hugo",
   "main": "lib/index.js",
   "scripts": {
@@ -38,10 +39,6 @@
   "dependencies": {
     "bin-wrapper": "3.0.2",
     "logalot": "2.1.0",
-    "pkg-conf": "1.1.3",
     "semver": "5.1.0"
-  },
-  "hugoBin": {
-    "hugoVersion": "0.16"
   }
 }
