@@ -42,23 +42,6 @@ npm run create -- 'post/my-new-post' # see below 'npm-run-script'
 
 See the [Hugo Documentation](https://gohugo.io/) for more information.
 
-## Configuration
-
-This can be form of a `hugoBin` field in a `package.json` file.
-
-```
-{
-  "name": "some-package",
-  "version": "1.0.0",
-  "hugoBin": {
-    "hugoVersion": "0.15"
-  }
-}
-```
-
-- `hugoVersion` - Hugo binary version (defualt: See [`hugo-bin/package.json`](package.json) file).
-The supported version is `>=0.10`.
-
 ## Full example
 
 - [fenneclab/blog.fenneclab.com](https://github.com/fenneclab/blog.fenneclab.com)
