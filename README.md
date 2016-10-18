@@ -42,6 +42,13 @@ npm run create -- 'post/my-new-post' # see below 'npm-run-script'
 
 See the [Hugo Documentation](https://gohugo.io/) for more information.
 
+## Supported versions
+
+|  hugo-bin version | Hugo version |
+|:-----------------:|:------------:|
+|       ^0.4.0      |     v0.17    |
+|       ^0.3.0      |     v0.16    |
+
 ## Full example
 
 - [fenneclab/blog.fenneclab.com](https://github.com/fenneclab/blog.fenneclab.com)
@@ -49,6 +56,7 @@ See the [Hugo Documentation](https://gohugo.io/) for more information.
 ## Super Inspired By
 
 - [mastilver/apex-bin](https://github.com/mastilver/apex-bin)
+- [imagemin/jpegtran-bin](https://github.com/imagemin/jpegtran-bin)
 
 ## License
 

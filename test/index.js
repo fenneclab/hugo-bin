@@ -1,6 +1,6 @@
 const assert = require('assert');
 const binCheck = require('bin-check');
-const hugoBin = require('../lib');
+const hugoBin = require('../');
 
 describe('hugo-bin', () => {
   it('should return path to binary and work', () => {
