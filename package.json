@@ -1,9 +1,9 @@
 {
   "name": "hugo-bin",
   "version": "0.3.0",
-  "hugoVersion": "0.16",
+  "hugoVersion": "0.17",
   "description": "Binary wrapper for Hugo",
-  "main": "lib/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "eslint . && mocha",
     "postinstall": "rm -rf vendor && node lib/install"
@@ -12,16 +12,18 @@
   "author": "satoshun00 <shun.sato@fenneclab.com>",
   "license": "MIT",
   "files": [
-    "lib"
+    "lib",
+    "index.js",
+    "cli.js"
   ],
   "bin": {
-    "hugo": "lib/cli.js"
+    "hugo": "cli.js"
   },
   "devDependencies": {
-    "bin-check": "3.0.0",
-    "eslint": "2.11.0",
-    "lodash": "4.13.1",
-    "mocha": "2.5.3"
+    "bin-check": "4.0.1",
+    "eslint": "3.8.1",
+    "lodash": "4.16.4",
+    "mocha": "3.1.2"
   },
   "engines": {
     "node": ">=4.0.0"
@@ -38,7 +40,6 @@
   },
   "dependencies": {
     "bin-wrapper": "3.0.2",
-    "logalot": "2.1.0",
-    "semver": "5.1.0"
+    "logalot": "2.1.0"
   }
 }
