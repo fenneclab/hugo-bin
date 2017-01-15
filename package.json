@@ -1,7 +1,7 @@
 {
   "name": "hugo-bin",
   "version": "0.4.0",
-  "hugoVersion": "0.17",
+  "hugoVersion": "0.18.1",
   "description": "Binary wrapper for Hugo",
   "main": "index.js",
   "scripts": {
