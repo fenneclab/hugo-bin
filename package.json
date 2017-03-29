@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "eslint . && mocha",
-    "postinstall": "rm -rf vendor && node lib/install"
+    "postinstall": "del-cli vendor && node lib/install"
   },
   "repository": "fenneclab/hugo-bin",
   "author": "satoshun00 <shun.sato@fenneclab.com>",
@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "bin-wrapper": "3.0.2",
+    "del-cli": "0.2.1",
     "logalot": "2.1.0"
   }
 }
