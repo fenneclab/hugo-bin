@@ -3,10 +3,9 @@ os:
   - linux
   - osx
 node_js:
-  - '6'
-  - '5'
-  - '4'
-  - '4.0'
+  - "8"
+  - "6"
+  - "4"
 deploy:
   provider: npm
   email: info@fenneclab.com
@@ -15,4 +14,7 @@ deploy:
   on:
     tags: true
     os: linux
-    node: '6'
+    node: "6"
+cache:
+  directories:
+    - node_modules
