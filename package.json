@@ -3,30 +3,35 @@
   "version": "0.17.0",
   "hugoVersion": "0.30.2",
   "description": "Binary wrapper for Hugo",
+  "repository": "fenneclab/hugo-bin",
+  "author": "satoshun00 <shun.sato@fenneclab.com>",
+  "license": "MIT",
   "main": "index.js",
+  "bin": {
+    "hugo": "cli.js"
+  },
+  "dependencies": {
+    "bin-wrapper": "3.0.2",
+    "del-cli": "1.1.0",
+    "logalot": "2.1.0"
+  },
+  "devDependencies": {
+    "bin-check": "4.1.0",
+    "eslint": "4.10.0",
+    "lodash": "4.17.4",
+    "mocha": "4.0.1"
+  },
   "scripts": {
     "test": "eslint . && mocha",
     "postinstall": "del-cli vendor && node lib/install"
   },
-  "repository": "fenneclab/hugo-bin",
-  "author": "satoshun00 <shun.sato@fenneclab.com>",
-  "license": "MIT",
   "files": [
-    "lib",
+    "lib/",
     "index.js",
     "cli.js"
   ],
-  "bin": {
-    "hugo": "cli.js"
-  },
-  "devDependencies": {
-    "bin-check": "4.0.1",
-    "eslint": "3.8.1",
-    "lodash": "4.16.4",
-    "mocha": "3.1.2"
-  },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=4"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -37,10 +42,5 @@
     "parserOptions": {
       "sourceType": "module"
     }
-  },
-  "dependencies": {
-    "bin-wrapper": "3.0.2",
-    "del-cli": "0.2.1",
-    "logalot": "2.1.0"
   }
 }
