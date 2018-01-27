@@ -46,6 +46,7 @@ See the [Hugo Documentation](https://gohugo.io/) for more information.
 
 |  hugo-bin version | Hugo version |
 |:-----------------:|:------------:|
+|       ^0.20.0     |     v0.33    |
 |       ^0.19.0     |     v0.32.4  |
 |       ^0.18.0     |     v0.31.1  |
 |       ^0.17.0     |     v0.30.2  |
