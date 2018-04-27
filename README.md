@@ -44,29 +44,7 @@ See the [Hugo Documentation](https://gohugo.io/) for more information.
 
 ## Supported versions
 
-|  hugo-bin version | Hugo version |
-|:-----------------:|:------------:|
-|       ^0.23.0     |     v0.36.1  |
-|       ^0.22.0     |     v0.35    |
-|       ^0.21.0     |     v0.34    |
-|       ^0.20.0     |     v0.33    |
-|       ^0.19.0     |     v0.32.4  |
-|       ^0.18.0     |     v0.31.1  |
-|       ^0.17.0     |     v0.30.2  |
-|       ^0.16.0     |     v0.29    |
-|       ^0.15.0     |     v0.28    |
-|       ^0.14.0     |     v0.27.1  |
-|       ^0.13.0     |     v0.26    |
-|       ^0.12.0     |     v0.25.1  |
-|       ^0.11.0     |     v0.24.1  |
-|       ^0.10.0     |     v0.23    |
-|       ^0.9.0      |     v0.22.1  |
-|       ^0.8.0      |     v0.21    |
-|       ^0.7.0      |     v0.20.7  |
-|       ^0.6.0      |     v0.19    |
-|       ^0.5.0      |     v0.18.1  |
-|       ^0.4.0      |     v0.17    |
-|       ^0.3.0      |     v0.16    |
+See [the package.json commit histories](https://github.com/fenneclab/hugo-bin/commits/master/package.json).
 
 ## Full example
 
