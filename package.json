@@ -36,8 +36,7 @@
   "eslintConfig": {
     "extends": "eslint:recommended",
     "env": {
-      "node": true,
-      "mocha": true
+      "node": true
     },
     "parserOptions": {
       "sourceType": "module"
