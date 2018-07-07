@@ -17,9 +17,9 @@
   },
   "devDependencies": {
     "bin-check": "4.1.0",
-    "eslint": "4.10.0",
-    "lodash": "4.17.4",
-    "mocha": "4.0.1"
+    "eslint": "4.19.1",
+    "lodash": "4.17.10",
+    "mocha": "5.2.0"
   },
   "scripts": {
     "test": "eslint . && mocha",
@@ -36,8 +36,7 @@
   "eslintConfig": {
     "extends": "eslint:recommended",
     "env": {
-      "node": true,
-      "mocha": true
+      "node": true
     },
     "parserOptions": {
       "sourceType": "module"
