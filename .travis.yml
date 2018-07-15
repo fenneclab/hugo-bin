@@ -6,7 +6,6 @@ node_js:
   - "10"
   - "8"
   - "6"
-  - "4"
 deploy:
   provider: npm
   email: info@fenneclab.com
