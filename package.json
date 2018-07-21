@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "bin-check": "4.1.0",
-    "eslint": "4.19.1",
+    "eslint": "5.1.0",
     "lodash": "4.17.10",
     "mocha": "5.2.0"
   },
@@ -31,7 +31,7 @@
     "cli.js"
   ],
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",

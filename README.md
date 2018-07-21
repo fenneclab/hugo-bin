@@ -1,10 +1,10 @@
-# hugo-bin [![Build Status](https://travis-ci.org/fenneclab/hugo-bin.svg?branch=master)](https://travis-ci.org/fenneclab/hugo-bin)
+# hugo-bin [![Build Status](https://img.shields.io/travis/fenneclab/hugo-bin/master.svg)](https://travis-ci.org/fenneclab/hugo-bin) [![dependencies Status](https://img.shields.io/david/fenneclab/hugo-bin.svg)](https://david-dm.org/fenneclab/hugo-bin) [![devDependencies Status](https://img.shields.io/david/dev/fenneclab/hugo-bin.svg)](https://david-dm.org/fenneclab/hugo-bin?type=dev)
 
 > Binary wrapper for [Hugo](https://gohugo.io/)
 
 ## Install
 
-```
+```sh
 npm install --save-dev hugo-bin
 ```
 
@@ -44,7 +44,7 @@ See the [Hugo Documentation](https://gohugo.io/) for more information.
 
 ## Supported versions
 
-See [the package.json commit histories](https://github.com/fenneclab/hugo-bin/commits/master/package.json).
+See [the package.json commit history](https://github.com/fenneclab/hugo-bin/commits/master/package.json).
 
 ## Full example
 
