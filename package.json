@@ -11,7 +11,7 @@
     "hugo": "cli.js"
   },
   "dependencies": {
-    "bin-wrapper": "3.0.2",
+    "bin-wrapper": "4.0.0",
     "del-cli": "1.1.0",
     "logalot": "2.1.0"
   },
