@@ -8,7 +8,7 @@
 npm install --save-dev hugo-bin
 ```
 
-hugo-bin now supports [Extended version of Hugo](https://github.com/gohugoio/hugo/releases/tag/v0.43). See [Installation options](#installation-options) for more detail.
+hugo-bin now supports [Extended version of Hugo](https://github.com/gohugoio/hugo/releases/tag/v0.43). See [Installation options](#installation-options) for more details.
 
 ## Usage
 
@@ -46,9 +46,9 @@ See the [Hugo Documentation](https://gohugo.io/) for more information.
 
 ## Installation options
 
-hugo-bin supports options to change variation of Hugo binaries.
+hugo-bin supports options to change the variation of Hugo binaries.
 
-Each options can be configured in the `hugo-bin` section of your `package.json`:
+Each option can be configured in the `hugo-bin` section of your `package.json`:
 
 ```json
 {
@@ -80,9 +80,9 @@ export HUGO_BIN_BUILD_TAGS="extended"
 
 Default: `""`
 
-Set it to `extended` to download [extended version](https://github.com/gohugoio/hugo/releases/tag/v0.43) binary.
+Set it to `extended` to download the [extended version](https://github.com/gohugoio/hugo/releases/tag/v0.43) binary.
 
-If this set to `extended` but it's not available for the user's platform, then the normal version would be downloaded instead.
+If this is set to `extended` but it's not available for the user's platform, then the normal version will be downloaded instead.
 
 ## Supported versions
 
