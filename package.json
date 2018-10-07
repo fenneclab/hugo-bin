@@ -11,23 +11,25 @@
     "hugo": "cli.js"
   },
   "dependencies": {
-    "bin-wrapper": "4.0.0",
-    "del-cli": "1.1.0",
-    "logalot": "2.1.0",
-    "pkg-conf": "2.1.0"
+    "bin-wrapper": "^4.0.0",
+    "del-cli": "^1.1.0",
+    "logalot": "^2.1.0",
+    "pkg-conf": "^2.1.0"
   },
   "devDependencies": {
-    "bin-check": "4.1.0",
-    "eslint": "5.1.0",
-    "lodash": "4.17.10",
-    "mocha": "5.2.0"
+    "bin-check": "^4.1.0",
+    "eslint": "^5.6.1",
+    "lodash": "^4.17.11",
+    "mocha": "^5.2.0"
   },
   "scripts": {
-    "test": "eslint . && mocha",
+    "eslint": "eslint .",
+    "mocha": "mocha",
+    "test": "npm run eslint && npm run mocha",
     "postinstall": "del-cli vendor && node lib/install"
   },
   "files": [
-    "lib/",
+    "lib/*.js",
     "index.js",
     "cli.js"
   ],
