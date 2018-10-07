@@ -8,7 +8,7 @@
 npm install --save-dev hugo-bin
 ```
 
-hugo-bin now supports [Extended version of Hugo](https://github.com/gohugoio/hugo/releases/tag/v0.43). See [Installation options](#installation-options) for more details.
+hugo-bin now supports the [Extended Hugo version](https://github.com/gohugoio/hugo/releases/tag/v0.43). See [Installation options](#installation-options) for more details.
 
 ## Usage
 
@@ -66,13 +66,13 @@ Also as local or global [.npmrc](https://docs.npmjs.com/files/npmrc) configurati
 hugo_bin_build_tags = "extended"
 ```
 
-Also as environment variable:
+Also as an environment variable:
 
 ```sh
 export HUGO_BIN_BUILD_TAGS="extended"
 ```
 
-**Note that you have to run `npm install hugo-bin` to re-install hugo-bin itself, if you change any one of these options.**
+**Note that you have to run `npm install hugo-bin` to re-install hugo-bin itself, if you change any of these options.**
 
 ### Options
 
