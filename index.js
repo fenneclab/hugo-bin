@@ -1,1 +1,1 @@
-module.exports = require('./lib').path();
+module.exports = require('./lib')(process.cwd()).path();

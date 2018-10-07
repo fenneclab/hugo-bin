@@ -1,7 +1,7 @@
 {
   "name": "hugo-bin",
   "version": "0.30.0",
-  "hugoVersion": "0.42.2",
+  "hugoVersion": "0.43",
   "description": "Binary wrapper for Hugo",
   "repository": "fenneclab/hugo-bin",
   "author": "satoshun00 <shun.sato@fenneclab.com>",
@@ -13,7 +13,8 @@
   "dependencies": {
     "bin-wrapper": "4.0.0",
     "del-cli": "1.1.0",
-    "logalot": "2.1.0"
+    "logalot": "2.1.0",
+    "pkg-conf": "2.1.0"
   },
   "devDependencies": {
     "bin-check": "4.1.0",
