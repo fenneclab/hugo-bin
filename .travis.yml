@@ -1,11 +1,12 @@
+sudo: false
 language: node_js
 os:
   - linux
   - osx
 node_js:
-  - "10"
-  - "8"
   - "6"
+  - "8"
+  - "10"
 deploy:
   provider: npm
   email: info@fenneclab.com
