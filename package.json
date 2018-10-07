@@ -29,7 +29,7 @@
     "postinstall": "del-cli vendor && node lib/install"
   },
   "files": [
-    "lib/",
+    "lib/*.js",
     "index.js",
     "cli.js"
   ],
