@@ -23,7 +23,9 @@
     "mocha": "5.2.0"
   },
   "scripts": {
-    "test": "eslint . && mocha",
+    "eslint": "eslint .",
+    "mocha": "mocha",
+    "test": "npm run eslint && npm run mocha",
     "postinstall": "del-cli vendor && node lib/install"
   },
   "files": [
