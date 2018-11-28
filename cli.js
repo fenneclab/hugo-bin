@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+'use strict';
+
 const spawn = require('child_process').spawn;
 const hugo = require('.');
 const input = process.argv.slice(2);

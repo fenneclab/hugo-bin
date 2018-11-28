@@ -1,5 +1,7 @@
 /* eslint-env mocha */
 
+'use strict';
+
 const assert = require('assert');
 const binCheck = require('bin-check');
 const hugoBin = require('..');
