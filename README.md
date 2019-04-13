@@ -5,7 +5,7 @@
 ## Install
 
 ```sh
-npm install --save-dev hugo-bin
+npm install hugo-bin --save-dev
 ```
 
 hugo-bin now supports the [Extended Hugo version](https://github.com/gohugoio/hugo/releases/tag/v0.43). See [Installation options](#installation-options) for more details.
@@ -15,10 +15,14 @@ hugo-bin now supports the [Extended Hugo version](https://github.com/gohugoio/hu
 ### API
 
 ```js
-const execFile = require('child_process').execFile;
+const { execFile } = require('child_process');
 const hugo = require('hugo-bin');
 
-execFile(hugo, ['version'], (err, stdout) => {
+execFile(hugo, ['version'], (error, stdout) => {
+  if (error) {
+    throw error;
+  }
+
   console.log(stdout);
 });
 ```
@@ -27,10 +31,10 @@ execFile(hugo, ['version'], (err, stdout) => {
 
 ```sh
 $(npm bin)/hugo --help
-npm run create -- 'post/my-new-post' # see below 'npm-run-script'
+npm run create -- 'post/my-new-post' # see below 'npm run-script'
 ```
 
-### npm-run-script
+### npm run-script
 
 ```json
 {
