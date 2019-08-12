@@ -31,7 +31,15 @@ execFile(hugo, ['version'], (error, stdout) => {
 
 ```sh
 $(npm bin)/hugo --help
-npm run create -- 'post/my-new-post' # see below 'npm run-script'
+npm run create -- post/my-new-post.md # see below 'npm run-script'
+```
+
+or on Windows:
+
+```bat
+for /f "delims=" %F in ('npm bin') do call "%F\hugo" help
+rem see below 'npm run-script'
+npm run create -- post/my-new-post.md
 ```
 
 ### npm run-script
@@ -41,7 +49,7 @@ npm run create -- 'post/my-new-post' # see below 'npm run-script'
   "scripts": {
     "build": "hugo",
     "create": "hugo new",
-    "serve": "hugo server -ws"
+    "serve": "hugo server"
   }
 }
 ```
