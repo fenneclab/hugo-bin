@@ -33,7 +33,7 @@
     "index.js"
   ],
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
