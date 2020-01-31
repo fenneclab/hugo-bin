@@ -1,16 +1,16 @@
-# hugo-node [![CI status](https://github.com/jakejarvis/hugo-node/workflows/Test/badge.svg)](.github/workflows) [![Hugo v0.63.2](https://img.shields.io/badge/Hugo-v0.63.2-orange)](https://github.com/gohugoio/hugo) [![Dependabot](https://api.dependabot.com/badges/status?host=github&repo=jakejarvis/hugo-node)](https://github.com/jakejarvis/hugo-node/pulls?q=is%3Apr+label%3Adependencies)
+# hugo-extended via NPM [![CI status](https://github.com/jakejarvis/hugo-node/workflows/Test/badge.svg)](.github/workflows) [![npm](https://img.shields.io/npm/v/hugo-extended)](https://www.npmjs.com/package/hugo-extended) [![Hugo v0.63.2](https://img.shields.io/badge/Hugo-v0.63.2-orange)](https://github.com/gohugoio/hugo) [![Dependabot](https://api.dependabot.com/badges/status?host=github&repo=jakejarvis/hugo-node)](https://github.com/jakejarvis/hugo-node/pulls?q=is%3Apr+label%3Adependencies)
 
-> Plug-and-play binary wrapper for [Hugo](https://gohugo.io/), the awesomest static-site generator.
+> Plug-and-play binary wrapper for [Hugo Extended](https://gohugo.io/), the awesomest static-site generator.
 
 ## Install
 
 ```sh
-npm install hugo-node --save-dev
+npm install hugo-extended --save-dev
 # or...
-yarn add hugo-node --dev
+yarn add hugo-extended --dev
 ```
 
-`hugo-node` defaults to the [extended version](https://gohugo.io/getting-started/installing/#linux) of Hugo on [supported platforms](https://github.com/gohugoio/hugo/releases), and falls back to vanilla Hugo automatically if unsupported.
+`hugo-extended` defaults to the [extended version](https://gohugo.io/getting-started/installing/#linux) of Hugo on [supported platforms](https://github.com/gohugoio/hugo/releases), and falls back to vanilla Hugo automatically if unsupported.
 
 ## Usage
 
@@ -18,7 +18,7 @@ yarn add hugo-node --dev
 
 ```js
 const { execFile } = require('child_process');
-const hugo = require('hugo-node');
+const hugo = require('hugo-extended');
 
 execFile(hugo, ['version'], (error, stdout) => {
   if (error) {

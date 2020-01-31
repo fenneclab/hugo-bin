@@ -1,12 +1,22 @@
 {
-  "name": "hugo-node",
+  "name": "hugo-extended",
   "version": "0.63.2",
   "hugoVersion": "0.63.2",
-  "description": "Binary wrapper for Hugo",
-  "repository": "jakejarvis/hugo-node",
+  "description": "Plug-and-play binary wrapper for Hugo Extended, the awesomest static-site generator.",
+  "homepage": "https://github.com/jakejarvis/hugo-node#readme",
   "license": "MIT",
+  "author": {
+    "name": "Jake Jarvis",
+    "email": "jake@jarv.is",
+    "url": "https://github.com/jakejarvis"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakejarvis/hugo-node.git"
+  },
   "keywords": [
     "hugo",
+    "hugo extended",
     "gohugoio",
     "cli",
     "bin",
@@ -15,9 +25,6 @@
     "static site generator"
   ],
   "main": "index.js",
-  "bin": {
-    "hugo": "cli.js"
-  },
   "dependencies": {
     "bin-wrapper": "^4.1.0",
     "rimraf": "^3.0.1",
@@ -34,13 +41,16 @@
     "test": "npm run eslint && npm run mocha",
     "postinstall": "rimraf vendor && node lib/install"
   },
+  "engines": {
+    "node": ">=10"
+  },
   "files": [
     "lib/*.js",
     "cli.js",
     "index.js"
   ],
-  "engines": {
-    "node": ">=10"
+  "bin": {
+    "hugo": "cli.js"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
