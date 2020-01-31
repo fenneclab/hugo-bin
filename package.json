@@ -1,10 +1,19 @@
 {
-  "name": "@jakejarvis/hugo",
+  "name": "hugo-node",
   "version": "0.63.2",
   "hugoVersion": "0.63.2",
   "description": "Binary wrapper for Hugo",
   "repository": "jakejarvis/hugo-node",
   "license": "MIT",
+  "keywords": [
+    "hugo",
+    "gohugoio",
+    "cli",
+    "bin",
+    "binary",
+    "wrapper",
+    "static site generator"
+  ],
   "main": "index.js",
   "bin": {
     "hugo": "cli.js"

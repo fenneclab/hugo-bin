@@ -1,6 +1,6 @@
-The MIT License (MIT)
+MIT License
 
-Copyright (c) 2016 FennecLab
+Copyright (c) 2020-present Jake Jarvis <jake@jarv.is>, (c) 2016 FennecLab.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
