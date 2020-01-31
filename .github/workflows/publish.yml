@@ -13,9 +13,15 @@ jobs:
       with:
         node-version: 12
         registry-url: https://registry.npmjs.org/
-    - run: npm ci
-    - run: node cli.js env
-    - run: npm test
-    - run: npm publish --access public
+    - name: npm install and test
+      run: |
+        npm ci
+        npm test
+      env:
+        CI: true
+    - name: Check Hugo version
+      run: node cli.js env
+    - name: Publish!
+      run: npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
