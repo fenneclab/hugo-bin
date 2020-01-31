@@ -1,8 +1,9 @@
-name: Test
+name: Run tests
+
 on: [push, pull_request]
 
 jobs:
-  run:
+  test:
     name: Node ${{ matrix.node }}
     runs-on: ubuntu-latest
     strategy:
@@ -14,5 +15,6 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node }}
-    - run: npm install
+    - run: npm ci
+    - run: node cli.js env
     - run: npm test
