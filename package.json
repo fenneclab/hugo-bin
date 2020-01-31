@@ -27,8 +27,7 @@
   "main": "index.js",
   "dependencies": {
     "bin-wrapper": "^4.1.0",
-    "rimraf": "^3.0.1",
-    "signale": "^1.4.0"
+    "rimraf": "^3.0.1"
   },
   "devDependencies": {
     "bin-check": "^4.1.0",
