@@ -19,8 +19,6 @@ jobs:
         npm test
       env:
         CI: true
-    - name: Check Hugo version
-      run: node cli.js env
     - name: Publish!
       run: npm publish --access public
       env:

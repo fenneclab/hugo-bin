@@ -22,5 +22,3 @@ jobs:
         npm test
       env:
         CI: true
-    - name: Check Hugo version
-      run: node cli.js env
