@@ -1,10 +1,9 @@
 {
-  "name": "hugo-bin",
-  "version": "0.51.2",
+  "name": "@jakejarvis/hugo",
+  "version": "0.63.2",
   "hugoVersion": "0.63.2",
   "description": "Binary wrapper for Hugo",
-  "repository": "fenneclab/hugo-bin",
-  "author": "satoshun00 <shun.sato@fenneclab.com>",
+  "repository": "jakejarvis/hugo-node",
   "license": "MIT",
   "main": "index.js",
   "bin": {
@@ -12,7 +11,6 @@
   },
   "dependencies": {
     "bin-wrapper": "^4.1.0",
-    "pkg-conf": "^3.1.0",
     "rimraf": "^3.0.1",
     "signale": "^1.4.0"
   },
@@ -33,7 +31,7 @@
     "index.js"
   ],
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
