@@ -1,4 +1,4 @@
-# hugo-extended via NPM [![CI status](https://github.com/jakejarvis/hugo-node/workflows/Test/badge.svg)](.github/workflows) [![npm](https://img.shields.io/npm/v/hugo-extended)](https://www.npmjs.com/package/hugo-extended) [![Hugo v0.63.2](https://img.shields.io/badge/Hugo-v0.63.2-orange)](https://github.com/gohugoio/hugo) [![Dependabot](https://api.dependabot.com/badges/status?host=github&repo=jakejarvis/hugo-node)](https://github.com/jakejarvis/hugo-node/pulls?q=is%3Apr+label%3Adependencies)
+# hugo-extended via NPM [![CI status](https://github.com/jakejarvis/hugo-node/workflows/Run%20tests/badge.svg)](.github/workflows) [![npm](https://img.shields.io/npm/v/hugo-extended?color=red)](https://www.npmjs.com/package/hugo-extended) [![Hugo v0.63.2](https://img.shields.io/badge/Hugo-v0.63.2-orange)](https://github.com/gohugoio/hugo) [![Dependabot](https://api.dependabot.com/badges/status?host=github&repo=jakejarvis/hugo-node)](https://github.com/jakejarvis/hugo-node/pulls?q=is%3Apr+label%3Adependencies)
 
 > Plug-and-play binary wrapper for [Hugo Extended](https://gohugo.io/), the awesomest static-site generator.
 

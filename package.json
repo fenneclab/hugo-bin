@@ -42,7 +42,7 @@
     "postinstall": "rimraf vendor && node lib/install"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=8"
   },
   "files": [
     "lib/*.js",
