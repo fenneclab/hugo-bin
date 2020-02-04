@@ -1,7 +1,7 @@
 {
   "name": "hugo-extended",
-  "version": "0.63.2",
-  "hugoVersion": "0.63.2",
+  "version": "0.64.0",
+  "hugoVersion": "0.64.0",
   "description": "Plug-and-play binary wrapper for Hugo Extended, the awesomest static-site generator.",
   "homepage": "https://github.com/jakejarvis/hugo-extended#readme",
   "license": "MIT",
