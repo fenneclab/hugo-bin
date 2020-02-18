@@ -2,7 +2,7 @@
 
 > Plug-and-play binary wrapper for [Hugo Extended](https://gohugo.io/), the awesomest static-site generator.
 
-## Install
+## Installation
 
 ```sh
 npm install hugo-extended --save-dev
