@@ -26,19 +26,16 @@
   ],
   "main": "index.js",
   "dependencies": {
-    "bin-wrapper": "^4.1.0",
-    "rimraf": "^3.0.1"
+    "bin-wrapper": "^4.1.0"
   },
   "devDependencies": {
     "bin-check": "^4.1.0",
-    "eslint": "^6.8.0",
-    "mocha": "^7.0.1"
+    "mocha": "*",
+    "xo": "*"
   },
   "scripts": {
-    "eslint": "eslint .",
-    "mocha": "mocha",
-    "test": "npm run eslint && npm run mocha",
-    "postinstall": "rimraf vendor && node lib/install"
+    "postinstall": "node lib/install.js",
+    "test": "xo && mocha"
   },
   "engines": {
     "node": ">=8"
@@ -51,21 +48,15 @@
   "bin": {
     "hugo": "cli.js"
   },
-  "eslintConfig": {
-    "extends": "eslint:recommended",
-    "env": {
-      "es6": true,
-      "node": true
-    },
+  "xo": {
+    "envs": [
+      "es6",
+      "node"
+    ],
+    "space": true,
     "rules": {
-      "prefer-destructuring": [
-        "error",
-        {
-          "object": true,
-          "array": false
-        }
-      ],
-      "strict": "error"
+      "object-curly-spacing": "off",
+      "promise/prefer-await-to-then": "warn"
     }
   }
 }

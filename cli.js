@@ -5,7 +5,5 @@
 const { spawn } = require('child_process');
 const hugo = require('.');
 
-const input = process.argv.slice(2);
-
-spawn(hugo, input, { stdio: 'inherit' })
+spawn(hugo, process.argv.slice(2), { stdio: 'inherit' })
   .on('exit', process.exit);

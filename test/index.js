@@ -14,7 +14,10 @@ it('Hugo exists and runs?', () => {
     // Print additional build environment variables if check successful
     if (works) {
       execFile(hugoBin, ['env'], (error, stdout) => {
-        if (error) throw error;
+        if (error) {
+          throw error;
+        }
+
         console.log(stdout);
       });
     }

@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./lib')(process.cwd()).path();
+module.exports = require('./lib').path();
