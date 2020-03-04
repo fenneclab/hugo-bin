@@ -22,3 +22,11 @@ jobs:
         npm test
       env:
         CI: true
+    - name: Checkout gohugoio/hugoDocs
+      uses: actions/checkout@master
+      with:
+        repository: gohugoio/hugoDocs
+        path: docs/
+        fetch-depth: 1
+    - name: Build docs site
+      run: node cli.js --source docs/ --minify --verbose
