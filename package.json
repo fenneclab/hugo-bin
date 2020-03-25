@@ -35,7 +35,7 @@
   },
   "scripts": {
     "postinstall": "node lib/install.js",
-    "test": "xo && mocha"
+    "test": "xo && mocha && node cli.js env"
   },
   "engines": {
     "node": ">=10"
@@ -49,14 +49,9 @@
     "hugo": "cli.js"
   },
   "xo": {
-    "envs": [
-      "es6",
-      "node"
-    ],
     "space": true,
     "rules": {
-      "object-curly-spacing": "off",
-      "promise/prefer-await-to-then": "warn"
+      "object-curly-spacing": "off"
     }
   }
 }
