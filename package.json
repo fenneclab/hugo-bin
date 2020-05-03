@@ -3,7 +3,7 @@
   "version": "0.69.2",
   "hugoVersion": "0.69.2",
   "description": "Plug-and-play binary wrapper for Hugo Extended, the awesomest static-site generator.",
-  "homepage": "https://github.com/jakejarvis/hugo-extended#readme",
+  "homepage": "https://jarv.is/hugo-node/",
   "license": "MIT",
   "author": {
     "name": "Jake Jarvis",
@@ -19,10 +19,19 @@
     "hugo extended",
     "gohugoio",
     "cli",
+    "front-end",
     "bin",
     "binary",
     "wrapper",
-    "static site generator"
+    "static site generator",
+    "static-site",
+    "ssg",
+    "static",
+    "markdown",
+    "blog",
+    "frontmatter",
+    "go",
+    "golang"
   ],
   "main": "index.js",
   "dependencies": {
