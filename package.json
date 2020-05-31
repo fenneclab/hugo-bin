@@ -19,7 +19,7 @@
   "devDependencies": {
     "bin-check": "^4.1.0",
     "eslint": "^6.8.0",
-    "mocha": "^7.1.2"
+    "mocha": "^7.2.0"
   },
   "scripts": {
     "eslint": "eslint .",
