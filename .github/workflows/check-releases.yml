@@ -1,0 +1,36 @@
+name: Check for Hugo releases
+
+# TODO: instead of failing CI, send a notification via email/slack/twilio/etc.
+
+on:
+  schedule:
+  - cron:  '15 * * * *'   # run every hour, at 15 past
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get latest Hugo version
+      # https://gist.github.com/lukechilds/a83e1d7127b78fef38c2914c4ececc3c
+      run: |
+        HUGO_VERSION=$(curl --silent "https://api.github.com/repos/gohugoio/hugo/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+        echo "::set-env name=HUGO_VERSION::$HUGO_VERSION"
+    - name: Get latest package version
+      run: |
+        PACKAGE_VERSION=v$(npm show hugo-extended version)  # prepend v to match above format
+        echo "::set-env name=PACKAGE_VERSION::$PACKAGE_VERSION"
+    - name: Compare versions
+      run: |
+        echo "Current Hugo version is $HUGO_VERSION."
+        echo "Current package version is $PACKAGE_VERSION."
+
+        if [ "$HUGO_VERSION" != "$PACKAGE_VERSION" ]
+        then
+          echo "🚨 Needs updating!"
+          echo "::set-env name=UPDATE_AVAILABLE::true"
+          exit 1
+        else
+          echo "✅ All good for now."
+          echo "::set-env name=UPDATE_AVAILABLE::false"
+          exit 0
+        fi
