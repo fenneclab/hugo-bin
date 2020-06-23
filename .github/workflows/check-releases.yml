@@ -4,7 +4,7 @@ name: Check for Hugo releases
 
 on:
   schedule:
-  - cron:  '15 * * * *'   # run every hour, at 15 past
+  - cron: '0 */3 * * *'   # run every three hours
 
 jobs:
   check:
