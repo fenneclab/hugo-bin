@@ -1,9 +1,8 @@
 {
   "name": "hugo-extended",
-  "version": "0.73.0",
-  "hugoVersion": "0.73.0",
+  "version": "0.74.0",
+  "hugoVersion": "0.74.0",
   "description": "Plug-and-play binary wrapper for Hugo Extended, the awesomest static-site generator.",
-  "homepage": "https://jarv.is/hugo-node/",
   "license": "MIT",
   "author": {
     "name": "Jake Jarvis",
