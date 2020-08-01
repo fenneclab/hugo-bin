@@ -38,15 +38,15 @@
   },
   "devDependencies": {
     "bin-check": "^4.1.0",
-    "mocha": "~6.x",
-    "xo": "~0.25.x"
+    "mocha": "^8.1.0",
+    "xo": "^0.32.1"
   },
   "scripts": {
     "postinstall": "node lib/install.js",
     "test": "xo && mocha && node cli.js env"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "files": [
     "lib/*.js",
