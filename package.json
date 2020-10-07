@@ -1,7 +1,7 @@
 {
   "name": "hugo-bin",
   "version": "0.64.1",
-  "hugoVersion": "0.76.1",
+  "hugoVersion": "0.76.2",
   "description": "Binary wrapper for Hugo",
   "repository": "fenneclab/hugo-bin",
   "author": "satoshun00 <shun.sato@fenneclab.com>",
