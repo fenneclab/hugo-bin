@@ -10,7 +10,7 @@ deploy:
     secure: q5AqVSC5C/D6+jDMsu8nP4vTh9VUzjJamYE0Y/gyG/kWjcF9hSmOdLtqhL9R8j15PySqfbBcoUN+s75KG2cJyDbhI/anrjM6p7q5ALcSGsTwBw6qh9bXomrh6j8cXI1+eYTAwk32OpcDwViCs+kP1GgtpifbSccmUzyYWl5KEQc1plM0PVuQnksUJydV0DOsJWTExufBkWBBOvbt0NTRAduAWlqJTVmepChJxa1ZJDD3Cyj49IOll8Ny4nt/oGW2rT/Ez1eYATXwPLtGzA/p94oKdEs/ubFDkh95aqYPGEAHXkt8X4o9tQ33cIl1tNiVTXWMiyZqBZDVtcKUdq5f0Gu//T/lDAoqT+bBJ/PgHJSCexJHeGR1s49sGT5EpRMWvs2H5Rh6G8eKSbfm3Nco917ux/15TcJECzO1CYh1efE0PEqAK3HerV8qJt8BSosuYo74+wea61dPmSNj7J+r+DiKkXCDkpFXT5jp9orTtniuOs65j5vAjP7zSVbUhQVALn5Kwcm1AVLvBvG6ys1dQRKoePiZuGoKpopNSFUR+ypXeYO039gTJKCyqaz3MCt9Nh1Yq1pgkal5TJeEzFuiMxg3RhAO4Ad+BD2PZJri+IAPVnXQ2SYlbRtBggNslw1E2+dZNOjkVWqRjv7ix9S6IAm8WYum5zoaa9CfremDpWc=
   on:
     tags: true
-    node: "12"
+    node: "14"
 cache: npm
 notifications:
   email: false
