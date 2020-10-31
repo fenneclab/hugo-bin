@@ -25,11 +25,11 @@ jobs:
       run: |
         npm ci
         npm test
-    - name: Checkout gohugoio/hugoDocs
+    - name: Checkout gohugoio/hugoBasicExample
       uses: actions/checkout@master
       with:
-        repository: gohugoio/hugoDocs
-        path: docs/
+        repository: gohugoio/hugoBasicExample
+        path: site/
         fetch-depth: 1
-    - name: Build docs site
-      run: node cli.js --source docs/ --minify --verbose
+    - name: Build example site
+      run: node cli.js --source site/ --minify --verbose
