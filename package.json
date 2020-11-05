@@ -1,6 +1,6 @@
 {
   "name": "hugo-extended",
-  "version": "0.78.0",
+  "version": "0.78.1",
   "description": "Plug-and-play binary wrapper for Hugo Extended, the awesomest static-site generator.",
   "license": "MIT",
   "author": {
