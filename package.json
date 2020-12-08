@@ -38,7 +38,7 @@
   "devDependencies": {
     "bin-check": "^4.1.0",
     "mocha": "^8.2.1",
-    "xo": "^0.35.0"
+    "xo": "^0.36.1"
   },
   "scripts": {
     "postinstall": "node lib/install.js",
