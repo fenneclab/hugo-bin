@@ -5,6 +5,7 @@ name: Check for Hugo releases
 on:
   schedule:
   - cron: '0 */3 * * *'   # run every three hours
+  workflow_dispatch:
 
 jobs:
   check:
