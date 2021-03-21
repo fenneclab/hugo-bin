@@ -11,9 +11,8 @@ jobs:
     steps:
     - name: Get latest Hugo version
       id: hugo_version
-      # https://gist.github.com/lukechilds/a83e1d7127b78fef38c2914c4ececc3c
       run: |
-        HUGO_VERSION=$(curl --silent "https://api.github.com/repos/gohugoio/hugo/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' | tr -d "v")
+        HUGO_VERSION=$(curl --silent https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -r .tag_name | sed 's/v//')
         echo "::set-output name=VERSION::$HUGO_VERSION"
     - name: Get latest package version
       id: package_version
@@ -29,12 +28,17 @@ jobs:
         if [ "${{ steps.hugo_version.outputs.VERSION }}" != "${{ steps.package_version.outputs.VERSION }}" ]
         then
           echo "🚨 Needs updating!"
-          echo "::set-output name=UPDATE_AVAILABLE::true"
           exit 1
         else
           echo "✅ All good for now."
-          echo "::set-output name=UPDATE_AVAILABLE::false"
           exit 0
         fi
+    - name: Send Discord notification
+      uses: appleboy/discord-action@master
+      if: failure()
+      with:
+        webhook_id: ${{ secrets.DISCORD_WEBHOOK_ID }}
+        webhook_token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}
+        message: '📦 New Hugo version (v${{ steps.hugo_version.outputs.VERSION }}) is available: https://github.com/gohugoio/hugo/releases/tag/v${{ steps.hugo_version.outputs.VERSION }}'
 
 # TODO: Automatically bump npm package, commit back to repo, and publish new version.
