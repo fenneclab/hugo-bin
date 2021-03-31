@@ -16,16 +16,29 @@ This package's version numbers align with Hugo's — `hugo-extended@0.64.1` ins
 
 ## Usage
 
-The following examples simply refer to executing Hugo as a local Node dependency. See the [official Hugo docs](https://gohugo.io/documentation/) for guidance on actual Hugo usage.
+The following examples simply refer to downloading and executing Hugo as a Node dependency. See the [official Hugo docs](https://gohugo.io/documentation/) for guidance on actual Hugo usage.
 
 ### via CLI / `package.json`:
 
-```json
+If you'll be using the SCSS features of Hugo Extended, it's probably smart to install [`postcss`](https://www.npmjs.com/package/postcss), [`postcss-cli`](https://www.npmjs.com/package/postcss-cli), and [`autoprefixer`](https://www.npmjs.com/package/autoprefixer) as devDependencies too, since they can be called via [built-in Hugo pipes](https://gohugo.io/hugo-pipes/postcss/).
+
+The `build:preview` script below is designed for [Netlify deploy previews](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/), where [`$DEPLOY_PRIME_URL`](https://docs.netlify.com/configure-builds/environment-variables/#deploy-urls-and-metadata) is substituted for the base URL (usually ending in netlify.app) of each commit or pull request.
+
+```jsonc
 {
+  // ...
   "scripts": {
     "build": "hugo",
-    "start": "hugo server --buildDrafts --buildFuture --port 1313"
+    "build:preview": "hugo --baseURL \"${DEPLOY_PRIME_URL:-/}\" --buildDrafts --buildFuture",
+    "start": "hugo server"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "hugo-extended": "^0.75.1",
+    "postcss": "^8.2.9",
+    "postcss-cli": "^8.3.1"
   }
+  // ...
 }
 ```
 
