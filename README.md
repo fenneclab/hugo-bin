@@ -100,10 +100,6 @@ If this is set to `extended` but it's not available for the user's platform, the
 
 See [the package.json commit history](https://github.com/fenneclab/hugo-bin/commits/master/package.json).
 
-## Full example
-
-- [fenneclab/blog.fenneclab.com](https://github.com/fenneclab/blog.fenneclab.com)
-
 ## Super Inspired By
 
 - [mastilver/apex-bin](https://github.com/mastilver/apex-bin)
@@ -111,4 +107,4 @@ See [the package.json commit history](https://github.com/fenneclab/hugo-bin/comm
 
 ## License
 
-MIT © [Shun Sato](http://blog.fenneclab.com/)
+MIT © Shun Sato
