@@ -1,6 +1,6 @@
 {
   "name": "hugo-extended",
-  "version": "0.82.1",
+  "version": "0.83.0",
   "description": "Plug-and-play binary wrapper for Hugo Extended, the awesomest static-site generator.",
   "license": "MIT",
   "author": {
@@ -38,7 +38,7 @@
   "devDependencies": {
     "bin-check": "^4.1.0",
     "mocha": "^8.3.2",
-    "xo": "^0.38.2"
+    "xo": "^0.39.1"
   },
   "scripts": {
     "postinstall": "node lib/install.js",
