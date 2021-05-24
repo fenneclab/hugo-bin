@@ -37,12 +37,12 @@
   },
   "devDependencies": {
     "bin-check": "^4.1.0",
-    "mocha": "^8.3.2",
-    "xo": "^0.39.1"
+    "eslint": "^7.27.0",
+    "mocha": "^8.4.0"
   },
   "scripts": {
     "postinstall": "node lib/install.js",
-    "test": "xo && mocha && node cli.js env"
+    "test": "eslint \"**/*.js\" && mocha && node cli.js env"
   },
   "engines": {
     "node": ">=10"
@@ -55,10 +55,14 @@
   "bin": {
     "hugo": "cli.js"
   },
-  "xo": {
-    "space": true,
-    "rules": {
-      "object-curly-spacing": "off"
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 8,
+      "sourceType": "module"
+    },
+    "env": {
+      "node": true
     }
   }
 }
