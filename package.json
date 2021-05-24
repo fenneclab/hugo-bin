@@ -12,6 +12,31 @@
     "type": "git",
     "url": "git+https://github.com/jakejarvis/hugo-extended.git"
   },
+  "files": [
+    "lib/*.js",
+    "cli.js",
+    "index.js"
+  ],
+  "bin": {
+    "hugo": "cli.js",
+    "hugo-extended": "cli.js"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "bin-wrapper": "^4.1.0"
+  },
+  "devDependencies": {
+    "bin-check": "^4.1.0",
+    "eslint": "^7.27.0",
+    "mocha": "^8.4.0"
+  },
+  "scripts": {
+    "postinstall": "node lib/install.js",
+    "test": "eslint \"**/*.js\" && mocha && node cli.js env"
+  },
+  "engines": {
+    "node": ">=10"
+  },
   "keywords": [
     "hugo",
     "hugo extended",
@@ -31,30 +56,6 @@
     "go",
     "golang"
   ],
-  "main": "index.js",
-  "dependencies": {
-    "bin-wrapper": "^4.1.0"
-  },
-  "devDependencies": {
-    "bin-check": "^4.1.0",
-    "eslint": "^7.27.0",
-    "mocha": "^8.4.0"
-  },
-  "scripts": {
-    "postinstall": "node lib/install.js",
-    "test": "eslint \"**/*.js\" && mocha && node cli.js env"
-  },
-  "engines": {
-    "node": ">=10"
-  },
-  "files": [
-    "lib/*.js",
-    "cli.js",
-    "index.js"
-  ],
-  "bin": {
-    "hugo": "cli.js"
-  },
   "eslintConfig": {
     "extends": "eslint:recommended",
     "parserOptions": {
