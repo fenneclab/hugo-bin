@@ -2,10 +2,13 @@
 
 'use strict';
 
+const { execFile } = require('child_process');
 const assert = require('assert');
-const binCheck = require('bin-check');
-const hugoBin = require('..');
+const hugo = require('..');
 
 it('Hugo exists and runs?', async () => {
-  assert(await binCheck(hugoBin, ['version']));
+  assert(execFile(hugo, ['env'], (error, stdout) => {
+    if (error) throw error;
+    console.log(stdout);
+  }));
 });

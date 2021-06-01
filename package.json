@@ -13,9 +13,9 @@
     "url": "git+https://github.com/jakejarvis/hugo-extended.git"
   },
   "files": [
-    "lib/*.js",
+    "index.js",
     "cli.js",
-    "index.js"
+    "install.js"
   ],
   "bin": {
     "hugo": "cli.js",
@@ -23,16 +23,17 @@
   },
   "main": "index.js",
   "dependencies": {
-    "bin-wrapper": "^4.1.0"
+    "cross-spawn": "^7.0.3",
+    "decompress": "^4.2.1",
+    "follow-redirects": "^1.14.1"
   },
   "devDependencies": {
-    "bin-check": "^4.1.0",
     "eslint": "^7.27.0",
     "mocha": "^8.4.0"
   },
   "scripts": {
-    "postinstall": "node lib/install.js",
-    "test": "eslint \"**/*.js\" && mocha && node cli.js env"
+    "postinstall": "node install.js",
+    "test": "eslint \"**/*.js\" && mocha"
   },
   "engines": {
     "node": ">=10"
@@ -63,7 +64,8 @@
       "sourceType": "module"
     },
     "env": {
-      "node": true
+      "node": true,
+      "es6": true
     }
   }
 }
