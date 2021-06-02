@@ -25,7 +25,8 @@
   "dependencies": {
     "cross-spawn": "^7.0.3",
     "decompress": "^4.2.1",
-    "follow-redirects": "^1.14.1"
+    "follow-redirects": "^1.14.1",
+    "sumchecker": "^3.0.1"
   },
   "devDependencies": {
     "eslint": "^7.27.0",

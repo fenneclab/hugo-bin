@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { https } = require("follow-redirects");
 const decompress = require('decompress');
+const sumchecker = require('sumchecker');
 
 (async () => {
   install()
@@ -22,6 +23,7 @@ async function install() {
 
   // Hugo Extended supports: macOS x64, macOS ARM64, Linux x64, Windows x64.
   // all other combos fall back to vanilla Hugo.
+  const checksumFile = `hugo_${version}_checksums.txt`
   const downloadFile =
     process.platform === 'darwin' && process.arch === 'x64'
       ? `hugo_extended_${version}_macOS-64bit.tar.gz` :
@@ -61,8 +63,10 @@ async function install() {
   if (!downloadFile) throw "Are you sure this platform is supported?";
 
   let downloadUrl = downloadBaseUrl + downloadFile;
+  let checksumUrl = downloadBaseUrl + checksumFile;
   let vendorDir = path.join(__dirname, 'vendor');
   let archivePath = path.join(vendorDir, downloadFile);
+  let checksumPath = path.join(vendorDir, checksumFile);
   let binName = process.platform === 'win32' ? 'hugo.exe' : 'hugo';
   let binPath = path.join(vendorDir, binName);
 
@@ -87,16 +91,39 @@ async function install() {
       );
     }).on('error', reject));
 
-    // TODO: validate the checksum of the download
-    // https://github.com/jakejarvis/hugo-extended/issues/1
+    // fetch the checksum file from GitHub
+    await new Promise((resolve, reject) => https.get(checksumUrl, response => {
+      // throw an error immediately if the download failed
+      if (response.statusCode !== 200) {
+        response.resume();
+        reject(new Error(`Download failed: status code ${response.statusCode} from ${checksumUrl}`));
+        return;
+      }
+
+      // pipe the response directly to a file
+      response.pipe(
+        fs.createWriteStream(checksumPath)
+          .on('finish', resolve)
+          .on('error', reject)
+      );
+    }).on('error', reject));
+
+    // validate the checksum of the download
+    const checker = new sumchecker.ChecksumValidator('sha256', checksumPath, {
+      defaultTextEncoding: 'binary'
+    });
+    await checker.validate(vendorDir, downloadFile);
 
     // extract the downloaded file
     await decompress(archivePath, vendorDir);
   } finally {
     // delete the downloaded archive when finished
-    if (fs.existsSync(archivePath)) {
+    if (fs.existsSync(archivePath))
       await fs.promises.unlink(archivePath);
-    }
+
+      // ...and the checksum file
+    if (fs.existsSync(checksumPath))
+      await fs.promises.unlink(checksumPath);
   }
 
   // return the full path to our Hugo binary
