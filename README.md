@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg?sanitize=true" alt="Hugo" width="115"> via NPM [![CI status](https://github.com/jakejarvis/hugo-extended/workflows/Run%20tests/badge.svg)](https://github.com/jakejarvis/hugo-extended/actions) [![npm](https://img.shields.io/npm/v/hugo-extended?color=red)](https://www.npmjs.com/package/hugo-extended) [![Dependabot](https://api.dependabot.com/badges/status?host=github&repo=jakejarvis/hugo-extended)](https://github.com/jakejarvis/hugo-extended/pulls?q=is%3Apr+label%3Adependencies)
+# <img src="https://raw.githubusercontent.com/gohugoio/gohugoioTheme/master/static/images/hugo-logo-wide.svg?sanitize=true" alt="Hugo" width="115"> via NPM [![npm](https://img.shields.io/npm/v/hugo-extended?color=blue&logo=npm)](https://www.npmjs.com/package/hugo-extended) [![CI status](https://github.com/jakejarvis/hugo-extended/workflows/Run%20tests/badge.svg)](https://github.com/jakejarvis/hugo-extended/actions)
 
 > Plug-and-play binary wrapper for [Hugo Extended](https://gohugo.io/), the awesomest static-site generator.
 
@@ -34,7 +34,7 @@ The `build:preview` script below is designed for [Netlify deploy previews](https
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
-    "hugo-extended": "^0.75.1",
+    "hugo-extended": "^0.83.1",
     "postcss": "^8.2.9",
     "postcss-cli": "^8.3.1"
   }
@@ -43,7 +43,7 @@ The `build:preview` script below is designed for [Netlify deploy previews](https
 ```
 
 ```bash
-$ npm start
+$ npm run start
 
 Building sites …
 
