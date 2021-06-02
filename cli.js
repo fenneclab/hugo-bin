@@ -2,8 +2,8 @@
 
 'use strict';
 
-const { spawn } = require('child_process');
+const execa = require('execa');
 const hugo = require('.');
+const args = process.argv.slice(2);
 
-spawn(hugo, process.argv.slice(2), { stdio: 'inherit' })
-  .on('exit', process.exit);
+execa(hugo, args).stdout.pipe(process.stdout);
