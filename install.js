@@ -2,16 +2,26 @@
 
 const fs = require('fs');
 const path = require('path');
+const execa = require('execa');
+const chalk = require('chalk');
 const { https } = require('follow-redirects'); // Node's https module doesn't follow redirects, needed for GitHub releases
 const decompress = require('decompress');
 const sumchecker = require('sumchecker');
 
 installHugo()
-  .then(() => {
-    console.log('✔ Hugo installed successfully!');
+  .then((bin) => {
+    // print output of `hugo version` to console
+    const { stdout } = execa.sync(bin, ['version']);
+    return stdout;
+  })
+  .then((version) => {
+    console.log(chalk.green('✔ Hugo installed successfully!'));
+    console.log(version);
   })
   .catch((error) => {
-    console.error('✖ ERROR: Hugo installation failed. :(\n', error);
+    // pass whatever error occured along the way along to console
+    console.error(chalk.red('✖ Hugo installation failed. :('));
+    throw error;
   });
 
 async function installHugo() {
