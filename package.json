@@ -30,7 +30,7 @@
     "sumchecker": "^3.0.1"
   },
   "devDependencies": {
-    "eslint": "^7.27.0",
+    "eslint": "^7.28.0",
     "mocha": "^8.4.0"
   },
   "scripts": {
