@@ -31,6 +31,7 @@ jobs:
     - name: npm install and test
       run: |
         npm ci
+        npm audit
         npm test
     - name: Checkout gohugoio/hugoBasicExample
       uses: actions/checkout@master

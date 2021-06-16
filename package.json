@@ -26,7 +26,7 @@
     "chalk": "^4.1.1",
     "decompress": "^4.2.1",
     "execa": "^5.1.1",
-    "follow-redirects": "^1.14.1",
+    "got": "^11.8.2",
     "sumchecker": "^3.0.1"
   },
   "devDependencies": {

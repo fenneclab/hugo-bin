@@ -1,10 +1,12 @@
 'use strict';
 
 const fs = require('fs');
+const stream = require('stream');
+const { promisify } = require('util');
 const path = require('path');
 const execa = require('execa');
 const chalk = require('chalk');
-const { https } = require('follow-redirects'); // Node's https module doesn't follow redirects, needed for GitHub releases
+const got = require('got');
 const decompress = require('decompress');
 const sumchecker = require('sumchecker');
 
@@ -28,16 +30,16 @@ async function installHugo() {
   // this package's version number (should) always match the Hugo release we want
   const { version } = require('./package.json');
   const downloadBaseUrl = `https://github.com/gohugoio/hugo/releases/download/v${version}/`;
-  const downloadFile = getArchiveFilename(version, process.platform, process.arch);
+  const releaseFile = getArchiveFilename(version, process.platform, process.arch);
   const checksumFile = `hugo_${version}_checksums.txt`;
 
   // stop here if there's nothing we can download
-  if (!downloadFile) throw 'Are you sure this platform is supported?';
+  if (!releaseFile) throw 'Are you sure this platform is supported?';
 
-  const downloadUrl = downloadBaseUrl + downloadFile;
+  const releaseUrl = downloadBaseUrl + releaseFile;
   const checksumUrl = downloadBaseUrl + checksumFile;
   const vendorDir = path.join(__dirname, 'vendor');
-  const archivePath = path.join(vendorDir, downloadFile);
+  const archivePath = path.join(vendorDir, releaseFile);
   const checksumPath = path.join(vendorDir, checksumFile);
   const binName = process.platform === 'win32' ? 'hugo.exe' : 'hugo';
   const binPath = path.join(vendorDir, binName);
@@ -48,13 +50,13 @@ async function installHugo() {
 
     await Promise.all([
       // fetch the archive file from GitHub
-      downloadToFile(downloadUrl, archivePath),
+      downloadFile(releaseUrl, archivePath),
       // fetch the checksum file from GitHub
-      downloadToFile(checksumUrl, checksumPath),
+      downloadFile(checksumUrl, checksumPath),
     ]);
 
     // validate the checksum of the download
-    await checkChecksum(vendorDir, checksumPath, downloadFile);
+    await checkChecksum(vendorDir, checksumPath, releaseFile);
 
     // extract the downloaded file
     await decompress(archivePath, vendorDir);
@@ -71,22 +73,12 @@ async function installHugo() {
   return binPath;
 }
 
-async function downloadToFile(url, dest) {
-  return new Promise((resolve, reject) => https.get(url, response => {
-    // throw an error immediately if the download failed
-    if (response.statusCode !== 200) {
-      response.resume();
-      reject(new Error(`Download failed: status code ${response.statusCode} from ${url}`));
-      return;
-    }
-
-    // pipe the response directly to a file
-    response.pipe(
-      fs.createWriteStream(dest)
-        .on('finish', resolve)
-        .on('error', reject)
-    );
-  }).on('error', reject));
+async function downloadFile(url, dest) {
+  const pipeline = promisify(stream.pipeline);
+  return await pipeline(
+    got.stream(url, { followRedirect: true }),  // GitHub releases redirect to unpredictable URLs
+    fs.createWriteStream(dest)
+  );
 }
 
 async function deleteFile(path) {
