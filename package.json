@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "eslint": "^7.30.0",
-    "mocha": "^8.4.0"
+    "mocha": "^9.0.2"
   },
   "scripts": {
     "postinstall": "node install.js",
