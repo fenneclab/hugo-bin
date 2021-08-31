@@ -30,8 +30,9 @@
     "sumchecker": "^3.0.1"
   },
   "devDependencies": {
+    "@jakejarvis/eslint-config": "*",
     "eslint": "^7.32.0",
-    "mocha": "^9.1.0"
+    "mocha": "^9.1.1"
   },
   "scripts": {
     "postinstall": "node install.js",
@@ -60,14 +61,19 @@
     "golang"
   ],
   "eslintConfig": {
-    "extends": "eslint:recommended",
+    "extends": [
+      "@jakejarvis/eslint-config"
+    ],
     "parserOptions": {
-      "ecmaVersion": 8,
+      "ecmaVersion": 2018,
       "sourceType": "module"
     },
     "env": {
       "node": true,
       "es6": true
+    },
+    "rules": {
+      "compat/compat": "off"
     }
   }
 }

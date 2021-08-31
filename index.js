@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-module.exports = require('path').join(
+module.exports = require("path").join(
   __dirname,
-  'vendor',
-  process.platform === 'win32' ? 'hugo.exe' : 'hugo'
+  "vendor",
+  process.platform === "win32" ? "hugo.exe" : "hugo",
 );

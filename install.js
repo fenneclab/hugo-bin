@@ -1,47 +1,49 @@
-'use strict';
+"use strict";
 
-const fs = require('fs');
-const stream = require('stream');
-const { promisify } = require('util');
-const path = require('path');
-const execa = require('execa');
-const chalk = require('chalk');
-const got = require('got');
-const decompress = require('decompress');
-const sumchecker = require('sumchecker');
+const fs = require("fs");
+const stream = require("stream");
+const { promisify } = require("util");
+const path = require("path");
+const execa = require("execa");
+const chalk = require("chalk");
+const got = require("got");
+const decompress = require("decompress");
+const sumchecker = require("sumchecker");
 
 installHugo()
   .then((bin) => {
     // print output of `hugo version` to console
-    const { stdout } = execa.sync(bin, ['version']);
+    const { stdout } = execa.sync(bin, ["version"]);
     return stdout;
   })
   .then((version) => {
-    console.log(chalk.green('✔ Hugo installed successfully!'));
+    console.log(chalk.green("✔ Hugo installed successfully!"));
     console.log(version);
   })
   .catch((error) => {
     // pass whatever error occured along the way along to console
-    console.error(chalk.red('✖ Hugo installation failed. :('));
+    console.error(chalk.red("✖ Hugo installation failed. :("));
     throw error;
   });
 
 async function installHugo() {
   // this package's version number (should) always match the Hugo release we want
-  const { version } = require('./package.json');
+  const { version } = require("./package.json");
   const downloadBaseUrl = `https://github.com/gohugoio/hugo/releases/download/v${version}/`;
   const releaseFile = getArchiveFilename(version, process.platform, process.arch);
   const checksumFile = `hugo_${version}_checksums.txt`;
 
   // stop here if there's nothing we can download
-  if (!releaseFile) throw 'Are you sure this platform is supported?';
+  if (!releaseFile) {
+    throw "Are you sure this platform is supported?";
+  }
 
   const releaseUrl = downloadBaseUrl + releaseFile;
   const checksumUrl = downloadBaseUrl + checksumFile;
-  const vendorDir = path.join(__dirname, 'vendor');
+  const vendorDir = path.join(__dirname, "vendor");
   const archivePath = path.join(vendorDir, releaseFile);
   const checksumPath = path.join(vendorDir, checksumFile);
-  const binName = process.platform === 'win32' ? 'hugo.exe' : 'hugo';
+  const binName = process.platform === "win32" ? "hugo.exe" : "hugo";
   const binPath = path.join(vendorDir, binName);
 
   try {
@@ -77,7 +79,7 @@ async function downloadFile(url, dest) {
   const pipeline = promisify(stream.pipeline);
   return await pipeline(
     got.stream(url, { followRedirect: true }),  // GitHub releases redirect to unpredictable URLs
-    fs.createWriteStream(dest)
+    fs.createWriteStream(dest),
   );
 }
 
@@ -90,9 +92,9 @@ async function deleteFile(path) {
 }
 
 async function checkChecksum(baseDir, checksumFile, binFile) {
-  const checker = new sumchecker.ChecksumValidator('sha256', checksumFile, {
+  const checker = new sumchecker.ChecksumValidator("sha256", checksumFile, {
     // returns a completely different hash without this for some reason
-    defaultTextEncoding: 'binary'
+    defaultTextEncoding: "binary",
   });
 
   return await checker.validate(baseDir, binFile);
@@ -104,46 +106,46 @@ async function checkChecksum(baseDir, checksumFile, binFile) {
 function getArchiveFilename(version, os, arch) {
   const filename =
     // macOS
-    os === 'darwin' && arch === 'x64'
-      ? `hugo_extended_${version}_macOS-64bit.tar.gz` :
-    os === 'darwin' && arch === 'arm64'
-      ? `hugo_extended_${version}_macOS-ARM64.tar.gz` :
+    os === "darwin" && arch === "x64" ?
+      `hugo_extended_${version}_macOS-64bit.tar.gz` :
+    os === "darwin" && arch === "arm64" ?
+      `hugo_extended_${version}_macOS-ARM64.tar.gz` :
 
     // Windows
-    os === 'win32' && arch === 'x64'
-      ? `hugo_extended_${version}_Windows-64bit.zip` :
-    os === 'win32' && arch.endsWith('32')
-      ? `hugo_${version}_Windows-32bit.zip` :
+    os === "win32" && arch === "x64" ?
+      `hugo_extended_${version}_Windows-64bit.zip` :
+    os === "win32" && arch.endsWith("32") ?
+      `hugo_${version}_Windows-32bit.zip` :
 
     // Linux
-    os === 'linux' && arch === 'x64'
-      ? `hugo_extended_${version}_Linux-64bit.tar.gz` :
-    os === 'linux' && arch.endsWith('32')
-      ? `hugo_${version}_Linux-32bit.tar.gz` :
-    os === 'linux' && arch === 'arm'
-      ? `hugo_${version}_Linux-ARM.tar.gz` :
-    os === 'linux' && arch === 'arm64'
-      ? `hugo_${version}_Linux-ARM64.tar.gz` :
+    os === "linux" && arch === "x64" ?
+      `hugo_extended_${version}_Linux-64bit.tar.gz` :
+    os === "linux" && arch.endsWith("32") ?
+      `hugo_${version}_Linux-32bit.tar.gz` :
+    os === "linux" && arch === "arm" ?
+      `hugo_${version}_Linux-ARM.tar.gz` :
+    os === "linux" && arch === "arm64" ?
+      `hugo_${version}_Linux-ARM64.tar.gz` :
 
     // FreeBSD
-    os === 'freebsd' && arch === 'x64'
-      ? `hugo_${version}_FreeBSD-64bit.tar.gz` :
-    os === 'freebsd' && arch.endsWith('32')
-      ? `hugo_${version}_FreeBSD-32bit.tar.gz` :
-    os === 'freebsd' && arch === 'arm'
-      ? `hugo_${version}_FreeBSD-ARM.tar.gz` :
-    os === 'freebsd' && arch === 'arm64'
-      ? `hugo_${version}_FreeBSD-ARM64.tar.gz` :
+    os === "freebsd" && arch === "x64" ?
+      `hugo_${version}_FreeBSD-64bit.tar.gz` :
+    os === "freebsd" && arch.endsWith("32") ?
+      `hugo_${version}_FreeBSD-32bit.tar.gz` :
+    os === "freebsd" && arch === "arm" ?
+      `hugo_${version}_FreeBSD-ARM.tar.gz` :
+    os === "freebsd" && arch === "arm64" ?
+      `hugo_${version}_FreeBSD-ARM64.tar.gz` :
 
     // OpenBSD
-    os === 'openbsd' && arch === 'x64'
-      ? `hugo_${version}_OpenBSD-64bit.tar.gz` :
-    os === 'openbsd' && arch.endsWith('32')
-      ? `hugo_${version}_OpenBSD-32bit.tar.gz` :
-    os === 'openbsd' && arch === 'arm'
-      ? `hugo_${version}_OpenBSD-ARM.tar.gz` :
-    os === 'openbsd' && arch === 'arm64'
-      ? `hugo_${version}_OpenBSD-ARM64.tar.gz` :
+    os === "openbsd" && arch === "x64" ?
+      `hugo_${version}_OpenBSD-64bit.tar.gz` :
+    os === "openbsd" && arch.endsWith("32") ?
+      `hugo_${version}_OpenBSD-32bit.tar.gz` :
+    os === "openbsd" && arch === "arm" ?
+      `hugo_${version}_OpenBSD-ARM.tar.gz` :
+    os === "openbsd" && arch === "arm64" ?
+      `hugo_${version}_OpenBSD-ARM64.tar.gz` :
 
     // not gonna work :(
     null;
