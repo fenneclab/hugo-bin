@@ -30,7 +30,7 @@ jobs:
         node-version: ${{ matrix.node }}
     - name: yarn install and test
       run: |
-        yarn install --frozen-lockfile
+        yarn install --ignore-engines --frozen-lockfile
         yarn audit
         yarn test
     - name: Checkout gohugoio/hugoBasicExample
