@@ -1,7 +1,7 @@
 {
   "name": "hugo-extended",
   "version": "0.87.0",
-  "description": "Plug-and-play binary wrapper for Hugo Extended, the awesomest static-site generator.",
+  "description": "✏️ Plug-and-play binary wrapper for Hugo Extended, the awesomest static-site generator.",
   "license": "MIT",
   "author": {
     "name": "Jake Jarvis",
@@ -64,9 +64,7 @@
     "golang"
   ],
   "eslintConfig": {
-    "extends": [
-      "@jakejarvis/eslint-config"
-    ],
+    "extends": "@jakejarvis/eslint-config",
     "parserOptions": {
       "ecmaVersion": 2020,
       "sourceType": "module"

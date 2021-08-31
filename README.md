@@ -66,14 +66,10 @@ Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 ### via API:
 
 ```js
-const { execFile } = require('child_process');
-const hugo = require('hugo-extended');
+import hugo from "hugo-extended";
+import { execFile } from "child_process";
 
-execFile(hugo, ['version'], (error, stdout) => {
-  if (error) {
-    throw error;
-  }
-
+execFile(hugo, ["version"], (error, stdout) => {
   console.log(stdout);
 });
 ```
