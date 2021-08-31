@@ -19,7 +19,6 @@ jobs:
         - 16
         - 14
         - 12
-        - 10
       fail-fast: false
     runs-on: ${{ matrix.os }}
     name: Node ${{ matrix.node }} on ${{ matrix.os }}
@@ -30,7 +29,7 @@ jobs:
         node-version: ${{ matrix.node }}
     - name: yarn install and test
       run: |
-        yarn install --ignore-engines --frozen-lockfile
+        yarn install --frozen-lockfile
         yarn audit
         yarn test
     - name: Checkout gohugoio/hugoBasicExample

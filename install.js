@@ -1,14 +1,17 @@
-"use strict";
+import fs from "fs-extra";
+import stream from "stream";
+import { fileURLToPath } from "url";
+import { promisify } from "util";
+import path from "path";
+import tempy from "tempy";
+import execa from "execa";
+import chalk from "chalk";
+import got from "got";
+import decompress from "decompress";
+import sumchecker from "sumchecker";
 
-const fs = require("fs");
-const stream = require("stream");
-const { promisify } = require("util");
-const path = require("path");
-const execa = require("execa");
-const chalk = require("chalk");
-const got = require("got");
-const decompress = require("decompress");
-const sumchecker = require("sumchecker");
+// https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c#what-do-i-use-instead-of-__dirname-and-__filename
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 installHugo()
   .then((bin) => {
@@ -28,7 +31,7 @@ installHugo()
 
 async function installHugo() {
   // this package's version number (should) always match the Hugo release we want
-  const { version } = require("./package.json");
+  const { version } = await fs.readJson("./package.json");
   const downloadBaseUrl = `https://github.com/gohugoio/hugo/releases/download/v${version}/`;
   const releaseFile = getArchiveFilename(version, process.platform, process.arch);
   const checksumFile = `hugo_${version}_checksums.txt`;
@@ -41,14 +44,17 @@ async function installHugo() {
   const releaseUrl = downloadBaseUrl + releaseFile;
   const checksumUrl = downloadBaseUrl + checksumFile;
   const vendorDir = path.join(__dirname, "vendor");
-  const archivePath = path.join(vendorDir, releaseFile);
-  const checksumPath = path.join(vendorDir, checksumFile);
+  const tempDir = tempy.directory({ prefix: "hugo-node" });
+  const archivePath = path.join(tempDir, releaseFile);
+  const checksumPath = path.join(tempDir, checksumFile);
   const binName = process.platform === "win32" ? "hugo.exe" : "hugo";
   const binPath = path.join(vendorDir, binName);
 
   try {
     // ensure the target directory exists
-    await fs.promises.mkdir(vendorDir, { recursive: true });
+    await fs.mkdirp(vendorDir, {
+      mode: 0o2775, // ensure binary is executable
+    });
 
     await Promise.all([
       // fetch the archive file from GitHub
@@ -58,17 +64,13 @@ async function installHugo() {
     ]);
 
     // validate the checksum of the download
-    await checkChecksum(vendorDir, checksumPath, releaseFile);
+    await checkChecksum(tempDir, checksumPath, releaseFile);
 
     // extract the downloaded file
     await decompress(archivePath, vendorDir);
   } finally {
-    await Promise.all([
-      // delete the downloaded archive when finished
-      deleteFile(archivePath),
-      // ...and the checksum file
-      deleteFile(checksumPath),
-    ]);
+    // delete temporary directory
+    await fs.remove(tempDir);
   }
 
   // return the full path to our Hugo binary
@@ -77,23 +79,15 @@ async function installHugo() {
 
 async function downloadFile(url, dest) {
   const pipeline = promisify(stream.pipeline);
+
   return await pipeline(
     got.stream(url, { followRedirect: true }),  // GitHub releases redirect to unpredictable URLs
     fs.createWriteStream(dest),
   );
 }
 
-async function deleteFile(path) {
-  if (fs.existsSync(path)) {
-    return await fs.promises.unlink(path);
-  } else {
-    return;
-  }
-}
-
 async function checkChecksum(baseDir, checksumFile, binFile) {
   const checker = new sumchecker.ChecksumValidator("sha256", checksumFile, {
-    // returns a completely different hash without this for some reason
     defaultTextEncoding: "binary",
   });
 
@@ -153,4 +147,4 @@ function getArchiveFilename(version, os, arch) {
   return filename;
 }
 
-module.exports.installHugo = installHugo;
+export { installHugo };

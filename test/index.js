@@ -2,9 +2,9 @@
 
 "use strict";
 
-const { execFile } = require("child_process");
-const assert = require("assert");
-const hugo = require("..");
+import { execFile } from "child_process";
+import assert from "assert";
+import hugo from "../index.js";
 
 it("Hugo exists and runs?", async () => {
   assert(execFile(hugo, ["env"], (error, stdout) => {
