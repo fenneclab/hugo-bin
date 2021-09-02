@@ -1,7 +1,7 @@
 {
   "name": "hugo-bin",
   "version": "0.75.0",
-  "hugoVersion": "0.87.0",
+  "hugoVersion": "0.88.0",
   "description": "Binary wrapper for Hugo",
   "repository": "fenneclab/hugo-bin",
   "author": "satoshun00 <shun.sato@fenneclab.com>",
@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "bin-check": "^4.1.0",
-    "eslint": "^7.31.0",
+    "eslint": "^7.32.0",
     "mocha": "^8.4.0"
   },
   "scripts": {
