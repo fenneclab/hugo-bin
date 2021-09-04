@@ -14,17 +14,25 @@ yarn add hugo-extended --dev
 
 This package's version numbers align with Hugo's — `hugo-extended@0.64.1` installs Hugo v0.64.1, for example.
 
+_Note:_ If you'll be using the SCSS features of Hugo Extended, it's probably smart to install [`postcss`](https://www.npmjs.com/package/postcss), [`postcss-cli`](https://www.npmjs.com/package/postcss-cli), and [`autoprefixer`](https://www.npmjs.com/package/autoprefixer) as devDependencies too, since they can be conveniently called via [built-in Hugo pipes](https://gohugo.io/hugo-pipes/postcss/):
+
+```sh
+npm install postcss postcss-cli autoprefixer --save-dev
+# or...
+yarn add postcss postcss-cli autoprefixer --dev
+```
+
 ## Usage
 
 The following examples simply refer to downloading and executing Hugo as a Node dependency. See the [official Hugo docs](https://gohugo.io/documentation/) for guidance on actual Hugo usage.
 
 ### via CLI / `package.json`:
 
-If you'll be using the SCSS features of Hugo Extended, it's probably smart to install [`postcss`](https://www.npmjs.com/package/postcss), [`postcss-cli`](https://www.npmjs.com/package/postcss-cli), and [`autoprefixer`](https://www.npmjs.com/package/autoprefixer) as devDependencies too, since they can be called via [built-in Hugo pipes](https://gohugo.io/hugo-pipes/postcss/).
-
-The `build:preview` script below is designed for [Netlify deploy previews](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/), where [`$DEPLOY_PRIME_URL`](https://docs.netlify.com/configure-builds/environment-variables/#deploy-urls-and-metadata) is substituted for the base URL (usually ending in netlify.app) of each commit or pull request.
+The `build:preview` script below is designed for [Netlify deploy previews](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/), where [`$DEPLOY_PRIME_URL`](https://docs.netlify.com/configure-builds/environment-variables/#deploy-urls-and-metadata) is substituted for the base URL (usually ending in .netlify.app) of each pull request, branch, or commit preview.
 
 ```jsonc
+// package.json:
+
 {
   // ...
   "scripts": {
@@ -33,9 +41,9 @@ The `build:preview` script below is designed for [Netlify deploy previews](https
     "start": "hugo server"
   },
   "devDependencies": {
-    "autoprefixer": "^10.2.5",
-    "hugo-extended": "^0.83.1",
-    "postcss": "^8.2.9",
+    "autoprefixer": "^10.3.4",
+    "hugo-extended": "^0.88.1",
+    "postcss": "^8.3.6",
     "postcss-cli": "^8.3.1"
   }
   // ...
@@ -45,7 +53,8 @@ The `build:preview` script below is designed for [Netlify deploy previews](https
 ```bash
 $ npm run start
 
-Building sites …
+Start building sites …
+hugo v0.88.1-5BC54738+extended darwin/amd64 BuildDate=2021-09-04T09:39:19Z VendorInfo=gohugoio
 
                    | EN
 -------------------+------
@@ -59,6 +68,9 @@ Building sites …
   Cleaned          |   0
 
 Built in 2361 ms
+Watching for changes in {archetypes,assets,content,data,layouts,package.json,static}
+Watching for config changes in config.toml
+Environment: "development"
 Serving pages from memory
 Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 ```
@@ -66,6 +78,8 @@ Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 ### via API:
 
 ```js
+// version.js:
+
 import hugo from "hugo-extended";
 import { execFile } from "child_process";
 
@@ -74,12 +88,15 @@ execFile(hugo, ["version"], (error, stdout) => {
 });
 ```
 
+```bash
+$ node version.js
+hugo v0.88.1-5BC54738+extended darwin/amd64 BuildDate=2021-09-04T09:39:19Z VendorInfo=gohugoio
+```
+
 ## Examples
 
 - [jakejarvis/jarv.is](https://github.com/jakejarvis/jarv.is)
 
 ## License
 
-Forked from [fenneclab/hugo-bin](https://github.com/fenneclab/hugo-bin) under the [MIT License](https://github.com/fenneclab/hugo-bin/blob/master/LICENSE), (c) [Shun Sato](http://blog.fenneclab.com/).
-
-Hugo is distributed under the [Apache License 2.0](https://github.com/gohugoio/hugo/blob/master/LICENSE).
+This project is distributed under the [MIT License](LICENSE.md). Hugo is distributed under the [Apache License 2.0](https://github.com/gohugoio/hugo/blob/master/LICENSE).
