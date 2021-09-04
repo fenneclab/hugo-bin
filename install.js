@@ -110,6 +110,8 @@ function getArchiveFilename(version, os, arch) {
       `hugo_extended_${version}_Windows-64bit.zip` :
     os === "win32" && arch.endsWith("32") ?
       `hugo_${version}_Windows-32bit.zip` :
+    os === "win32" && "arm" ?
+      `hugo_${version}_Windows-ARM.zip` :
 
     // Linux
     os === "linux" && arch === "x64" ?
