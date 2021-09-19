@@ -10,4 +10,5 @@ const hugo = path.join(
   process.platform === "win32" ? "hugo.exe" : "hugo",
 );
 
+// The only thing this module really exports is the absolute path to Hugo:
 export default hugo;

@@ -1,7 +1,5 @@
 /* eslint-env node, mocha */
 
-"use strict";
-
 import { execFile } from "child_process";
 import assert from "assert";
 import hugo from "../index.js";

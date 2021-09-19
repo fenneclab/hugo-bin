@@ -1,10 +1,10 @@
 import fs from "fs-extra";
-import stream from "stream";
-import { fileURLToPath } from "url";
 import { promisify } from "util";
+import { execFileSync } from "child_process";
+import stream from "stream";
 import path from "path";
+import { fileURLToPath } from "url";
 import tempy from "tempy";
-import execa from "execa";
 import chalk from "chalk";
 import got from "got";
 import decompress from "decompress";
@@ -15,16 +15,17 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 installHugo()
   .then((bin) => {
-    // print output of `hugo version` to console
-    const { stdout } = execa.sync(bin, ["version"]);
-    return stdout;
+    // try querying hugo's version via CLI
+    const stdout = execFileSync(bin, ["version"]);
+    return stdout.toString();
   })
   .then((version) => {
+    // print output of `hugo version` to console
     console.log(chalk.green("✔ Hugo installed successfully!"));
     console.log(version);
   })
   .catch((error) => {
-    // pass whatever error occured along the way along to console
+    // pass whatever error occured along the way to console
     console.error(chalk.red("✖ Hugo installation failed. :("));
     throw error;
   });
@@ -38,7 +39,7 @@ async function installHugo() {
 
   // stop here if there's nothing we can download
   if (!releaseFile) {
-    throw "Are you sure this platform is supported?";
+    throw new Error(`Are you sure this platform is supported? See: https://github.com/gohugoio/hugo/releases/tag/v${version}`);
   }
 
   const releaseUrl = downloadBaseUrl + releaseFile;
