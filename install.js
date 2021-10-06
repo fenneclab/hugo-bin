@@ -1,17 +1,8 @@
-import fs from "fs-extra";
-import { promisify } from "util";
-import { execFileSync } from "child_process";
-import stream from "stream";
 import path from "path";
-import { fileURLToPath } from "url";
-import tempy from "tempy";
+import { execFileSync } from "child_process";
+import { readPackageUpAsync } from "read-pkg-up";
+import downloader from "careful-downloader";
 import chalk from "chalk";
-import got from "got";
-import decompress from "decompress";
-import sumchecker from "sumchecker";
-
-// https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c#what-do-i-use-instead-of-__dirname-and-__filename
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 installHugo()
   .then((bin) => {
@@ -32,7 +23,7 @@ installHugo()
 
 async function installHugo() {
   // this package's version number (should) always match the Hugo release we want
-  const { version } = await fs.readJson("./package.json");
+  const { version } = (await readPackageUpAsync()).packageJson;
   const downloadBaseUrl = `https://github.com/gohugoio/hugo/releases/download/v${version}/`;
   const releaseFile = getArchiveFilename(version, process.platform, process.arch);
   const checksumFile = `hugo_${version}_checksums.txt`;
@@ -42,57 +33,21 @@ async function installHugo() {
     throw new Error(`Are you sure this platform is supported? See: https://github.com/gohugoio/hugo/releases/tag/v${version}`);
   }
 
-  const releaseUrl = downloadBaseUrl + releaseFile;
-  const checksumUrl = downloadBaseUrl + checksumFile;
-  const vendorDir = path.join(__dirname, "vendor");
-  const tempDir = tempy.directory({ prefix: "hugo-node" });
-  const archivePath = path.join(tempDir, releaseFile);
-  const checksumPath = path.join(tempDir, checksumFile);
-  const binName = process.platform === "win32" ? "hugo.exe" : "hugo";
-  const binPath = path.join(vendorDir, binName);
-
-  try {
-    // ensure the target directory exists
-    await fs.mkdirp(vendorDir, {
-      mode: 0o2775, // ensure binary is executable
-    });
-
-    await Promise.all([
-      // fetch the archive file from GitHub
-      downloadFile(releaseUrl, archivePath),
-      // fetch the checksum file from GitHub
-      downloadFile(checksumUrl, checksumPath),
-    ]);
-
-    // validate the checksum of the download
-    await checkChecksum(tempDir, checksumPath, releaseFile);
-
-    // extract the downloaded file
-    await decompress(archivePath, vendorDir);
-  } finally {
-    // delete temporary directory
-    await fs.remove(tempDir);
-  }
+  const download = await downloader(
+    `${downloadBaseUrl}${releaseFile}`,
+    `${downloadBaseUrl}${checksumFile}`,
+    {
+      filename: releaseFile,
+      destDir: "vendor",
+      cleanDestDir: false,
+      algorithm: "sha256",
+      encoding: "binary",
+      extract: true,
+    },
+  );
 
   // return the full path to our Hugo binary
-  return binPath;
-}
-
-async function downloadFile(url, dest) {
-  const pipeline = promisify(stream.pipeline);
-
-  return await pipeline(
-    got.stream(url, { followRedirect: true }),  // GitHub releases redirect to unpredictable URLs
-    fs.createWriteStream(dest),
-  );
-}
-
-async function checkChecksum(baseDir, checksumFile, binFile) {
-  const checker = new sumchecker.ChecksumValidator("sha256", checksumFile, {
-    defaultTextEncoding: "binary",
-  });
-
-  return await checker.validate(baseDir, binFile);
+  return path.join(download, process.platform === "win32" ? "hugo.exe" : "hugo");
 }
 
 // Hugo Extended supports: macOS x64, macOS ARM64, Linux x64, Windows x64.
