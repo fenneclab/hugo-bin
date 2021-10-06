@@ -1,4 +1,5 @@
 import path from "path";
+import fs from "fs";
 import { execFileSync } from "child_process";
 import { readPackageUpAsync } from "read-pkg-up";
 import downloader from "careful-downloader";
@@ -27,6 +28,7 @@ async function installHugo() {
   const downloadBaseUrl = `https://github.com/gohugoio/hugo/releases/download/v${version}/`;
   const releaseFile = getArchiveFilename(version, process.platform, process.arch);
   const checksumFile = `hugo_${version}_checksums.txt`;
+  const binFile = process.platform === "win32" ? "hugo.exe" : "hugo";
 
   // stop here if there's nothing we can download
   if (!releaseFile) {
@@ -46,8 +48,11 @@ async function installHugo() {
     },
   );
 
+  // ensure hugo[.exe] is executable
+  fs.chmodSync(path.join(download, binFile), 0o755);
+
   // return the full path to our Hugo binary
-  return path.join(download, process.platform === "win32" ? "hugo.exe" : "hugo");
+  return path.join(download, binFile);
 }
 
 // Hugo Extended supports: macOS x64, macOS ARM64, Linux x64, Windows x64.
