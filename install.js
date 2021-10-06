@@ -35,6 +35,11 @@ async function installHugo() {
     throw new Error(`Are you sure this platform is supported? See: https://github.com/gohugoio/hugo/releases/tag/v${version}`);
   }
 
+  // warn if platform doesn't support Hugo Extended, proceed with vanilla Hugo
+  if (!releaseFile.startsWith("hugo_extended_")) {
+    console.warn(chalk.yellow("ℹ Hugo Extended isn't supported on this platform, downloading vanilla Hugo instead."));
+  }
+
   const download = await downloader(
     `${downloadBaseUrl}${releaseFile}`,
     `${downloadBaseUrl}${checksumFile}`,
