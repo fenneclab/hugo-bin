@@ -399,10 +399,10 @@ caniuse-lite@^1.0.30001251, caniuse-lite@^1.0.30001264:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001265.tgz#0613c9e6c922e422792e6fcefdf9a3afeee4f8c3"
   integrity sha512-YzBnspggWV5hep1m9Z6sZVLOt7vrju8xWooFAgN6BA5qvy98qPAPb7vNUzypFaoh2pb3vlfzbDO8tB57UPGbtw==
 
-careful-downloader@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/careful-downloader/-/careful-downloader-1.0.0.tgz#97663659f3550c5f353b52c5c4f44d85e3a24da8"
-  integrity sha512-MJ9X+dughlbC2oEwKU4CMkgTTgVp7N+4A2eR4jsoG7mSWyVe28dzZGZt7Bii5lfxKSOI8jyDBL0/c0yxCjURdA==
+careful-downloader@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/careful-downloader/-/careful-downloader-1.0.1.tgz#c13cfddf82e34a68eeda10095471b8bd87259f6c"
+  integrity sha512-vOwxDQxt1SWXX1lhJ+oBx4MWI4EYTfv1pSVIrJK6tEuiwRq58WjoVm8aUTF/TFLgk6pZeNzqCGRbdQiaSylJsQ==
   dependencies:
     decompress "^4.2.1"
     fs-extra "^10.0.0"
