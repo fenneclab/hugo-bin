@@ -27,7 +27,7 @@
   "exports": "./index.js",
   "types": "./index.d.ts",
   "dependencies": {
-    "careful-downloader": "^1.2.0",
+    "careful-downloader": "^1.3.0",
     "chalk": "^4.1.2",
     "read-pkg-up": "^8.0.0"
   },
