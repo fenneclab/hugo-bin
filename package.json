@@ -15,20 +15,19 @@
   },
   "files": [
     "index.js",
-    "install.js",
-    "cli.js",
-    "index.d.ts"
+    "index.d.ts",
+    "lib"
   ],
   "bin": {
-    "hugo": "cli.js",
-    "hugo-extended": "cli.js"
+    "hugo": "lib/cli.js",
+    "hugo-extended": "lib/cli.js"
   },
   "type": "module",
   "exports": "./index.js",
   "types": "./index.d.ts",
   "dependencies": {
-    "careful-downloader": "^1.3.1",
-    "chalk": "^4.1.2",
+    "careful-downloader": "^1.3.2",
+    "log-symbols": "^5.0.0",
     "read-pkg-up": "^8.0.0"
   },
   "devDependencies": {
@@ -37,7 +36,7 @@
     "mocha": "^9.1.2"
   },
   "scripts": {
-    "postinstall": "node install.js",
+    "postinstall": "node lib/install.js",
     "test": "eslint . && mocha"
   },
   "engines": {
