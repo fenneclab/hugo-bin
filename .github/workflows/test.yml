@@ -39,4 +39,4 @@ jobs:
         path: site/
         fetch-depth: 1
     - name: Build example site
-      run: node cli.js --source site/ --minify --verbose
+      run: node lib/cli.js --source site/ --minify --verbose
