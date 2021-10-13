@@ -28,7 +28,7 @@
   "dependencies": {
     "careful-downloader": "^1.4.0",
     "log-symbols": "^5.0.0",
-    "read-pkg-up": "^8.0.0"
+    "read-pkg-up": "^9.0.0"
   },
   "devDependencies": {
     "@jakejarvis/eslint-config": "*",
