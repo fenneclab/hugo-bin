@@ -27,7 +27,7 @@
   "exports": "./index.js",
   "types": "./index.d.ts",
   "dependencies": {
-    "careful-downloader": "^2.0.0",
+    "careful-downloader": "^2.0.1",
     "log-symbols": "^5.0.0",
     "read-pkg-up": "^9.0.0"
   },

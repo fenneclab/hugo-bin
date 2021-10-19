@@ -113,9 +113,9 @@
     "@types/node" "*"
 
 "@types/node@*":
-  version "16.11.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.0.tgz#4b95f2327bacd1ef8f08d8ceda193039c5d7f52e"
-  integrity sha512-8MLkBIYQMuhRBQzGN9875bYsOhPnf/0rgXGo66S2FemHkhbn9qtsz9ywV1iCG+vbjigE4WUNVvw37Dx+L0qsPg==
+  version "16.11.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.1.tgz#2e50a649a50fc403433a14f829eface1a3443e97"
+  integrity sha512-PYGcJHL9mwl1Ek3PLiYgyEKtwTMmkMw4vbiyz/ps3pfdRYLVv+SN7qHVAImrjdAXxgluDEw6Ph4lyv+m9UpRmA==
 
 "@types/normalize-package-data@^2.4.1":
   version "2.4.1"
@@ -313,10 +313,10 @@ camelcase@^6.0.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-6.2.0.tgz#924af881c9d525ac9d87f40d964e5cea982a1809"
   integrity sha512-c7wVvbw3f37nuobQNtgsgG9POC9qMbNuMQmTCqZv23b6MIz0fcYpBiOlv9gEN/hdLdnZTDQhg6e9Dq5M1vKvfg==
 
-careful-downloader@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/careful-downloader/-/careful-downloader-2.0.0.tgz#c5b8d33a7ecfdd4fbe517ad560aef4dbafb318e2"
-  integrity sha512-libX2LU2wkM3Hz8AZf+G4ioEm9jO0qksDHH02ubMyMYEM5i8p+eDFJP2SBsjS9RhKNwB7D2yVyb4PaVjOWzbNw==
+careful-downloader@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/careful-downloader/-/careful-downloader-2.0.1.tgz#2e2ad890108ba881895837f01865de978a9e1b91"
+  integrity sha512-nSvCrtMhl3Mtkif2RyOdswyvWQpgPO03fAym/5p0g84YWKf4gpulAjxPwiDfT8BRuoIVRBXUJtVTNnWI2jC0ig==
   dependencies:
     debug "^4.3.2"
     decompress "^4.2.1"
@@ -1816,9 +1816,9 @@ type-fest@^1.0.1:
   integrity sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA==
 
 type-fest@^2.0.0, type-fest@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-2.5.0.tgz#e5d0ef818d565e8fc442414194a4ac3afc4c42a7"
-  integrity sha512-wB5vE+XXZ2g2mDRo18yZMae1joUhquomLTm+BkxeuRHnwmrNWzVPNrFah9z7pjsKNiVAaJL33+uQbgbPSARyqw==
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-2.5.1.tgz#17ba4f36a6abfabf0a92005d045dca77564607b0"
+  integrity sha512-JDcsxbLR6Z6OcL7TnGAAAGQrY4g7Q4EEALMT4Kp6FQuIc0JLQvOF3l7ejFvx8o5GmLlfMseTWUL++sYFP+o8kw==
 
 unbzip2-stream@^1.0.9:
   version "1.4.3"
