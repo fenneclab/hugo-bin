@@ -1,8 +1,7 @@
 /// <reference types="node" />
 
 /**
- * @returns {string} Absolute path to the Hugo executable (`hugo.exe` on
- * Windows, simply `hugo` otherwise).
+ * @returns A promise of the absolute path to the Hugo executable (`hugo.exe` on
+ * Windows, simply `hugo` otherwise) once it's installed.
  */
-declare const hugo: string;
-export = hugo;
+export default function hugo(): Promise<string>;

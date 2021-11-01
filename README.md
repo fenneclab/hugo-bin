@@ -83,9 +83,13 @@ Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 import hugo from "hugo-extended";
 import { execFile } from "child_process";
 
-execFile(hugo, ["version"], (error, stdout) => {
-  console.log(stdout);
-});
+(async () => {
+  const binPath = await hugo();
+
+  execFile(binPath, ["version"], (error, stdout) => {
+    console.log(stdout);
+  });
+})();
 ```
 
 ```bash
