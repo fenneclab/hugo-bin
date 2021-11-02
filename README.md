@@ -1,4 +1,4 @@
-# hugo-bin [![npm version](https://img.shields.io/npm/v/hugo-bin.svg)](https://www.npmjs.com/package/hugo-bin) [![Build Status](https://img.shields.io/github/workflow/status/fenneclab/hugo-bin/CI/master)](https://github.com/fenneclab/hugo-bin/actions?query=workflow%3ACI+branch%3Amaster)
+# hugo-bin [![npm version](https://img.shields.io/npm/v/hugo-bin.svg)](https://www.npmjs.com/package/hugo-bin) [![Build Status](https://img.shields.io/github/workflow/status/fenneclab/hugo-bin/CI/main)](https://github.com/fenneclab/hugo-bin/actions?query=workflow%3ACI+branch%3Amain)
 
 > Binary wrapper for [Hugo](https://gohugo.io/)
 
@@ -98,7 +98,7 @@ If this is set to `extended` but it's not available for the user's platform, the
 
 ## Supported versions
 
-See [the package.json commit history](https://github.com/fenneclab/hugo-bin/commits/master/package.json).
+See [the package.json commit history](https://github.com/fenneclab/hugo-bin/commits/main/package.json).
 
 ## Super Inspired By
 
