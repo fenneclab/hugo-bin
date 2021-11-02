@@ -22,9 +22,9 @@
     "mocha": "^8.4.0"
   },
   "scripts": {
-    "eslint": "eslint .",
+    "lint": "eslint .",
     "mocha": "mocha",
-    "test": "npm run eslint && npm run mocha",
+    "test": "npm run lint && npm run mocha",
     "postinstall": "rimraf vendor && node lib/install"
   },
   "files": [
