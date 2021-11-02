@@ -29,13 +29,19 @@ jobs:
         run: npm run lint
 
   test:
-    name: Node ${{ matrix.node }}
-    runs-on: ubuntu-latest
+    name: Node ${{ matrix.node }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
 
     strategy:
       fail-fast: false
       matrix:
+        os: [ubuntu-latest]
         node: [10, 12, 14, 16]
+        include:
+          - os: windows-latest
+            node: 16
+          - os: macos-latest
+            node: 16
 
     steps:
       - name: Clone repository
