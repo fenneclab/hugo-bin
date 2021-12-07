@@ -15,8 +15,8 @@ hugo-bin now supports the [Extended Hugo version](https://github.com/gohugoio/hu
 ### API
 
 ```js
-const { execFile } = require('child_process');
-const hugo = require('hugo-bin');
+import { execFile } from 'node:child_process';
+import hugo from 'hugo-bin';
 
 execFile(hugo, ['version'], (error, stdout) => {
   if (error) {
