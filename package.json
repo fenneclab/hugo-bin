@@ -3,7 +3,14 @@
   "version": "0.77.4",
   "hugoVersion": "0.89.4",
   "description": "Binary wrapper for Hugo",
-  "repository": "fenneclab/hugo-bin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fenneclab/hugo-bin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fenneclab/hugo-bin/issues"
+  },
+  "homepage": "https://github.com/fenneclab/hugo-bin#readme",
   "author": "satoshun00 <shun.sato@fenneclab.com>",
   "license": "MIT",
   "main": "index.js",
@@ -34,22 +41,5 @@
   ],
   "engines": {
     "node": ">=12"
-  },
-  "eslintConfig": {
-    "extends": "eslint:recommended",
-    "env": {
-      "es6": true,
-      "node": true
-    },
-    "rules": {
-      "prefer-destructuring": [
-        "error",
-        {
-          "object": true,
-          "array": false
-        }
-      ],
-      "strict": "error"
-    }
   }
 }
