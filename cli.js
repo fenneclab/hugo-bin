@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
-'use strict';
-
-const { spawn } = require('child_process');
-const hugo = require('.');
+import { spawn } from 'node:child_process';
+import process from 'node:process';
+import hugo from './index.js';
 
 const input = process.argv.slice(2);
 

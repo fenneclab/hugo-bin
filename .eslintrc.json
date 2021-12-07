@@ -5,7 +5,8 @@
     "node": true
   },
   "parserOptions": {
-    "ecmaVersion": 2019
+    "ecmaVersion": 2020,
+    "sourceType": "module"
   },
   "extends": "eslint:recommended",
   "rules": {
@@ -15,7 +16,6 @@
         "object": true,
         "array": false
       }
-    ],
-    "strict": "error"
+    ]
   }
 }

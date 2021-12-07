@@ -1,3 +1,4 @@
-'use strict';
+import process from 'node:process';
+import lib from './lib/index.js';
 
-module.exports = require('./lib')(process.cwd()).path();
+export default lib(process.cwd()).path();

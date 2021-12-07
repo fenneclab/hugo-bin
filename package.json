@@ -13,13 +13,14 @@
   "homepage": "https://github.com/fenneclab/hugo-bin#readme",
   "author": "satoshun00 <shun.sato@fenneclab.com>",
   "license": "MIT",
-  "main": "index.js",
+  "type": "module",
+  "exports": "./index.js",
   "bin": {
     "hugo": "cli.js"
   },
   "dependencies": {
     "bin-wrapper": "^4.1.0",
-    "pkg-conf": "^3.1.0",
+    "pkg-conf": "^4.0.0",
     "rimraf": "^3.0.2"
   },
   "devDependencies": {
@@ -31,7 +32,7 @@
     "lint": "eslint .",
     "uvu": "uvu test",
     "test": "npm run lint && npm run uvu",
-    "postinstall": "rimraf vendor && node lib/install"
+    "postinstall": "rimraf vendor && node lib/install.js"
   },
   "files": [
     "lib/*.js",
@@ -39,6 +40,6 @@
     "index.js"
   ],
   "engines": {
-    "node": ">=12"
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
   }
 }
