@@ -26,8 +26,8 @@
   },
   "devDependencies": {
     "bin-check": "^4.1.0",
-    "eslint": "^8.5.0",
-    "uvu": "^0.5.2"
+    "eslint": "^8.6.0",
+    "uvu": "^0.5.3"
   },
   "scripts": {
     "lint": "eslint .",
