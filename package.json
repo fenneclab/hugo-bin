@@ -29,12 +29,12 @@
   "dependencies": {
     "careful-downloader": "^2.0.1",
     "log-symbols": "^5.1.0",
-    "read-pkg-up": "^9.0.0"
+    "read-pkg-up": "^9.1.0"
   },
   "devDependencies": {
     "@jakejarvis/eslint-config": "*",
     "del": "^6.0.0",
-    "eslint": "^8.7.0",
+    "eslint": "^8.9.0",
     "mocha": "^9.2.0"
   },
   "scripts": {
