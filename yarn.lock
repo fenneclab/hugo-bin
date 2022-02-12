@@ -306,15 +306,15 @@ camelcase@^6.0.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-6.3.0.tgz#5685b95eb209ac9c0c177467778c9c84df58ba9a"
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
-careful-downloader@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/careful-downloader/-/careful-downloader-2.0.1.tgz#2e2ad890108ba881895837f01865de978a9e1b91"
-  integrity sha512-nSvCrtMhl3Mtkif2RyOdswyvWQpgPO03fAym/5p0g84YWKf4gpulAjxPwiDfT8BRuoIVRBXUJtVTNnWI2jC0ig==
+careful-downloader@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/careful-downloader/-/careful-downloader-2.0.2.tgz#53f879942c715f530ee6ac48a88cd2d07256b085"
+  integrity sha512-reL+MmVF5Y+Yzj94Udo63+b9IzdkbxNYfrw620YwBYDtiqRZr5Y9rTrrAndWycAa7yW/JtyV0OYvJlPzqjtSFA==
   dependencies:
-    debug "^4.3.2"
+    debug "^4.3.3"
     decompress "^4.2.1"
     fs-extra "^10.0.0"
-    got "^11.8.2"
+    got "^11.8.3"
     is-path-inside "^4.0.0"
     tempy "^2.0.0"
 
@@ -431,7 +431,7 @@ crypto-random-string@^4.0.0:
   dependencies:
     type-fest "^1.0.1"
 
-debug@4.3.3, debug@^4.1.1, debug@^4.3.2:
+debug@4.3.3, debug@^4.1.1, debug@^4.3.2, debug@^4.3.3:
   version "4.3.3"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.3.tgz#04266e0b70a98d4462e6e288e38259213332b664"
   integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
@@ -881,7 +881,7 @@ globby@^11.0.1:
     merge2 "^1.4.1"
     slash "^3.0.0"
 
-got@^11.8.2:
+got@^11.8.3:
   version "11.8.3"
   resolved "https://registry.yarnpkg.com/got/-/got-11.8.3.tgz#f496c8fdda5d729a90b4905d2b07dbd148170770"
   integrity sha512-7gtQ5KiPh1RtGS9/Jbv1ofDpBFuq42gyfEib+ejaRBJuj/3tQFeR5+gw57e4ipaU8c/rCjvX6fkQz2lyDlGAOg==
