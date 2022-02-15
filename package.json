@@ -14,7 +14,9 @@
   "author": "satoshun00 <shun.sato@fenneclab.com>",
   "license": "MIT",
   "type": "module",
-  "exports": "./index.js",
+  "exports": {
+    ".": "./index.js"
+  },
   "bin": {
     "hugo": "cli.js"
   },
