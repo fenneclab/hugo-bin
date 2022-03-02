@@ -31,6 +31,7 @@
   },
   "scripts": {
     "lint": "eslint .",
+    "fix": "npm run lint -- --fix",
     "uvu": "uvu test",
     "test": "npm run lint && npm run uvu",
     "postinstall": "rimraf vendor && node lib/install.js"
