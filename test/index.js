@@ -16,7 +16,7 @@ test('should return overwritten repository url', () => {
   process.env.npm_config_hugo_bin_build_tags = '';
   const defaultRepoSources = hugoLib(process.cwd())._src.map((v) => v.url);
   defaultRepoSources.forEach((sourceUrl) => {
-    assert.equal(sourceUrl.startsWith('https://github.com/'), true);
+    assert.ok(sourceUrl.startsWith('https://github.com/'));
   });
 
   // Verify for Default Repository and Extended
@@ -25,7 +25,7 @@ test('should return overwritten repository url', () => {
     (v) => v.url
   );
   defaultRepoSourcesExtended.forEach((sourceUrl) => {
-    assert.equal(sourceUrl.startsWith('https://github.com/'), true);
+    assert.ok(sourceUrl.startsWith('https://github.com/'));
   });
 
   // Verify for Custom Repository and Not Extended
@@ -33,7 +33,7 @@ test('should return overwritten repository url', () => {
   process.env.npm_config_hugo_bin_download_repo = 'https://some.example.com';
   const customRepoSources = hugoLib(process.cwd())._src.map((v) => v.url);
   customRepoSources.forEach((sourceUrl) => {
-    assert.equal(sourceUrl.startsWith('https://some.example.com/'), true);
+    assert.ok(sourceUrl.startsWith('https://some.example.com/'));
   });
 
   // Verify for Custom Repository and Extended
@@ -43,7 +43,7 @@ test('should return overwritten repository url', () => {
     (v) => v.url
   );
   customRepoSourcesExtended.forEach((sourceUrl) => {
-    assert.equal(sourceUrl.startsWith('https://some.example.com/'), true);
+    assert.ok(sourceUrl.startsWith('https://some.example.com/'));
   });
 });
 
