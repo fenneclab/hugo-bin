@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@jakejarvis/eslint-config": "*",
-    "del": "^6.1.0",
+    "del": "^6.1.1",
     "eslint": "^8.17.0",
     "mocha": "^9.2.2"
   },
