@@ -16,6 +16,7 @@
         "object": true,
         "array": false
       }
-    ]
+    ],
+    "semi": "error"
   }
 }

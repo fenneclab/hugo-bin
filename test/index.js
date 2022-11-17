@@ -28,7 +28,7 @@ hugoLibCustomRepoTestSuite.before.each(() => {
 hugoLibCustomRepoTestSuite('verify test env', () => {
   assert.equal(process.env.npm_config_hugo_bin_build_tags, undefined);
   assert.equal(process.env.npm_config_hugo_bin_download_repo, undefined);
-})
+});
 
 // Default Repository - Test Cases
 
