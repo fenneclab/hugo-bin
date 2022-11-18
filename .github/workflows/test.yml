@@ -16,10 +16,10 @@ jobs:
         - macos-latest
         - windows-latest
         node:
+        - 19
         - 18
         - 16
         - 14
-        - 12
       fail-fast: false
     runs-on: ${{ matrix.os }}
     name: Node ${{ matrix.node }} on ${{ matrix.os }}
