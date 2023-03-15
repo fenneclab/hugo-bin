@@ -32,14 +32,20 @@ execFile(hugo, ['version'], (error, stdout) => {
 ### CLI
 
 ```sh
+# older npm
 $(npm bin)/hugo --help
+# newer npm
+npm exec hugo help
 npm run create -- post/my-new-post.md # see below 'npm run-script'
 ```
 
 or on Windows:
 
 ```bat
+rem older npm
 for /f "delims=" %F in ('npm bin') do call "%F\hugo" help
+rem newer npm
+npm exec hugo help
 rem see below 'npm run-script'
 npm run create -- post/my-new-post.md
 ```
