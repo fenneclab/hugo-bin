@@ -34,25 +34,28 @@ hugoLibCustomRepoTestSuite('verify test env', () => {
 
 hugoLibCustomRepoTestSuite('should return default repository url - Repository: default - Extended: undefined', () => {
   const repoSources = hugoLib(process.cwd())._src.map((v) => v.url);
-  repoSources.forEach((sourceUrl) => {
+
+  for (const sourceUrl of repoSources) {
     assert.ok(sourceUrl.startsWith('https://github.com/'));
-  });
+  }
 });
 
 hugoLibCustomRepoTestSuite('should return default repository url - Repository: default - Extended: empty', () => {
   process.env.npm_config_hugo_bin_build_tags = '';
   const repoSources = hugoLib(process.cwd())._src.map((v) => v.url);
-  repoSources.forEach((sourceUrl) => {
+
+  for (const sourceUrl of repoSources) {
     assert.ok(sourceUrl.startsWith('https://github.com/'));
-  });
+  }
 });
 
 hugoLibCustomRepoTestSuite('should return default repository url - Repository: default - Extended: extended', () => {
   process.env.npm_config_hugo_bin_build_tags = 'extended';
   const repoSources = hugoLib(process.cwd())._src.map((v) => v.url);
-  repoSources.forEach((sourceUrl) => {
+
+  for (const sourceUrl of repoSources) {
     assert.ok(sourceUrl.startsWith('https://github.com/'));
-  });
+  }
 });
 
 // Custom/Enterprise Repository Test Cases
@@ -60,27 +63,30 @@ hugoLibCustomRepoTestSuite('should return default repository url - Repository: d
 hugoLibCustomRepoTestSuite('should return custom repository url - Repository: custom - Extended: undefined', () => {
   process.env.npm_config_hugo_bin_download_repo = 'https://some1.example.com';
   const repoSources = hugoLib(process.cwd())._src.map((v) => v.url);
-  repoSources.forEach((sourceUrl) => {
+
+  for (const sourceUrl of repoSources) {
     assert.ok(sourceUrl.startsWith('https://some1.example.com/'));
-  });
+  }
 });
 
 hugoLibCustomRepoTestSuite('should return custom repository url - Repository: custom - Extended: empty', () => {
   process.env.npm_config_hugo_bin_build_tags = '';
   process.env.npm_config_hugo_bin_download_repo = 'https://some2.example.com';
   const repoSources = hugoLib(process.cwd())._src.map((v) => v.url);
-  repoSources.forEach((sourceUrl) => {
+
+  for (const sourceUrl of repoSources) {
     assert.ok(sourceUrl.startsWith('https://some2.example.com/'));
-  });
+  }
 });
 
 hugoLibCustomRepoTestSuite('should return custom repository url - Repository: custom - Extended: extended', () => {
   process.env.npm_config_hugo_bin_build_tags = 'extended';
   process.env.npm_config_hugo_bin_download_repo = 'https://some3.example.com';
   const repoSources = hugoLib(process.cwd())._src.map((v) => v.url);
-  repoSources.forEach((sourceUrl) => {
+
+  for (const sourceUrl of repoSources) {
     assert.ok(sourceUrl.startsWith('https://some3.example.com/'));
-  });
+  }
 });
 
 hugoLibCustomRepoTestSuite.run();
