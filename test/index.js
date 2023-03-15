@@ -36,7 +36,7 @@ hugoLibCustomRepoTestSuite('should return default repository url - Repository: d
   const repoSources = hugoLib(process.cwd())._src.map((v) => v.url);
 
   for (const sourceUrl of repoSources) {
-    assert.ok(sourceUrl.startsWith('https://github.com/'));
+    assert.equal(sourceUrl.startsWith('https://github.com/'), true);
   }
 });
 
@@ -45,7 +45,7 @@ hugoLibCustomRepoTestSuite('should return default repository url - Repository: d
   const repoSources = hugoLib(process.cwd())._src.map((v) => v.url);
 
   for (const sourceUrl of repoSources) {
-    assert.ok(sourceUrl.startsWith('https://github.com/'));
+    assert.equal(sourceUrl.startsWith('https://github.com/'), true);
   }
 });
 
@@ -54,7 +54,7 @@ hugoLibCustomRepoTestSuite('should return default repository url - Repository: d
   const repoSources = hugoLib(process.cwd())._src.map((v) => v.url);
 
   for (const sourceUrl of repoSources) {
-    assert.ok(sourceUrl.startsWith('https://github.com/'));
+    assert.equal(sourceUrl.startsWith('https://github.com/'), true);
   }
 });
 
@@ -65,7 +65,7 @@ hugoLibCustomRepoTestSuite('should return custom repository url - Repository: cu
   const repoSources = hugoLib(process.cwd())._src.map((v) => v.url);
 
   for (const sourceUrl of repoSources) {
-    assert.ok(sourceUrl.startsWith('https://some1.example.com/'));
+    assert.equal(sourceUrl.startsWith('https://some1.example.com/'), true);
   }
 });
 
@@ -75,7 +75,7 @@ hugoLibCustomRepoTestSuite('should return custom repository url - Repository: cu
   const repoSources = hugoLib(process.cwd())._src.map((v) => v.url);
 
   for (const sourceUrl of repoSources) {
-    assert.ok(sourceUrl.startsWith('https://some2.example.com/'));
+    assert.equal(sourceUrl.startsWith('https://some2.example.com/'), true);
   }
 });
 
@@ -85,7 +85,7 @@ hugoLibCustomRepoTestSuite('should return custom repository url - Repository: cu
   const repoSources = hugoLib(process.cwd())._src.map((v) => v.url);
 
   for (const sourceUrl of repoSources) {
-    assert.ok(sourceUrl.startsWith('https://some3.example.com/'));
+    assert.equal(sourceUrl.startsWith('https://some3.example.com/'), true);
   }
 });
 
