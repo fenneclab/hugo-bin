@@ -12,6 +12,15 @@
   },
   "homepage": "https://github.com/fenneclab/hugo-bin#readme",
   "author": "satoshun00 <shun.sato@fenneclab.com>",
+  "contributors": [
+    "XhmikosR <xhmikosr@gmail.com>"
+  ],
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/XhmikosR"
+    }
+  ],
   "license": "MIT",
   "type": "module",
   "exports": {
