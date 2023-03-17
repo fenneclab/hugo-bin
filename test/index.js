@@ -1,16 +1,19 @@
 import { strict as assert } from 'node:assert';
 import process from 'node:process';
 import binCheck from 'bin-check';
-import { test, suite } from 'uvu';
+import { suite } from 'uvu';
 import hugoBin from '../index.js';
 import hugoLib from '../lib/index.js';
 
-test('should return path to binary and work', async () => {
+
+const hugoLibWorksSuite = suite('hugo-bin works');
+
+hugoLibWorksSuite('should return path to binary and work', async () => {
   const works = await binCheck(hugoBin, ['version']);
   assert.equal(works, true);
 });
 
-test.run();
+hugoLibWorksSuite.run();
 
 /**
  * Verify Custom/Enterprise Repository overwrite.
