@@ -8,7 +8,7 @@
 npm install hugo-bin --save-dev
 ```
 
-hugo-bin now supports the [Extended Hugo version](https://github.com/gohugoio/hugo/releases/tag/v0.43). See [Installation options](#installation-options) for more details.
+hugo-bin supports the [Extended Hugo version](https://github.com/gohugoio/hugo/releases/tag/v0.43). See [Installation options](#installation-options) for more details.
 
 For usage within corporate networks or behind corporate proxies, the download repository can be overwritten, see [Installation options](#installation-options) for more details.
 
