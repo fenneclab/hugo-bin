@@ -7,10 +7,11 @@ on:
 
 env:
   FORCE_COLOR: 2
-  NODE_LINT: 18
+  NODE_LTS: 18 # used for linting and publish
 
 jobs:
   lint:
+    name: Lint
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +23,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "${{ env.NODE_LINT }}"
+          node-version: ${{ env.NODE_LTS }}
           cache: npm
 
       - name: Install npm dependencies
@@ -38,13 +39,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
         node: [12, 14, 16, 18]
-        include:
-          - os: windows-latest
-            node: 18
-          - os: macos-latest
-            node: 18
 
     steps:
       - name: Clone repository
@@ -91,10 +87,14 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
+      - name: Print hugo version
+        run: npm exec hugo version
+
       - name: Run tests
         run: npm run uvu
 
   publish:
+    name: Publish on npm
     if: github.repository == 'fenneclab/hugo-bin' && startsWith(github.ref, 'refs/tags/')
     needs: [lint, test, test-extended]
     runs-on: ubuntu-latest
@@ -107,7 +107,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: ${{ env.NODE_LTS }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Publish on npm
