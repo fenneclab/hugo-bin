@@ -5,36 +5,35 @@ import { suite } from 'uvu';
 import hugoBin from '../index.js';
 import hugoLib from '../lib/index.js';
 
+const worksSuite = suite('hugo-bin works');
 
-const hugoLibWorksSuite = suite('hugo-bin works');
-
-hugoLibWorksSuite('should return path to binary and work', async () => {
+worksSuite('should return path to binary and work', async () => {
   const works = await binCheck(hugoBin, ['version']);
   assert.equal(works, true);
 });
 
-hugoLibWorksSuite.run();
+worksSuite.run();
 
 /**
  * Verify Custom/Enterprise Repository overwrite.
  */
 
-const hugoLibCustomRepoTestSuite = suite('hugo-bin overwrite download repository');
+const customRepoSuite = suite('hugo-bin overwrite download repository');
 
-hugoLibCustomRepoTestSuite.before.each(() => {
+customRepoSuite.before.each(() => {
   // Ensure that the environment is cleaned before next test run.
   delete process.env.npm_config_hugo_bin_build_tags;
   delete process.env.npm_config_hugo_bin_download_repo;
 });
 
-hugoLibCustomRepoTestSuite('verify test env', () => {
+customRepoSuite('verify test env', () => {
   assert.equal(process.env.npm_config_hugo_bin_build_tags, undefined);
   assert.equal(process.env.npm_config_hugo_bin_download_repo, undefined);
 });
 
 // Default Repository - Test Cases
 
-hugoLibCustomRepoTestSuite('should return default repository url - Repository: default - Extended: undefined', async () => {
+customRepoSuite('should return default repository url - Repository: default - Extended: undefined', async () => {
   const lib = await hugoLib(process.cwd());
   const repoSources = lib._src.map((v) => v.url);
 
@@ -43,7 +42,7 @@ hugoLibCustomRepoTestSuite('should return default repository url - Repository: d
   }
 });
 
-hugoLibCustomRepoTestSuite('should return default repository url - Repository: default - Extended: empty', async () => {
+customRepoSuite('should return default repository url - Repository: default - Extended: empty', async () => {
   process.env.npm_config_hugo_bin_build_tags = '';
   const lib = await hugoLib(process.cwd());
   const repoSources = lib._src.map((v) => v.url);
@@ -53,7 +52,7 @@ hugoLibCustomRepoTestSuite('should return default repository url - Repository: d
   }
 });
 
-hugoLibCustomRepoTestSuite('should return default repository url - Repository: default - Extended: extended', async () => {
+customRepoSuite('should return default repository url - Repository: default - Extended: extended', async () => {
   process.env.npm_config_hugo_bin_build_tags = 'extended';
   const lib = await hugoLib(process.cwd());
   const repoSources = lib._src.map((v) => v.url);
@@ -65,7 +64,7 @@ hugoLibCustomRepoTestSuite('should return default repository url - Repository: d
 
 // Custom/Enterprise Repository Test Cases
 
-hugoLibCustomRepoTestSuite('should return custom repository url - Repository: custom - Extended: undefined', async () => {
+customRepoSuite('should return custom repository url - Repository: custom - Extended: undefined', async () => {
   process.env.npm_config_hugo_bin_download_repo = 'https://some1.example.com';
   const lib = await hugoLib(process.cwd());
   const repoSources = lib._src.map((v) => v.url);
@@ -75,7 +74,7 @@ hugoLibCustomRepoTestSuite('should return custom repository url - Repository: cu
   }
 });
 
-hugoLibCustomRepoTestSuite('should return custom repository url - Repository: custom - Extended: empty', async () => {
+customRepoSuite('should return custom repository url - Repository: custom - Extended: empty', async () => {
   process.env.npm_config_hugo_bin_build_tags = '';
   process.env.npm_config_hugo_bin_download_repo = 'https://some2.example.com';
   const lib = await hugoLib(process.cwd());
@@ -86,7 +85,7 @@ hugoLibCustomRepoTestSuite('should return custom repository url - Repository: cu
   }
 });
 
-hugoLibCustomRepoTestSuite('should return custom repository url - Repository: custom - Extended: extended', async () => {
+customRepoSuite('should return custom repository url - Repository: custom - Extended: extended', async () => {
   process.env.npm_config_hugo_bin_build_tags = 'extended';
   process.env.npm_config_hugo_bin_download_repo = 'https://some3.example.com';
   const lib = await hugoLib(process.cwd());
@@ -97,4 +96,4 @@ hugoLibCustomRepoTestSuite('should return custom repository url - Repository: cu
   }
 });
 
-hugoLibCustomRepoTestSuite.run();
+customRepoSuite.run();
