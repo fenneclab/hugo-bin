@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "@xhmikosr/bin-wrapper": "^5.0.1",
-    "picocolors": "^1.0.0",
     "pkg-conf": "^4.0.0",
     "rimraf": "^4.4.0"
   },
