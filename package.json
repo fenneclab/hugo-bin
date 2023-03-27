@@ -32,7 +32,7 @@
   "dependencies": {
     "@xhmikosr/bin-wrapper": "^5.0.1",
     "pkg-conf": "^4.0.0",
-    "rimraf": "^4.4.0"
+    "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "bin-check": "^4.1.0",
