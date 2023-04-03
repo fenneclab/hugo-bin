@@ -31,8 +31,7 @@
   },
   "dependencies": {
     "@xhmikosr/bin-wrapper": "^5.0.1",
-    "pkg-conf": "^4.0.0",
-    "rimraf": "^3.0.2"
+    "pkg-conf": "^4.0.0"
   },
   "devDependencies": {
     "bin-check": "^4.1.0",
@@ -44,7 +43,7 @@
     "fix": "npm run lint -- --fix",
     "uvu": "uvu test",
     "test": "npm run lint && npm run uvu",
-    "postinstall": "rimraf vendor && node lib/install.js"
+    "postinstall": "node lib/install.js"
   },
   "files": [
     "lib/*.js",
@@ -52,6 +51,6 @@
     "index.js"
   ],
   "engines": {
-    "node": "^14.13.1 || >=16.0.0"
+    "node": "^14.14.0 || >=16.0.0"
   }
 }
