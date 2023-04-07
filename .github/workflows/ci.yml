@@ -2,6 +2,9 @@ name: CI
 
 on:
   push:
+    branches:
+      - "**"
+      - "!dependabot/**"
   pull_request:
   workflow_dispatch:
 
@@ -101,6 +104,7 @@ jobs:
     if: github.repository == 'fenneclab/hugo-bin' && startsWith(github.ref, 'refs/tags/')
     needs: [lint, test, test-extended]
     runs-on: ubuntu-latest
+
     steps:
       - name: Clone repository
         uses: actions/checkout@v3
