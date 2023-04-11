@@ -118,7 +118,7 @@ Default: `"https://github.com"`
 
 Set it to your proxy URL to download the hugo binary from a different download repository.
 
-## Supported versions
+## Supported Hugo versions
 
 See [the package.json commit history](https://github.com/fenneclab/hugo-bin/commits/main/package.json).
 
@@ -129,4 +129,4 @@ See [the package.json commit history](https://github.com/fenneclab/hugo-bin/comm
 
 ## License
 
-MIT © Shun Sato
+[MIT](LICENSE) © Shun Sato
