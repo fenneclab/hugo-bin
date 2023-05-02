@@ -1,15 +1,15 @@
-import { strict as assert } from 'node:assert';
 import process from 'node:process';
 import binCheck from 'bin-check';
 import { suite } from 'uvu';
+import * as assert from 'uvu/assert';
 import hugoBin from '../index.js';
 import hugoLib from '../lib/index.js';
 
-const worksSuite = suite('hugo-bin works');
+const worksSuite = suite('works');
 
 worksSuite('should return path to binary and work', async () => {
   const works = await binCheck(hugoBin, ['version']);
-  assert.equal(works, true);
+  assert.is(works, true);
 });
 
 worksSuite.run();
@@ -18,7 +18,7 @@ worksSuite.run();
  * Verify Custom/Enterprise Repository overwrite.
  */
 
-const customRepoSuite = suite('hugo-bin overwrite download repository');
+const customRepoSuite = suite('overwrites download repository');
 
 customRepoSuite.before.each(() => {
   // Ensure that the environment is cleaned before next test run.
@@ -27,8 +27,8 @@ customRepoSuite.before.each(() => {
 });
 
 customRepoSuite('verify test env', () => {
-  assert.equal(process.env.npm_config_hugo_bin_build_tags, undefined);
-  assert.equal(process.env.npm_config_hugo_bin_download_repo, undefined);
+  assert.is(process.env.npm_config_hugo_bin_build_tags, undefined);
+  assert.is(process.env.npm_config_hugo_bin_download_repo, undefined);
 });
 
 // Default Repository - Test Cases
@@ -38,7 +38,7 @@ customRepoSuite('should return default repository url - Repository: default - Ex
   const repoSources = lib._src.map((v) => v.url);
 
   for (const sourceUrl of repoSources) {
-    assert.equal(sourceUrl.startsWith('https://github.com/'), true);
+    assert.is(sourceUrl.startsWith('https://github.com/'), true);
   }
 });
 
@@ -48,7 +48,7 @@ customRepoSuite('should return default repository url - Repository: default - Ex
   const repoSources = lib._src.map((v) => v.url);
 
   for (const sourceUrl of repoSources) {
-    assert.equal(sourceUrl.startsWith('https://github.com/'), true);
+    assert.is(sourceUrl.startsWith('https://github.com/'), true);
   }
 });
 
@@ -58,7 +58,7 @@ customRepoSuite('should return default repository url - Repository: default - Ex
   const repoSources = lib._src.map((v) => v.url);
 
   for (const sourceUrl of repoSources) {
-    assert.equal(sourceUrl.startsWith('https://github.com/'), true);
+    assert.is(sourceUrl.startsWith('https://github.com/'), true);
   }
 });
 
@@ -70,7 +70,7 @@ customRepoSuite('should return custom repository url - Repository: custom - Exte
   const repoSources = lib._src.map((v) => v.url);
 
   for (const sourceUrl of repoSources) {
-    assert.equal(sourceUrl.startsWith('https://some1.example.com/'), true);
+    assert.is(sourceUrl.startsWith('https://some1.example.com/'), true);
   }
 });
 
@@ -81,7 +81,7 @@ customRepoSuite('should return custom repository url - Repository: custom - Exte
   const repoSources = lib._src.map((v) => v.url);
 
   for (const sourceUrl of repoSources) {
-    assert.equal(sourceUrl.startsWith('https://some2.example.com/'), true);
+    assert.is(sourceUrl.startsWith('https://some2.example.com/'), true);
   }
 });
 
@@ -92,7 +92,7 @@ customRepoSuite('should return custom repository url - Repository: custom - Exte
   const repoSources = lib._src.map((v) => v.url);
 
   for (const sourceUrl of repoSources) {
-    assert.equal(sourceUrl.startsWith('https://some3.example.com/'), true);
+    assert.is(sourceUrl.startsWith('https://some3.example.com/'), true);
   }
 });
 
