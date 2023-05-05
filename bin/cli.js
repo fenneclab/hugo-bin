@@ -2,7 +2,7 @@
 
 import { spawn } from 'node:child_process';
 import process from 'node:process';
-import hugo from './index.js';
+import hugo from '../index.js';
 
 const input = process.argv.slice(2);
 

@@ -27,7 +27,7 @@
     ".": "./index.js"
   },
   "bin": {
-    "hugo": "cli.js"
+    "hugo": "bin/cli.js"
   },
   "dependencies": {
     "@xhmikosr/bin-wrapper": "^5.0.1",
@@ -46,8 +46,8 @@
     "postinstall": "node lib/install.js"
   },
   "files": [
+    "bin/cli.js",
     "lib/*.js",
-    "cli.js",
     "index.js"
   ],
   "engines": {
