@@ -5,6 +5,8 @@ on:
     branches:
       - "**"
       - "!dependabot/**"
+    tags:
+      - "v**"
   pull_request:
   workflow_dispatch:
 
