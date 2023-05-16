@@ -35,12 +35,12 @@
   },
   "devDependencies": {
     "bin-check": "^4.1.0",
-    "eslint": "^8.40.0",
-    "uvu": "^0.5.6"
+    "uvu": "^0.5.6",
+    "xo": "^0.54.2"
   },
   "scripts": {
-    "lint": "eslint .",
-    "fix": "npm run lint -- --fix",
+    "lint": "xo",
+    "fix": "xo --fix",
     "uvu": "uvu test",
     "test": "npm run lint && npm run uvu",
     "postinstall": "node lib/install.js"
@@ -52,5 +52,36 @@
   ],
   "engines": {
     "node": "^14.14.0 || >=16.0.0"
+  },
+  "xo": {
+    "space": true,
+    "rules": {
+      "arrow-body-style": "off",
+      "camelcase": [
+        "error",
+        {
+          "properties": "never"
+        }
+      ],
+      "capitalized-comments": "off",
+      "comma-dangle": [
+        "error",
+        "never"
+      ],
+      "operator-linebreak": [
+        "error",
+        "after"
+      ],
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "space-before-function-paren": [
+        "error",
+        "never"
+      ],
+      "unicorn/prefer-top-level-await": "off",
+      "unicorn/prevent-abbreviations": "off"
+    }
   }
 }

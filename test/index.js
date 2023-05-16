@@ -1,13 +1,13 @@
 import process from 'node:process';
 import binCheck from 'bin-check';
 import { suite } from 'uvu';
-import * as assert from 'uvu/assert';
+import * as assert from 'uvu/assert'; // eslint-disable-line n/file-extension-in-import
 import hugoBin from '../index.js';
 import hugoLib from '../lib/index.js';
 
 const worksSuite = suite('works');
 
-worksSuite('should return path to binary and work', async () => {
+worksSuite('should return path to binary and work', async() => {
   const works = await binCheck(hugoBin, ['version']);
   assert.is(works, true);
 });
@@ -17,7 +17,6 @@ worksSuite.run();
 /**
  * Verify Custom/Enterprise Repository overwrite.
  */
-
 const customRepoSuite = suite('overwrites download repository');
 
 customRepoSuite.before.each(() => {
@@ -32,30 +31,29 @@ customRepoSuite('verify test env', () => {
 });
 
 // Default Repository - Test Cases
-
-customRepoSuite('should return default repository url - Repository: default - Extended: undefined', async () => {
+customRepoSuite('should return default repository url - Repository: default - Extended: undefined', async() => {
   const lib = await hugoLib(process.cwd());
-  const repoSources = lib._src.map((v) => v.url);
+  const repoSources = lib._src.map(v => v.url);
 
   for (const sourceUrl of repoSources) {
     assert.is(sourceUrl.startsWith('https://github.com/'), true);
   }
 });
 
-customRepoSuite('should return default repository url - Repository: default - Extended: empty', async () => {
+customRepoSuite('should return default repository url - Repository: default - Extended: empty', async() => {
   process.env.npm_config_hugo_bin_build_tags = '';
   const lib = await hugoLib(process.cwd());
-  const repoSources = lib._src.map((v) => v.url);
+  const repoSources = lib._src.map(v => v.url);
 
   for (const sourceUrl of repoSources) {
     assert.is(sourceUrl.startsWith('https://github.com/'), true);
   }
 });
 
-customRepoSuite('should return default repository url - Repository: default - Extended: extended', async () => {
+customRepoSuite('should return default repository url - Repository: default - Extended: extended', async() => {
   process.env.npm_config_hugo_bin_build_tags = 'extended';
   const lib = await hugoLib(process.cwd());
-  const repoSources = lib._src.map((v) => v.url);
+  const repoSources = lib._src.map(v => v.url);
 
   for (const sourceUrl of repoSources) {
     assert.is(sourceUrl.startsWith('https://github.com/'), true);
@@ -63,33 +61,32 @@ customRepoSuite('should return default repository url - Repository: default - Ex
 });
 
 // Custom/Enterprise Repository Test Cases
-
-customRepoSuite('should return custom repository url - Repository: custom - Extended: undefined', async () => {
+customRepoSuite('should return custom repository url - Repository: custom - Extended: undefined', async() => {
   process.env.npm_config_hugo_bin_download_repo = 'https://some1.example.com';
   const lib = await hugoLib(process.cwd());
-  const repoSources = lib._src.map((v) => v.url);
+  const repoSources = lib._src.map(v => v.url);
 
   for (const sourceUrl of repoSources) {
     assert.is(sourceUrl.startsWith('https://some1.example.com/'), true);
   }
 });
 
-customRepoSuite('should return custom repository url - Repository: custom - Extended: empty', async () => {
+customRepoSuite('should return custom repository url - Repository: custom - Extended: empty', async() => {
   process.env.npm_config_hugo_bin_build_tags = '';
   process.env.npm_config_hugo_bin_download_repo = 'https://some2.example.com';
   const lib = await hugoLib(process.cwd());
-  const repoSources = lib._src.map((v) => v.url);
+  const repoSources = lib._src.map(v => v.url);
 
   for (const sourceUrl of repoSources) {
     assert.is(sourceUrl.startsWith('https://some2.example.com/'), true);
   }
 });
 
-customRepoSuite('should return custom repository url - Repository: custom - Extended: extended', async () => {
+customRepoSuite('should return custom repository url - Repository: custom - Extended: extended', async() => {
   process.env.npm_config_hugo_bin_build_tags = 'extended';
   process.env.npm_config_hugo_bin_download_repo = 'https://some3.example.com';
   const lib = await hugoLib(process.cwd());
-  const repoSources = lib._src.map((v) => v.url);
+  const repoSources = lib._src.map(v => v.url);
 
   for (const sourceUrl of repoSources) {
     assert.is(sourceUrl.startsWith('https://some3.example.com/'), true);
