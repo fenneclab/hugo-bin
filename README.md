@@ -19,9 +19,9 @@ npm install hugo-bin --save-dev
 
 ```js
 import { execFile } from 'node:child_process';
-import hugo from 'hugo-bin';
+import hugoPath from 'hugo-bin';
 
-execFile(hugo, ['version'], (error, stdout) => {
+execFile(hugoPath, ['version'], (error, stdout) => {
   if (error) {
     throw error;
   }

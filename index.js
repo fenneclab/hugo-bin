@@ -1,6 +1,7 @@
 import process from 'node:process';
-import lib from './lib/index.js';
+import hugoBin from './lib/index.js';
 
-const hugoBin = await lib(process.cwd());
+const bin = await hugoBin(process.cwd());
+const hugoPath = bin.path();
 
-export default hugoBin.path();
+export default hugoPath;
