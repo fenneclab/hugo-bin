@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "bin-check": "^4.1.0",
+    "c8": "^7.13.0",
     "uvu": "^0.5.6",
     "xo": "^0.54.2"
   },
@@ -43,6 +44,7 @@
     "fix": "xo --fix",
     "uvu": "uvu test",
     "test": "npm run lint && npm run uvu",
+    "test:ci": "c8 npm run uvu",
     "postinstall": "node lib/install.js"
   },
   "files": [

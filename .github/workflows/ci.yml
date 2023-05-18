@@ -67,7 +67,7 @@ jobs:
         run: npm ci
 
       - name: Run tests
-        run: npm run uvu
+        run: npm run test:ci
 
   test-extended:
     name: Node ${{ matrix.node }} on ${{ matrix.os }} (Extended)
@@ -100,7 +100,7 @@ jobs:
         run: npm exec hugo version
 
       - name: Run tests
-        run: npm run uvu
+        run: npm run test:ci
 
   publish:
     name: Publish on npm
