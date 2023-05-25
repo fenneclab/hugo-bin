@@ -27,14 +27,14 @@
   "exports": "./index.js",
   "types": "./index.d.ts",
   "dependencies": {
-    "careful-downloader": "^2.0.2",
+    "careful-downloader": "^3.0.0",
     "log-symbols": "^5.1.0",
     "read-pkg-up": "^9.1.0"
   },
   "devDependencies": {
     "@jakejarvis/eslint-config": "*",
-    "del": "^6.1.1",
-    "eslint": "^8.35.0",
+    "del": "^7.0.0",
+    "eslint": "^8.41.0",
     "mocha": "^10.2.0"
   },
   "scripts": {
@@ -42,7 +42,7 @@
     "test": "eslint . && mocha"
   },
   "engines": {
-    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+    "node": ">=14.14"
   },
   "keywords": [
     "hugo",
