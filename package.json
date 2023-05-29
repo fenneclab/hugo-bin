@@ -31,9 +31,8 @@
   },
   "dependencies": {
     "@xhmikosr/bin-wrapper": "^10.0.0",
-    "decompress": "^4.2.1",
-    "download": "^7.1.0",
-    "import-lazy": "^4.0.0",
+    "@xhmikosr/decompress": "^8.0.0",
+    "@xhmikosr/downloader": "^12.0.0",
     "os-filter-obj": "^2.0.0",
     "pkg-conf": "^4.0.0"
   },
@@ -54,6 +53,7 @@
   "files": [
     "bin/cli.js",
     "lib/*.js",
+    "hugo-checksums.txt",
     "index.js"
   ],
   "engines": {
