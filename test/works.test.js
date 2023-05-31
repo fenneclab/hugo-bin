@@ -1,4 +1,4 @@
-import binCheck from 'bin-check';
+import binCheck from '@xhmikosr/bin-check';
 import { suite } from 'uvu';
 // eslint-disable-next-line n/file-extension-in-import
 import * as assert from 'uvu/assert';
