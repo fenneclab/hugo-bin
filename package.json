@@ -30,11 +30,11 @@
     "hugo": "bin/cli.js"
   },
   "dependencies": {
-    "@xhmikosr/bin-wrapper": "^8.0.2",
+    "@xhmikosr/bin-wrapper": "^9.0.0",
     "pkg-conf": "^4.0.0"
   },
   "devDependencies": {
-    "@xhmikosr/bin-check": "^5.0.2",
+    "@xhmikosr/bin-check": "^6.0.0",
     "c8": "^7.14.0",
     "uvu": "^0.5.6",
     "xo": "^0.54.2"
