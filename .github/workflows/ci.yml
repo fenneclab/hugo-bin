@@ -12,7 +12,7 @@ on:
 
 env:
   FORCE_COLOR: 2
-  NODE_LTS: 18 # used for linting and publish
+  NODE_LTS: 20 # used for linting and publish
 
 jobs:
   lint:
@@ -78,7 +78,6 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        node: [18]
 
     steps:
       - name: Clone repository
@@ -89,7 +88,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          node-version: ${{ env.NODE_LTS }}
           cache: npm
 
       - name: Install npm dependencies
