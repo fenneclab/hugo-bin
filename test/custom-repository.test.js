@@ -1,6 +1,5 @@
 import process from 'node:process';
 import { suite } from 'uvu';
-// eslint-disable-next-line n/file-extension-in-import
 import * as assert from 'uvu/assert';
 import hugoBin from '../lib/index.js';
 

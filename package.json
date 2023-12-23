@@ -30,14 +30,14 @@
     "hugo": "bin/cli.js"
   },
   "dependencies": {
-    "@xhmikosr/bin-wrapper": "^11.0.2",
+    "@xhmikosr/bin-wrapper": "^12.0.0",
     "pkg-conf": "^4.0.0"
   },
   "devDependencies": {
     "@xhmikosr/bin-check": "^6.0.0",
     "c8": "^8.0.1",
     "uvu": "^0.5.6",
-    "xo": "^0.54.2"
+    "xo": "^0.56.0"
   },
   "scripts": {
     "lint": "xo",
@@ -53,7 +53,7 @@
     "index.js"
   ],
   "engines": {
-    "node": "^14.14.0 || >=16.0.0"
+    "node": ">=16"
   },
   "xo": {
     "space": true,
