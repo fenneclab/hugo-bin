@@ -30,7 +30,7 @@
     "hugo": "bin/cli.js"
   },
   "dependencies": {
-    "@xhmikosr/bin-wrapper": "^12.0.0",
+    "@xhmikosr/bin-wrapper": "github:XhmikosR/bin-wrapper#xmr/os-filter-obj",
     "pkg-conf": "^4.0.0"
   },
   "devDependencies": {
