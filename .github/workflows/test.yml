@@ -16,16 +16,16 @@ jobs:
         - macos-latest
         - windows-latest
         node:
+        - 21
         - 20
         - 18
         - 16
-        - 14
       fail-fast: false
     runs-on: ${{ matrix.os }}
     name: Node ${{ matrix.node }} on ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node }}
     - run: yarn install --frozen-lockfile
@@ -36,11 +36,11 @@ jobs:
     - run: yarn audit
       continue-on-error: true
     - run: yarn test
-    - name: Checkout gohugoio/hugoBasicExample
-      uses: actions/checkout@v3
+    - name: Checkout gohugoio/hugoDocs
+      uses: actions/checkout@v4
       with:
-        repository: gohugoio/hugoBasicExample
+        repository: gohugoio/hugoDocs
         path: site/
         fetch-depth: 1
     - name: Build example site
-      run: node lib/cli.js --source site/ --minify --verbose
+      run: node lib/cli.js --source site/ --minify --enableGitInfo --logLevel info

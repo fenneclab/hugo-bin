@@ -33,9 +33,9 @@
   },
   "devDependencies": {
     "@jakejarvis/eslint-config": "*",
-    "del": "^7.0.0",
-    "eslint": "^8.41.0",
-    "mocha": "^10.2.0"
+    "del": "^7.1.0",
+    "eslint": "^8.56.0",
+    "mocha": "^10.3.0"
   },
   "scripts": {
     "postinstall": "node postinstall.js",
