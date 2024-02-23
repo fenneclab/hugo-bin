@@ -1,6 +1,6 @@
 # hugo-bin [![npm version](https://img.shields.io/npm/v/hugo-bin?logo=npm&logoColor=fff)](https://www.npmjs.com/package/hugo-bin) [![Build Status](https://img.shields.io/github/actions/workflow/status/fenneclab/hugo-bin/ci.yml?branch=main&label=CI&logo=github)](https://github.com/fenneclab/hugo-bin/actions?query=workflow%3ACI+branch%3Amain)
 
-> Binary wrapper for [Hugo](https://gohugo.io/)
+> Binary wrapper for [Hugo](https://github.com/gohugoio/hugo)
 
 - hugo-bin supports the [Extended Hugo version](https://github.com/gohugoio/hugo/releases/tag/v0.43)
 - For usage within corporate networks or behind corporate proxies, the download repository can be overwritten
