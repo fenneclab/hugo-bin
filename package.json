@@ -43,17 +43,17 @@
     "index.js"
   ],
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "dependencies": {
-    "@xhmikosr/bin-wrapper": "^12.0.0",
-    "pkg-conf": "^4.0.0"
+    "@xhmikosr/bin-wrapper": "^13.0.5",
+    "package-config": "^5.0.0"
   },
   "devDependencies": {
-    "@xhmikosr/bin-check": "^6.0.0",
+    "@xhmikosr/bin-check": "^7.0.3",
     "c8": "^9.1.0",
     "uvu": "^0.5.6",
-    "xo": "^0.56.0"
+    "xo": "^0.58.0"
   },
   "scripts": {
     "lint": "xo",
