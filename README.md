@@ -69,7 +69,7 @@ See the [Hugo Documentation](https://gohugo.io/) for more information.
 
 ## Installation options
 
-hugo-bin supports options to change the variation of Hugo binaries and to overwrite the download repository.
+hugo-bin supports options to change the variation of Hugo binaries, to overwrite the download repository and the Hugo version.
 
 Each option can be configured in one of the following ways:
 
@@ -81,7 +81,8 @@ Each option can be configured in one of the following ways:
   "version": "0.0.1",
   "hugo-bin": {
     "buildTags": "extended",
-    "downloadRepo": "https://some.example.com/artifactory/github-releases"
+    "downloadRepo": "https://some.example.com/artifactory/github-releases",
+    "version": "0.124.1"
   }
 }
 ```
@@ -91,13 +92,25 @@ Each option can be configured in one of the following ways:
 ```ini
 hugo_bin_build_tags = "extended"
 hugo_bin_download_repo = "https://some.example.com/artifactory/github-releases"
+hugo_bin_hugo_version = "0.124.1"
 ```
 
 ### As environment variables
 
+On Linux/macOS:
+
 ```sh
 export HUGO_BIN_BUILD_TAGS="extended"
 export HUGO_BIN_DOWNLOAD_REPO="https://some.example.com/artifactory/github-releases"
+export HUGO_BIN_HUGO_VERSION="0.124.1"
+```
+
+On Windows:
+
+```bat
+set HUGO_BIN_BUILD_TAGS=extended
+set HUGO_BIN_DOWNLOAD_REPO=https://some.example.com/artifactory/github-releases
+set HUGO_BIN_HUGO_VERSION=0.124.1
 ```
 
 **Note that you have to run `npm install hugo-bin` to re-install hugo-bin itself, if you change any of these options.**
@@ -117,6 +130,12 @@ If this is set to `extended` but it's not available for the user's platform, the
 Default: `"https://github.com"`
 
 Set it to your proxy URL to download the hugo binary from a different download repository.
+
+#### hugoVersion
+
+Default: the version specified in [package.json](package.json)
+
+You can override the Hugo version here, but please note that if any of the URLs have changed upstream, you might not be able to use any version and you will probably need to update to a newer hugo-bin version which takes into consideration the new URLs.
 
 ## Supported Hugo versions
 
