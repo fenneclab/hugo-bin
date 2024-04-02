@@ -72,7 +72,7 @@ jobs:
         run: npm run test:ci
 
   test-extended:
-    name: Node ${{ matrix.node }} on ${{ matrix.os }} (Extended)
+    name: Node on ${{ matrix.os }} (Extended)
     runs-on: ${{ matrix.os }}
     env:
       HUGO_BIN_BUILD_TAGS: extended
