@@ -3,11 +3,14 @@ name: CI
 on:
   push:
     branches:
-      - "**"
+      - "main"
       - "!dependabot/**"
     tags:
       - "v**"
   pull_request:
+    branches:
+      - "main"
+      - "!dependabot/**"
   workflow_dispatch:
 
 env:
