@@ -119,7 +119,8 @@ set HUGO_BIN_HUGO_VERSION=0.124.1
 
 #### buildTags
 
-Default: `""`
+- Type: `string`
+- Default: `""`
 
 Set `buildTags` to `extended` to download the [extended version](https://github.com/gohugoio/hugo/releases/tag/v0.43) binary.
 
@@ -127,15 +128,18 @@ If this is set to `extended` but it's not available for the user's platform, the
 
 #### downloadRepo
 
-Default: `"https://github.com"`
+- Type: `string`
+- Default: `"https://github.com"`
 
 Set it to your proxy URL to download the hugo binary from a different download repository.
 
 #### hugoVersion
 
-Default: the version specified in [package.json](package.json)
+- Type: `string`
+- Default: the version specified in [package.json](package.json)
 
-You can override the Hugo version here, but please note that if any of the URLs have changed upstream, you might not be able to use any version and you will probably need to update to a newer hugo-bin version which takes into consideration the new URLs.
+You can override the Hugo version here. Please note that if any of the URLs have changed upstream, you might not be able to use
+any version and you will probably need to update to a newer hugo-bin version which takes into consideration the new URLs.
 
 ## Supported Hugo versions
 
