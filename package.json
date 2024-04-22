@@ -21,6 +21,14 @@
       "url": "https://github.com/sponsors/XhmikosR"
     }
   ],
+  "keywords": [
+    "binary",
+    "executable",
+    "hugo",
+    "sass",
+    "scss",
+    "wrapper"
+  ],
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -28,6 +36,14 @@
   },
   "bin": {
     "hugo": "bin/cli.js"
+  },
+  "files": [
+    "bin/cli.js",
+    "lib/*.js",
+    "index.js"
+  ],
+  "engines": {
+    "node": ">=16"
   },
   "dependencies": {
     "@xhmikosr/bin-wrapper": "^12.0.0",
@@ -46,14 +62,6 @@
     "test": "npm run lint && npm run uvu",
     "test:ci": "c8 npm run uvu",
     "postinstall": "node lib/install.js"
-  },
-  "files": [
-    "bin/cli.js",
-    "lib/*.js",
-    "index.js"
-  ],
-  "engines": {
-    "node": ">=16"
   },
   "xo": {
     "space": true,
