@@ -1,13 +1,11 @@
+import { strict as assert } from 'node:assert';
+import { describe, it } from 'node:test';
 import binCheck from '@xhmikosr/bin-check';
-import { suite } from 'uvu';
-import * as assert from 'uvu/assert';
 import hugoPath from '../index.js';
 
-const testSuite = suite('works');
-
-testSuite('should return path to binary and work', async() => {
-  const works = await binCheck(hugoPath, ['version']);
-  assert.is(works, true);
+describe('works', () => {
+  it('should return path to binary and work', async() => {
+    const works = await binCheck(hugoPath, ['version']);
+    assert.equal(works, true);
+  });
 });
-
-testSuite.run();
