@@ -1,6 +1,6 @@
 {
   "name": "hugo-bin",
-  "version": "0.122.3",
+  "version": "0.122.4",
   "hugoVersion": "0.125.4",
   "description": "Binary wrapper for Hugo",
   "repository": {
