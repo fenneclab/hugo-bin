@@ -108,6 +108,9 @@ jobs:
     if: github.repository == 'fenneclab/hugo-bin' && startsWith(github.ref, 'refs/tags/v')
     needs: [lint, test, test-extended]
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
       - name: Clone repository
