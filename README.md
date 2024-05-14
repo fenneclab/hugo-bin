@@ -35,9 +35,6 @@ execFile(hugoPath, ['version'], (error, stdout) => {
 #### Unix
 
 ```sh
-# older npm
-$(npm bin)/hugo --help
-# newer npm (v9+)
 npm exec hugo help
 npm run create -- post/my-new-post.md # see below 'npm run-script'
 ```
@@ -45,9 +42,6 @@ npm run create -- post/my-new-post.md # see below 'npm run-script'
 #### Windows
 
 ```bat
-rem older npm
-for /f "delims=" %F in ('npm bin') do call "%F\hugo" help
-rem newer npm (v9+)
 npm exec hugo help
 rem see below 'npm run-script'
 npm run create -- post/my-new-post.md
