@@ -42,7 +42,7 @@
     "test": "eslint . && mocha"
   },
   "engines": {
-    "node": ">=14.14"
+    "node": ">=16.14"
   },
   "keywords": [
     "hugo",

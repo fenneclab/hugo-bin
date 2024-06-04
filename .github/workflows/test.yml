@@ -19,7 +19,6 @@ jobs:
         - 20
         - 18
         - 16
-        - 14
       fail-fast: false
     runs-on: ${{ matrix.os }}
     name: Node ${{ matrix.node }} on ${{ matrix.os }}
@@ -28,19 +27,17 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node }}
-    - run: yarn install --frozen-lockfile
+    - uses: pnpm/action-setup@v4
+      with:
+        version: 8
+        run_install: false
+    - run: pnpm install --frozen-lockfile
       env:
         DEBUG: careful-downloader
         DEBUG_HIDE_DATE: 1
         DEBUG_COLORS: 0
-    - run: yarn audit
+    - run: pnpm audit --prod
       continue-on-error: true
-    - run: yarn test
-    - name: Checkout gohugoio/hugoDocs
-      uses: actions/checkout@v4
-      with:
-        repository: gohugoio/hugoDocs
-        path: docs/
-        fetch-depth: 1
-    - name: Build docs
-      run: node lib/cli.js --source docs/ --minify --enableGitInfo --logLevel info
+    - run: pnpm run test
+    - run: node lib/cli.js new site mysite
+    - run: node lib/cli.js --source mysite/ --minify --enableGitInfo --logLevel info

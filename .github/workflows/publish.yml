@@ -15,7 +15,11 @@ jobs:
       with:
         node-version: 20
         registry-url: https://registry.npmjs.org/
-    - run: yarn install --frozen-lockfile
-    - run: yarn publish
+    - uses: pnpm/action-setup@v4
+      with:
+        version: 8
+        run_install: false
+    - run: pnpm install --frozen-lockfile
+    - run: pnpm publish --no-git-checks
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
