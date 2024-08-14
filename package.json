@@ -86,7 +86,6 @@
         "error",
         "always"
       ],
-      "promise/prefer-await-to-then": "off",
       "space-before-function-paren": [
         "error",
         "never"
