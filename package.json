@@ -1,7 +1,7 @@
 {
   "name": "hugo-bin",
-  "version": "0.123.0",
-  "hugoVersion": "0.126.0",
+  "version": "0.130.1",
+  "hugoVersion": "0.133.1",
   "description": "Binary wrapper for Hugo",
   "repository": {
     "type": "git",
@@ -51,9 +51,9 @@
   },
   "devDependencies": {
     "@xhmikosr/bin-check": "^7.0.3",
-    "c8": "^9.1.0",
+    "c8": "^10.1.2",
     "uvu": "^0.5.6",
-    "xo": "^0.58.0"
+    "xo": "^0.59.3"
   },
   "scripts": {
     "lint": "xo",
@@ -86,6 +86,7 @@
         "error",
         "always"
       ],
+      "promise/prefer-await-to-then": "off",
       "space-before-function-paren": [
         "error",
         "never"
