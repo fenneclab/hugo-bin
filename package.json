@@ -1,7 +1,7 @@
 {
   "name": "hugo-bin",
-  "version": "0.130.1",
-  "hugoVersion": "0.133.1",
+  "version": "0.131.1",
+  "hugoVersion": "0.134.1",
   "description": "Binary wrapper for Hugo",
   "repository": {
     "type": "git",
@@ -86,7 +86,6 @@
         "error",
         "always"
       ],
-      "promise/prefer-await-to-then": "off",
       "space-before-function-paren": [
         "error",
         "never"
