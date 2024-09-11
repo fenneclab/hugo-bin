@@ -12,7 +12,6 @@ on:
 env:
   FORCE_COLOR: 2
   NODE_LTS: 20 # used for linting and publish
-  NODE_DEBUG: hugo-bin
 
 permissions:
   contents: read
@@ -66,6 +65,8 @@ jobs:
           cache: npm
 
       - name: Install npm dependencies
+        env:
+          NODE_DEBUG: hugo-bin
         run: npm ci
 
       - name: Print hugo version
