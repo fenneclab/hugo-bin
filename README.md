@@ -63,6 +63,9 @@ See the [Hugo Documentation](https://gohugo.io/) for more information.
 
 ## Installation options
 
+> [!NOTE]
+> You have to run `npm install hugo-bin` to reinstall `hugo-bin` itself if you change any of these options.
+
 hugo-bin supports options to change the variation of Hugo binaries, to overwrite the download repository and the Hugo version.
 
 Each option can be configured in one of the following ways:
@@ -106,8 +109,6 @@ set HUGO_BIN_BUILD_TAGS=extended
 set HUGO_BIN_DOWNLOAD_REPO=https://some.example.com/artifactory/github-releases
 set HUGO_BIN_HUGO_VERSION=0.124.1
 ```
-
-**Note that you have to run `npm install hugo-bin` to re-install hugo-bin itself, if you change any of these options.**
 
 ### Options
 
