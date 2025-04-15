@@ -90,7 +90,6 @@
         "error",
         "never"
       ],
-      "unicorn/prefer-top-level-await": "off",
       "unicorn/prevent-abbreviations": "off"
     }
   }
