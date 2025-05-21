@@ -9,6 +9,8 @@ jobs:
   npm:
     name: Publish to NPM
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -22,3 +24,4 @@ jobs:
     - run: pnpm publish --no-git-checks
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_CONFIG_PROVENANCE: true
