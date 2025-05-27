@@ -53,7 +53,7 @@
     "@xhmikosr/bin-check": "^7.0.3",
     "c8": "^10.1.3",
     "uvu": "^0.5.6",
-    "xo": "^0.60.0"
+    "xo": "^1.0.0"
   },
   "scripts": {
     "lint": "xo",
@@ -66,6 +66,18 @@
   "xo": {
     "space": true,
     "rules": {
+      "@stylistic/comma-dangle": [
+        "error",
+        "never"
+      ],
+      "@stylistic/object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "@stylistic/space-before-function-paren": [
+        "error",
+        "never"
+      ],
       "arrow-body-style": "off",
       "camelcase": [
         "error",
@@ -74,21 +86,9 @@
         }
       ],
       "capitalized-comments": "off",
-      "comma-dangle": [
-        "error",
-        "never"
-      ],
       "operator-linebreak": [
         "error",
         "after"
-      ],
-      "object-curly-spacing": [
-        "error",
-        "always"
-      ],
-      "space-before-function-paren": [
-        "error",
-        "never"
       ],
       "unicorn/prefer-top-level-await": "off",
       "unicorn/prevent-abbreviations": "off"
