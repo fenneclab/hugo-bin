@@ -46,7 +46,7 @@
     "node": ">=18"
   },
   "dependencies": {
-    "@xhmikosr/bin-wrapper": "^13.0.5",
+    "@xhmikosr/bin-wrapper": "^13.0.6",
     "package-config": "^5.0.0"
   },
   "devDependencies": {
