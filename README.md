@@ -1,4 +1,4 @@
-# hugo-bin [![npm version](https://img.shields.io/npm/v/hugo-bin?logo=npm&logoColor=fff)](https://www.npmjs.com/package/hugo-bin) [![Build Status](https://img.shields.io/github/actions/workflow/status/fenneclab/hugo-bin/ci.yml?branch=main&label=CI&logo=github)](https://github.com/fenneclab/hugo-bin/actions?query=workflow%3ACI+branch%3Amain)
+# hugo-bin [![npm version](https://img.shields.io/npm/v/hugo-bin?logo=npm&logoColor=fff)](https://www.npmjs.com/package/hugo-bin) [![Build Status](https://img.shields.io/github/actions/workflow/status/fenneclab/hugo-bin/ci.yml?branch=main&label=CI&logo=github)](https://github.com/fenneclab/hugo-bin/actions/workflows/ci.yml?query=branch%3Amain)
 
 > Binary wrapper for [Hugo](https://github.com/gohugoio/hugo)
 
