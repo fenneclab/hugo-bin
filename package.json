@@ -46,11 +46,11 @@
     "node": ">=18"
   },
   "dependencies": {
-    "@xhmikosr/bin-wrapper": "^13.2.0",
+    "@xhmikosr/bin-wrapper": "github:XhmikosR/bin-wrapper#xmr/deps",
     "package-config": "^5.0.0"
   },
   "devDependencies": {
-    "@xhmikosr/bin-check": "^7.1.0",
+    "@xhmikosr/bin-check": "github:XhmikosR/bin-check#xmr/tinyexec",
     "c8": "^10.1.3",
     "uvu": "^0.5.6",
     "xo": "^1.2.1"
