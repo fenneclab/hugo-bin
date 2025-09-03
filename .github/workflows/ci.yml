@@ -109,6 +109,40 @@ jobs:
       - name: Run tests
         run: npm run test:ci
 
+  test-extended-withdeploy:
+    name: Node on ${{ matrix.os }} (Extended)
+    runs-on: ${{ matrix.os }}
+    env:
+      HUGO_BIN_BUILD_TAGS: extended,withdeploy
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_LTS }}
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+        env:
+          NODE_DEBUG: hugo-bin
+
+      - name: Print hugo version
+        run: npm exec hugo version
+
+      - name: Run tests
+        run: npm run test:ci
+
   publish:
     name: Publish on npm
     if: github.repository == 'fenneclab/hugo-bin' && startsWith(github.ref, 'refs/tags/v')
