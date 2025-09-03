@@ -11,7 +11,7 @@ on:
 
 env:
   FORCE_COLOR: 2
-  NODE_LTS: 22 # used for linting and publish
+  NODE_LTS: 24 # used for linting and publish
 
 permissions:
   contents: read
@@ -51,6 +51,7 @@ jobs:
           - 18
           - 20
           - 22
+          - 24
 
     steps:
       - name: Clone repository
