@@ -3,6 +3,7 @@
 > Binary wrapper for [Hugo](https://github.com/gohugoio/hugo)
 
 - hugo-bin supports the [Extended Hugo version](https://github.com/gohugoio/hugo/releases/tag/v0.43)
+- hugo-bin supports the [withdeploy Hugo version](https://github.com/gohugoio/hugo/releases/tag/v0.137.0)
 - For usage within corporate networks or behind corporate proxies, the download repository can be overwritten
 
 See [Installation options](#installation-options) for more details.
@@ -118,6 +119,7 @@ set HUGO_BIN_HUGO_VERSION=0.124.1
 - Default: `""`
 
 Set `buildTags` to `extended` to download the [extended version](https://github.com/gohugoio/hugo/releases/tag/v0.43) binary.
+Set `buildTags` to `extended,withdeploy` to download the [withdeploy version](https://github.com/gohugoio/hugo/releases/tag/v0.137.0) binary.`
 
 If this is set to `extended` but it's not available for the user's platform, then the normal version will be downloaded instead.
 
