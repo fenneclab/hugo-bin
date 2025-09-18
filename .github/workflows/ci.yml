@@ -9,12 +9,12 @@ on:
   pull_request:
   workflow_dispatch:
 
-env:
-  FORCE_COLOR: 2
-  NODE_LTS: 24 # used for linting and publish
-
 permissions:
   contents: read
+
+env:
+  FORCE_COLOR: 2
+  NODE_LTS: 24 # used for linting and publishing
 
 jobs:
   lint:
@@ -79,6 +79,7 @@ jobs:
   test-extended:
     name: Node on ${{ matrix.os }} (Extended)
     runs-on: ${{ matrix.os }}
+
     env:
       HUGO_BIN_BUILD_TAGS: extended
 
