@@ -119,7 +119,7 @@ set HUGO_BIN_HUGO_VERSION=0.124.1
 - Default: `""`
 
 Set `buildTags` to `extended` to download the [extended version](https://github.com/gohugoio/hugo/releases/tag/v0.43) binary.
-Set `buildTags` to `extended,withdeploy` to download the [withdeploy version](https://github.com/gohugoio/hugo/releases/tag/v0.137.0) binary.`
+Set `buildTags` to `extended,withdeploy` to download the [withdeploy version](https://github.com/gohugoio/hugo/releases/tag/v0.137.0) binary.
 
 If this is set to `extended` but it's not available for the user's platform, then the normal version will be downloaded instead.
 
