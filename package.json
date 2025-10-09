@@ -74,6 +74,10 @@
         "error",
         "always"
       ],
+      "@stylistic/operator-linebreak": [
+        "error",
+        "after"
+      ],
       "@stylistic/space-before-function-paren": [
         "error",
         "never"
@@ -86,10 +90,6 @@
         }
       ],
       "capitalized-comments": "off",
-      "operator-linebreak": [
-        "error",
-        "after"
-      ],
       "unicorn/prefer-top-level-await": "off",
       "unicorn/prevent-abbreviations": "off"
     }
