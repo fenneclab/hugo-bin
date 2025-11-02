@@ -43,7 +43,7 @@
     "index.js"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "dependencies": {
     "@xhmikosr/bin-wrapper": "^13.2.0",
