@@ -11,13 +11,17 @@ it("Hugo exists and runs?", async function () {
 
   const hugoPath = await hugo();
 
-  assert(execFile(hugoPath, ["env"], function (error, stdout) {
-    if (error) {
-      throw error;
-    }
-
-    console.log(stdout);
-  }));
+  // Wrap execFile in a Promise to ensure it completes before the test finishes
+  await new Promise((resolve, reject) => {
+    execFile(hugoPath, ["env"], function (error, stdout) {
+      if (error) {
+        reject(error);
+        return;
+      }
+      console.log(stdout);
+      resolve();
+    });
+  });
 });
 
 it("Hugo doesn't exist, install it instead of throwing an error", async function () {
@@ -32,7 +36,22 @@ it("Hugo doesn't exist, install it instead of throwing an error", async function
   }
 
   // delete binary to ensure it's auto-reinstalled
-  await deleteAsync(path.dirname(getBinPath()), { force: true });
+  // Note: On Windows, we delete the specific file because deleting the directory often causes EPERM/locking issues
+  if (process.platform === "win32") {
+    // Retry logic for Windows EPERM issues
+    const maxRetries = 5;
+    for (let i = 0; i < maxRetries; i++) {
+      try {
+        await deleteAsync(getBinPath(), { force: true });
+        break;
+      } catch (err) {
+        if (i === maxRetries - 1) throw err;
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      }
+    }
+  } else {
+    await deleteAsync(path.dirname(getBinPath()), { force: true });
+  }
 
   const hugoPath = await hugo();
 

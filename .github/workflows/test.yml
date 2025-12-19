@@ -28,10 +28,6 @@ jobs:
       with:
         node-version: ${{ matrix.node }}
     - run: npm ci
-      env:
-        DEBUG: careful-downloader
-        DEBUG_HIDE_DATE: 1
-        DEBUG_COLORS: 0
     - run: npm audit --omit=dev
       continue-on-error: true
     - run: npm run test
