@@ -30,15 +30,17 @@
   "exports": "./index.js",
   "types": "./index.d.ts",
   "dependencies": {
-    "careful-downloader": "^3.0.0",
-    "log-symbols": "^5.1.0",
-    "read-pkg-up": "^9.1.0"
+    "adm-zip": "^0.5.16",
+    "log-symbols": "^7.0.1",
+    "read-package-up": "^11.0.0",
+    "tar": "^7.5.2"
   },
   "devDependencies": {
-    "@jakejarvis/eslint-config": "*",
-    "del": "^7.1.0",
-    "eslint": "^8.56.0",
-    "mocha": "^10.3.0"
+    "@types/adm-zip": "^0.5.7",
+    "del": "^8.0.1",
+    "eslint": "^9.39.2",
+    "globals": "^16.5.0",
+    "mocha": "^11.7.5"
   },
   "scripts": {
     "postinstall": "node postinstall.js",
@@ -65,20 +67,5 @@
     "frontmatter",
     "go",
     "golang"
-  ],
-  "eslintConfig": {
-    "extends": "@jakejarvis/eslint-config",
-    "parserOptions": {
-      "ecmaVersion": 2020,
-      "sourceType": "module"
-    },
-    "env": {
-      "node": true,
-      "es6": true
-    },
-    "ignorePatterns": [
-      "vendor/**",
-      "*.d.ts"
-    ]
-  }
+  ]
 }

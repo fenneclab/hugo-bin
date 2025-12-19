@@ -1,4 +1,4 @@
-/* eslint-env node, mocha */
+/* global it, assert -- Globals defined by Mocha */
 import path from "path";
 import { execFile } from "child_process";
 import assert from "assert";
@@ -12,8 +12,9 @@ it("Hugo exists and runs?", async function () {
   const hugoPath = await hugo();
 
   assert(execFile(hugoPath, ["env"], function (error, stdout) {
-    if (error)
+    if (error) {
       throw error;
+    }
 
     console.log(stdout);
   }));
@@ -22,14 +23,23 @@ it("Hugo exists and runs?", async function () {
 it("Hugo doesn't exist, install it instead of throwing an error", async function () {
   this.timeout(30000); // increase timeout to an excessive 30 seconds for CI
 
+  // On macOS, the binary is installed to /usr/local/bin, which we can't/shouldn't delete.
+  // We also can't easily test the reinstall flow without sudo.
+  if (process.platform === "darwin") {
+    console.log("Skipping reinstall test on macOS (requires sudo/system modification)");
+    this.skip();
+    return;
+  }
+
   // delete binary to ensure it's auto-reinstalled
-  await deleteAsync(path.dirname(getBinPath()));
+  await deleteAsync(path.dirname(getBinPath()), { force: true });
 
   const hugoPath = await hugo();
 
   assert(execFile(hugoPath, ["version"], function (error, stdout) {
-    if (error)
+    if (error) {
       throw error;
+    }
 
     console.log(stdout);
   }));
