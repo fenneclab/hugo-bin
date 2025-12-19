@@ -16,27 +16,24 @@ jobs:
         - macos-latest
         - windows-latest
         node:
+        - 24
         - 22
         - 20
-        - 18
       fail-fast: false
     runs-on: ${{ matrix.os }}
     name: Node ${{ matrix.node }} on ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
+    - uses: actions/checkout@v6
+    - uses: actions/setup-node@v6
       with:
         node-version: ${{ matrix.node }}
-    - uses: pnpm/action-setup@v4
-      with:
-        run_install: false
-    - run: pnpm install --frozen-lockfile
+    - run: npm ci
       env:
         DEBUG: careful-downloader
         DEBUG_HIDE_DATE: 1
         DEBUG_COLORS: 0
-    - run: pnpm audit --prod
+    - run: npm audit --omit=dev
       continue-on-error: true
-    - run: pnpm run test
+    - run: npm run test
     - run: node lib/cli.js new site mysite
     - run: node lib/cli.js --source mysite/ --minify --enableGitInfo --logLevel info
