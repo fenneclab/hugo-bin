@@ -1,3 +1,6 @@
 node_modules/
-vendor/
-npm-debug.log
+npm-debug.log*
+*.tsbuildinfo
+dist/
+bin/
+mysite/

@@ -1,8 +1,8 @@
 import logSymbols from "log-symbols";
-import install from "./lib/install.js";
-import { getBinPath, doesBinExist } from "./lib/utils.js";
+import install from "./lib/install";
+import { doesBinExist, getBinPath } from "./lib/utils";
 
-const hugo = async () => {
+const hugo = async (): Promise<string> => {
   const bin = getBinPath();
 
   // A fix for fleeting ENOENT errors, where Hugo seems to disappear. For now,

@@ -19,6 +19,7 @@ jobs:
         - 24
         - 22
         - 20
+        - 18
       fail-fast: false
     runs-on: ${{ matrix.os }}
     name: Node ${{ matrix.node }} on ${{ matrix.os }}
@@ -27,9 +28,15 @@ jobs:
     - uses: actions/setup-node@v6
       with:
         node-version: ${{ matrix.node }}
-    - run: npm ci
-    - run: npm audit --omit=dev
-      continue-on-error: true
-    - run: npm run test
-    - run: node lib/cli.js new site mysite
-    - run: node lib/cli.js --source mysite/ --minify --enableGitInfo --logLevel info
+    - name: Install
+      run: npm ci
+    - name: Lint and check types
+      run: npm run lint && npm run typecheck
+    - name: Build
+      run: npm run build
+    - name: Print Hugo version
+      run: ./dist/cli.mjs version
+    - name: Create new site
+      run: ./dist/cli.mjs new site mysite
+    - name: Build site
+      run: ./dist/cli.mjs --source mysite/ --minify --enableGitInfo --logLevel info
