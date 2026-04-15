@@ -46,14 +46,14 @@
     "node": ">=20"
   },
   "dependencies": {
-    "@xhmikosr/bin-wrapper": "^14.2.2",
+    "@xhmikosr/bin-wrapper": "^14.2.3",
     "package-config": "^5.0.0"
   },
   "devDependencies": {
     "@xhmikosr/bin-check": "^8.2.1",
     "c8": "^11.0.0",
     "uvu": "^0.5.6",
-    "xo": "^1.2.3"
+    "xo": "^2.0.2"
   },
   "scripts": {
     "lint": "xo",
