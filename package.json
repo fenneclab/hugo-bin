@@ -62,36 +62,5 @@
     "test": "npm run lint && npm run uvu",
     "test:ci": "c8 npm run uvu",
     "postinstall": "node lib/install.js"
-  },
-  "xo": {
-    "space": true,
-    "rules": {
-      "@stylistic/comma-dangle": [
-        "error",
-        "never"
-      ],
-      "@stylistic/object-curly-spacing": [
-        "error",
-        "always"
-      ],
-      "@stylistic/operator-linebreak": [
-        "error",
-        "after"
-      ],
-      "@stylistic/space-before-function-paren": [
-        "error",
-        "never"
-      ],
-      "arrow-body-style": "off",
-      "camelcase": [
-        "error",
-        {
-          "properties": "never"
-        }
-      ],
-      "capitalized-comments": "off",
-      "unicorn/prefer-top-level-await": "off",
-      "unicorn/prevent-abbreviations": "off"
-    }
   }
 }
