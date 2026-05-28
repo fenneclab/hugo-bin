@@ -5,12 +5,16 @@ on:
     branches:
       - "main"
     tags:
-      - "v**"
+      - "v*"
   pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
   FORCE_COLOR: 2
@@ -20,6 +24,7 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Clone repository
@@ -39,9 +44,15 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Run actionlint
+        uses: raven-actions/actionlint@205b530c5d9fa8f44ae9ed59f341a0db994aa6f8 # v2.1.2
+        with:
+          fail-on-error: true
+
   test:
     name: Node ${{ matrix.node }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
 
     strategy:
       fail-fast: false
@@ -78,6 +89,7 @@ jobs:
   test-extended:
     name: Node on ${{ matrix.os }} (Extended)
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
 
     env:
       HUGO_BIN_BUILD_TAGS: extended
@@ -113,6 +125,7 @@ jobs:
   test-extended-withdeploy:
     name: Node on ${{ matrix.os }} (WithDeploy)
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
     env:
       HUGO_BIN_BUILD_TAGS: extended,withdeploy
 
@@ -149,6 +162,7 @@ jobs:
     if: github.repository == 'fenneclab/hugo-bin' && startsWith(github.ref, 'refs/tags/v')
     needs: [lint, test, test-extended, test-extended-withdeploy]
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       id-token: write
       contents: read
