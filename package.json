@@ -46,7 +46,7 @@
     "node": ">=20"
   },
   "dependencies": {
-    "@xhmikosr/bin-wrapper": "^14.2.4",
+    "@xhmikosr/bin-wrapper": "github:XhmikosR/bin-wrapper#xmr/decompress-pkg",
     "package-config": "^5.0.0"
   },
   "devDependencies": {
