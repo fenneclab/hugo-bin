@@ -11,14 +11,24 @@ on:
     - cron: "0 0 * * 0"
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   analyze:
-    name: Analyze
+    name: Analyze (${{ matrix.language }})
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       actions: read
       contents: read
       security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [javascript, actions]
 
     steps:
       - name: Checkout repository
@@ -29,13 +39,10 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@95e58e9a2cdfd71adc6e0353d5c52f41a045d225 # v4.35.2
         with:
-          languages: "javascript"
+          languages: ${{ matrix.language }}
           queries: +security-and-quality
-
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@95e58e9a2cdfd71adc6e0353d5c52f41a045d225 # v4.35.2
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@95e58e9a2cdfd71adc6e0353d5c52f41a045d225 # v4.35.2
         with:
-          category: "/language:javascript"
+          category: "/language:${{ matrix.language }}"
