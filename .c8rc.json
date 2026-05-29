@@ -4,5 +4,10 @@
     "html",
     "lcovonly",
     "text"
+  ],
+  "exclude": [
+    "coverage/",
+    "test/",
+    "xo.config.js"
   ]
 }
