@@ -37,6 +37,7 @@ export default [
         'multi-line'
       ],
       'prefer-template': 'error',
+      'require-unicode-regexp': 'off',
       'unicorn/prefer-top-level-await': 'off',
       'unicorn/prevent-abbreviations': 'off'
     }
