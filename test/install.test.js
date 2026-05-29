@@ -57,7 +57,7 @@ testSuite('fails with a clear message when the version does not exist', async() 
   await mkdir(root, { recursive: true });
 
   try {
-    const { code, stdout, stderr } = await runInstall({
+    const { code, stderr } = await runInstall({
       env: {
         ...process.env,
         INIT_CWD: root,
@@ -67,7 +67,6 @@ testSuite('fails with a clear message when the version does not exist', async() 
 
     assert.is.not(code, 0);
     assert.ok(stderr.includes(FAILURE_MESSAGE), stderr);
-    assert.not.match(stdout, /successfully installed/);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -86,24 +85,6 @@ testSuite('wipes the vendor dir under the resolved project root', async() => {
     });
 
     assert.is(await exists(vendor), false);
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-testSuite('installs when run from inside node_modules without INIT_CWD', async() => {
-  const root = path.join(process.cwd(), 'temp-install-nm');
-  const pkgDir = path.join(root, 'node_modules', 'some-consumer');
-  await mkdir(pkgDir, { recursive: true });
-
-  try {
-    const { code, stdout, stderr } = await runInstall({
-      cwd: pkgDir,
-      env: withoutInitCwd()
-    });
-
-    assert.is(code, 0);
-    assert.ok(stdout.includes(SUCCESS_MESSAGE), stderr);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

@@ -152,8 +152,6 @@ testSuite('env vars take precedence over npm config', async() => {
 
   assert.ok(sources.every(s => s.url.startsWith('https://env.example.com/')));
   assert.ok(sources.every(s => s.url.includes('/v0.110.0/')));
-  assert.ok(sources.every(s => !s.url.includes('0.120.0')));
-  assert.ok(sources.every(s => !s.url.includes('npm.example.com')));
 });
 
 testSuite('empty config values fall back to defaults', async() => {

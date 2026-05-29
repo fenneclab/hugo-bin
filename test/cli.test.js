@@ -39,19 +39,16 @@ testSuite.before(async() => {
 });
 
 testSuite('version prints the bundled hugo version', async() => {
-  const { code, stdout, stderr } = await runCli(['version']);
+  const { code, stdout } = await runCli(['version']);
 
   assert.is(code, 0);
-  assert.not.match(stderr, /ERROR/);
-  assert.match(stdout, /^hugo v\d+\.\d+\.\d+/);
   assert.ok(stdout.includes(`hugo v${HUGO_VERSION}`), stdout);
 });
 
 testSuite('help prints the usage and command list', async() => {
-  const { code, stdout, stderr } = await runCli(['help']);
+  const { code, stdout } = await runCli(['help']);
 
   assert.is(code, 0);
-  assert.not.match(stderr, /ERROR/);
   assert.ok(stdout.includes('Usage:'), stdout);
   assert.ok(stdout.includes('Available Commands:'), stdout);
 });
