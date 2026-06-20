@@ -4,8 +4,7 @@ import path from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
-import { suite } from 'uvu';
-import * as assert from 'uvu/assert';
+import { describe, expect, it } from 'vitest';
 
 const execFileAsync = promisify(execFile);
 const installPath = fileURLToPath(new URL('../lib/install.js', import.meta.url));
@@ -50,61 +49,59 @@ async function exists(target) {
   }
 }
 
-const testSuite = suite('install');
+describe('install', () => {
+  it('fails with a clear message when the version does not exist', async() => {
+    const root = path.join(process.cwd(), 'temp-install-fail');
+    await mkdir(root, { recursive: true });
 
-testSuite('fails with a clear message when the version does not exist', async() => {
-  const root = path.join(process.cwd(), 'temp-install-fail');
-  await mkdir(root, { recursive: true });
+    try {
+      const { code, stderr } = await runInstall({
+        env: {
+          ...process.env,
+          INIT_CWD: root,
+          HUGO_BIN_HUGO_VERSION: MISSING_VERSION
+        }
+      });
 
-  try {
-    const { code, stderr } = await runInstall({
-      env: {
-        ...process.env,
-        INIT_CWD: root,
-        HUGO_BIN_HUGO_VERSION: MISSING_VERSION
-      }
-    });
+      expect(code).not.toBe(0);
+      expect(stderr).toContain(FAILURE_MESSAGE);
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
 
-    assert.is.not(code, 0);
-    assert.ok(stderr.includes(FAILURE_MESSAGE), stderr);
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
+  it('wipes the vendor dir under the resolved project root', async() => {
+    // No INIT_CWD and not under node_modules, so the root falls back to cwd.
+    const root = path.join(process.cwd(), 'temp-install-cwd');
+    const vendor = path.join(root, 'vendor');
+    await mkdir(vendor, { recursive: true });
+
+    try {
+      await runInstall({
+        cwd: root,
+        env: withoutInitCwd({ HUGO_BIN_HUGO_VERSION: MISSING_VERSION })
+      });
+
+      expect(await exists(vendor)).toBe(false);
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+
+  // throwaway INIT_CWD so install doesn't wipe the real vendor; the binary is already there
+  it('installs successfully with INIT_CWD set', async() => {
+    const root = path.join(process.cwd(), 'temp-install-initcwd');
+    await mkdir(root, { recursive: true });
+
+    try {
+      const { code, stdout } = await runInstall({
+        env: { ...process.env, INIT_CWD: root }
+      });
+
+      expect(code).toBe(0);
+      expect(stdout).toContain(SUCCESS_MESSAGE);
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
 });
-
-testSuite('wipes the vendor dir under the resolved project root', async() => {
-  // No INIT_CWD and not under node_modules, so the root falls back to cwd.
-  const root = path.join(process.cwd(), 'temp-install-cwd');
-  const vendor = path.join(root, 'vendor');
-  await mkdir(vendor, { recursive: true });
-
-  try {
-    await runInstall({
-      cwd: root,
-      env: withoutInitCwd({ HUGO_BIN_HUGO_VERSION: MISSING_VERSION })
-    });
-
-    assert.is(await exists(vendor), false);
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-// throwaway INIT_CWD so install doesn't wipe the real vendor; the binary is already there
-testSuite('installs successfully with INIT_CWD set', async() => {
-  const root = path.join(process.cwd(), 'temp-install-initcwd');
-  await mkdir(root, { recursive: true });
-
-  try {
-    const { code, stdout, stderr } = await runInstall({
-      env: { ...process.env, INIT_CWD: root }
-    });
-
-    assert.is(code, 0);
-    assert.ok(stdout.includes(SUCCESS_MESSAGE), stderr);
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-testSuite.run();

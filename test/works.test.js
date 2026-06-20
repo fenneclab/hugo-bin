@@ -1,21 +1,23 @@
 import process from 'node:process';
 import binCheck from '@xhmikosr/bin-check';
-import { suite } from 'uvu';
-import * as assert from 'uvu/assert';
+import {
+  beforeAll,
+  describe,
+  expect,
+  it
+} from 'vitest';
 import hugoBin from '../lib/index.js';
 import hugoPath from '../index.js';
 
-const testSuite = suite('works');
+describe('works', () => {
+  beforeAll(async() => {
+    // download the binary if it's not there yet
+    const bin = await hugoBin(process.cwd());
+    await bin.run(['version']);
+  });
 
-testSuite.before(async() => {
-  // download the binary if it's not there yet
-  const bin = await hugoBin(process.cwd());
-  await bin.run(['version']);
+  it('should return path to binary and work', async() => {
+    const works = await binCheck(hugoPath, ['version']);
+    expect(works).toBe(true);
+  });
 });
-
-testSuite('should return path to binary and work', async() => {
-  const works = await binCheck(hugoPath, ['version']);
-  assert.is(works, true);
-});
-
-testSuite.run();
