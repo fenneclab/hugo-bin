@@ -43,17 +43,17 @@
     "index.js"
   ],
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "dependencies": {
     "@xhmikosr/bin-wrapper": "^14.4.0",
     "package-config": "^5.0.0"
   },
   "devDependencies": {
-    "@vitest/coverage-v8": "^4.1.9",
-    "@xhmikosr/bin-check": "^8.2.1",
-    "vitest": "^4.1.9",
-    "xo": "^2.0.2"
+    "@vitest/coverage-v8": "^4.1.10",
+    "@xhmikosr/bin-check": "^8.2.2",
+    "vitest": "^4.1.10",
+    "xo": "^3.0.2"
   },
   "scripts": {
     "lint": "xo",
@@ -62,5 +62,8 @@
     "test": "npm run lint && vitest run",
     "test:ci": "vitest run --coverage",
     "postinstall": "node lib/install.js"
+  },
+  "allowScripts": {
+    "unrs-resolver@1.12.2": true
   }
 }
