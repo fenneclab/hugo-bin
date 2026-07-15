@@ -1,5 +1,4 @@
 import { execFile } from 'node:child_process';
-import fs from 'node:fs/promises';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
@@ -10,11 +9,11 @@ import {
   it
 } from 'vitest';
 import hugoBin from '../lib/index.js';
+import pkg from '../package.json' with { type: 'json' };
 
 const execFileAsync = promisify(execFile);
 const cliPath = fileURLToPath(new URL('../bin/cli.js', import.meta.url));
-const pkg = new URL('../package.json', import.meta.url);
-const { hugoVersion: HUGO_VERSION } = JSON.parse(await fs.readFile(pkg, 'utf8'));
+const { hugoVersion: HUGO_VERSION } = pkg;
 
 async function runCli(args) {
   try {

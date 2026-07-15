@@ -1,4 +1,3 @@
-import fs from 'node:fs/promises';
 import process from 'node:process';
 import {
   beforeEach,
@@ -7,9 +6,9 @@ import {
   it
 } from 'vitest';
 import hugoBin from '../lib/index.js';
+import pkg from '../package.json' with { type: 'json' };
 
-const pkg = new URL('../package.json', import.meta.url);
-const { hugoVersion: HUGO_VERSION } = JSON.parse(await fs.readFile(pkg, 'utf8'));
+const { hugoVersion: HUGO_VERSION } = pkg;
 
 const environmentVariables = [
   'HUGO_BIN_BUILD_TAGS',
