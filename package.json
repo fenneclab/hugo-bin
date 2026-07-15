@@ -57,7 +57,7 @@
     "@xhmikosr/bin-check": "^8.2.2",
     "semver": "^7.8.5",
     "vitest": "^4.1.10",
-    "xo": "^3.0.2"
+    "xo": "^4.0.0"
   },
   "scripts": {
     "lint": "xo",
