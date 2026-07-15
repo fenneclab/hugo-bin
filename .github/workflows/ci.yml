@@ -154,6 +154,8 @@ jobs:
 
   publish:
     name: Publish on npm
+    # Workflow filename (ci.yml) and repo (fenneclab/hugo-bin) are matched against
+    # npm's Trusted Publisher config for this package - renaming either breaks OIDC auth.
     if: github.repository == 'fenneclab/hugo-bin' && startsWith(github.ref, 'refs/tags/v')
     needs: [lint, test, test-extended, test-extended-withdeploy]
     runs-on: ubuntu-latest
@@ -175,7 +177,20 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           package-manager-cache: false
 
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Determine npm dist-tag
+        id: npm-tag
+        run: |
+          if node -e "process.exit(require('semver').prerelease(require('./package.json').version) ? 0 : 1)"; then
+            echo "tag=next" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=latest" >> "$GITHUB_OUTPUT"
+          fi
+          package-manager-cache: false
+
       - name: Publish on npm
-        run: npm publish --provenance --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TAG: ${{ steps.npm-tag.outputs.tag }}
+        run: npm publish --provenance --access public --tag "$NPM_TAG"
