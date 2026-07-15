@@ -159,7 +159,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
-      id-token: write
+      id-token: write # OIDC token for npm trusted publishing (provenance)
       contents: read
 
     steps:
@@ -173,6 +173,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_LTS }}
           registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
 
       - name: Publish on npm
         run: npm publish --provenance --access public
