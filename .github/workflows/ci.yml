@@ -188,7 +188,6 @@ jobs:
           else
             echo "tag=latest" >> "$GITHUB_OUTPUT"
           fi
-          package-manager-cache: false
 
       - name: Publish on npm
         env:
