@@ -182,12 +182,7 @@ jobs:
 
       - name: Determine npm dist-tag
         id: npm-tag
-        run: |
-          if node -e "process.exit(require('semver').prerelease(require('./package.json').version) ? 0 : 1)"; then
-            echo "tag=next" >> "$GITHUB_OUTPUT"
-          else
-            echo "tag=latest" >> "$GITHUB_OUTPUT"
-          fi
+        run: echo "tag=$(npm run --silent npm-tag)" >> "$GITHUB_OUTPUT"
 
       - name: Publish on npm
         env:

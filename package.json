@@ -65,6 +65,7 @@
     "vitest": "vitest",
     "test": "npm run lint && vitest run",
     "test:ci": "vitest run --coverage",
+    "npm-tag": "node scripts/npm-tag.js",
     "postinstall": "node lib/install.js"
   },
   "allowScripts": {
