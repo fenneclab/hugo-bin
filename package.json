@@ -46,7 +46,7 @@
     "node": ">=22.12.0"
   },
   "dependencies": {
-    "@xhmikosr/bin-wrapper": "^14.4.0",
+    "@xhmikosr/bin-wrapper": "^14.5.0",
     "@xhmikosr/decompress-pkg": "^0.1.0",
     "@xhmikosr/decompress-targz": "^9.0.1",
     "@xhmikosr/decompress-unzip": "^8.2.1",
