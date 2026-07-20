@@ -5,6 +5,7 @@
 - hugo-bin supports the [Extended Hugo version](https://github.com/gohugoio/hugo/releases/tag/v0.43)
 - hugo-bin supports the [withdeploy Hugo version](https://github.com/gohugoio/hugo/releases/tag/v0.137.0)
 - For usage within corporate networks or behind corporate proxies, the download repository can be overwritten
+- hugo-bin verifies downloads against Hugo's published checksums
 
 See [Installation options](#installation-options) for more details.
 
