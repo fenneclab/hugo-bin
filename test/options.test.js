@@ -1,9 +1,11 @@
 import process from 'node:process';
 import {
+  afterEach,
   beforeEach,
   describe,
   expect,
-  it
+  it,
+  vi
 } from 'vitest';
 import hugoBin from '../lib/index.js';
 import pkg from '../package.json' with { type: 'json' };
@@ -44,9 +46,27 @@ const TARGETS = [
   { os: 'solaris', arch: 'x64', suffix: '_solaris-amd64.tar.gz' }
 ];
 
-async function getSources() {
-  const lib = await hugoBin(process.cwd());
+async function getSources(options) {
+  const lib = await hugoBin(process.cwd(), options);
   return lib.src();
+}
+
+// splits the sources for the current process into the one(s) actually
+// downloaded on this OS/arch vs every other platform's entries
+async function splitByCurrentPlatform() {
+  const lib = await hugoBin(process.cwd());
+  const resolvedUrls = new Set(lib.resolvedUrls());
+  const fileName = url => new URL(url).pathname.split('/').pop();
+
+  return {
+    current: lib.src().filter(s => resolvedUrls.has(s.url)).map(s => fileName(s.url)),
+    other: lib.src().filter(s => !resolvedUrls.has(s.url)).map(s => fileName(s.url))
+  };
+}
+
+function stubChecksums(fileNames) {
+  const text = fileNames.map(name => `${'a'.repeat(64)}  ${name}`).join('\n');
+  vi.stubGlobal('fetch', vi.fn(async() => ({ ok: true, status: 200, text: async() => text })));
 }
 
 describe('options', () => {
@@ -55,6 +75,10 @@ describe('options', () => {
       // Ensure that the environment is cleaned before next test run
       delete process.env[variable];
     }
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
   });
 
   it('environment is clean before each test', () => {
@@ -173,5 +197,38 @@ describe('options', () => {
     const lib = await hugoBin(process.cwd());
 
     expect(lib.dest()).toContain('vendor');
+  });
+
+  it('without verify, sources have no hash', async() => {
+    const sources = await getSources();
+
+    expect(sources.every(s => s.hash === undefined)).toBe(true);
+  });
+
+  it('verify option adds a matching sha256 hash to every source', async() => {
+    const sources = await getSources({ verify: true });
+
+    expect(sources.length).toBe(TARGETS.length);
+    for (const source of sources) {
+      expect(source.hash).toMatch(/^sha256:[\da-f]{64}$/);
+    }
+  });
+
+  it('verify throws when the current platform artifact has no checksum entry', async() => {
+    const { other } = await splitByCurrentPlatform();
+    stubChecksums(other);
+
+    await expect(hugoBin(process.cwd(), { verify: true })).rejects.toThrow('No checksum found for');
+  });
+
+  it('verify ignores missing checksum entries for other platforms', async() => {
+    const { current } = await splitByCurrentPlatform();
+    stubChecksums(current);
+
+    const lib = await hugoBin(process.cwd(), { verify: true });
+    const resolvedUrls = new Set(lib.resolvedUrls());
+    const resolvedSources = lib.src().filter(s => resolvedUrls.has(s.url));
+
+    expect(resolvedSources.every(s => s.hash === `sha256:${'a'.repeat(64)}`)).toBe(true);
   });
 });
