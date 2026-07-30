@@ -38,6 +38,7 @@ export default [
       ],
       'prefer-template': 'error',
       'require-unicode-regexp': 'off',
+      'unicorn/consistent-boolean-name': 'off',
       'unicorn/prefer-top-level-await': 'off',
       'unicorn/prevent-abbreviations': 'off'
     }
