@@ -65,9 +65,9 @@ See the [Hugo Documentation](https://gohugo.io/) for more information.
 ## Installation options
 
 > [!NOTE]
-> You have to run `npm install hugo-bin` to reinstall `hugo-bin` itself if you change any of these options.
+> You have to run `npm install hugo-bin` to reinstall Hugo itself if you change any of these options.
 
-hugo-bin supports options to change the variation of Hugo binaries, to overwrite the download repository and the Hugo version.
+`hugo-bin` supports options to change the variation of Hugo binaries, to overwrite the download repository and the Hugo version.
 
 Each option can be configured in one of the following ways:
 
@@ -128,7 +128,7 @@ If this is set to `extended` but it's not available for the user's platform, the
 - Type: `string`
 - Default: `"https://github.com"`
 
-Set it to your proxy URL to download the hugo binary from a different download repository.
+Set it to your proxy URL to download the Hugo binary from a different download repository.
 
 #### hugoVersion
 
@@ -136,7 +136,7 @@ Set it to your proxy URL to download the hugo binary from a different download r
 - Default: the version specified in [package.json](package.json)
 
 You can override the Hugo version here. Please note that if any of the URLs have changed upstream, you might not be able to use
-any version and you will probably need to update to a newer hugo-bin version which takes into consideration the new URLs.
+any version and you will probably need to update to a newer `hugo-bin` version which takes into consideration the new URLs.
 
 ## Supported Hugo versions
 
