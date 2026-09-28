@@ -53,11 +53,11 @@
     "package-config": "^5.0.0"
   },
   "devDependencies": {
-    "@vitest/coverage-v8": "^5.0.0",
+    "@vitest/coverage-v8": "^5.0.2",
     "@xhmikosr/bin-check": "^8.2.2",
     "semver": "^7.8.5",
-    "vitest": "^5.0.0",
-    "xo": "^4.0.0"
+    "vitest": "^5.0.2",
+    "xo": "^5.0.1"
   },
   "scripts": {
     "lint": "xo",

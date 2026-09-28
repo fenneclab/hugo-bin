@@ -42,5 +42,17 @@ export default [
       'unicorn/prefer-top-level-await': 'off',
       'unicorn/prevent-abbreviations': 'off'
     }
+  },
+  {
+    files: ['package.json'],
+    rules: {
+      'package-json/consistent-path-prefix': 'off',
+      'package-json/no-install-scripts': 'off',
+      'package-json/no-redundant-files': 'off',
+      'package-json/prefer-shorthand': 'off',
+      'package-json/prefer-side-effects-field': 'off',
+      'package-json/sort-files': 'off',
+      'package-json/sort-properties': 'off'
+    }
   }
 ];
