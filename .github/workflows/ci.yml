@@ -177,8 +177,9 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           package-manager-cache: false
 
+      # don't download and run Hugo in the job with id-token: write
       - name: Install npm dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts
 
       - name: Determine npm dist-tag
         id: npm-tag
