@@ -20,13 +20,17 @@ const environmentVariables = [
 ];
 
 // these always use the normal artifact, never extended/withdeploy
-const FALLBACK_OS = new Set([
-  'dragonflybsd',
-  'freebsd',
-  'netbsd',
-  'openbsd',
-  'solaris'
+const FALLBACK_TARGETS = new Set([
+  'linux/arm',
+  'win32/arm64',
+  'dragonflybsd/x64',
+  'freebsd/x64',
+  'netbsd/x64',
+  'openbsd/x64',
+  'solaris/x64'
 ]);
+
+const isFallback = ({ os, arch }) => FALLBACK_TARGETS.has(`${os}/${arch}`);
 
 // mirrors the target list in lib/index.js
 const TARGETS = [
@@ -101,9 +105,9 @@ describe('options', () => {
     process.env.HUGO_BIN_BUILD_TAGS = 'extended';
     const sources = await getSources();
 
-    for (const { os, url } of sources) {
-      const expected = FALLBACK_OS.has(os) ? `hugo_${HUGO_VERSION}_` : `hugo_extended_${HUGO_VERSION}_`;
-      expect(url).toContain(expected);
+    for (const source of sources) {
+      const expected = isFallback(source) ? `hugo_${HUGO_VERSION}_` : `hugo_extended_${HUGO_VERSION}_`;
+      expect(source.url).toContain(expected);
     }
   });
 
@@ -111,9 +115,9 @@ describe('options', () => {
     process.env.HUGO_BIN_BUILD_TAGS = 'extended,withdeploy';
     const sources = await getSources();
 
-    for (const { os, url } of sources) {
-      const expected = FALLBACK_OS.has(os) ? `hugo_${HUGO_VERSION}_` : `hugo_extended_withdeploy_${HUGO_VERSION}_`;
-      expect(url).toContain(expected);
+    for (const source of sources) {
+      const expected = isFallback(source) ? `hugo_${HUGO_VERSION}_` : `hugo_extended_withdeploy_${HUGO_VERSION}_`;
+      expect(source.url).toContain(expected);
     }
   });
 
@@ -130,7 +134,7 @@ describe('options', () => {
     process.env.HUGO_BIN_BUILD_TAGS = '  Extended , WithDeploy , Other ';
     const sources = await getSources();
 
-    expect(sources.every(s => FALLBACK_OS.has(s.os) || s.url.includes(`hugo_extended_withdeploy_${HUGO_VERSION}_`))).toBe(true);
+    expect(sources.every(s => isFallback(s) || s.url.includes(`hugo_extended_withdeploy_${HUGO_VERSION}_`))).toBe(true);
     expect(sources.every(s => !s.url.includes('other'))).toBe(true);
   });
 
@@ -139,7 +143,7 @@ describe('options', () => {
     process.env.npm_config_hugo_bin_build_tags = 'withdeploy';
     const sources = await getSources();
 
-    expect(sources.every(s => FALLBACK_OS.has(s.os) || s.url.includes(`hugo_extended_withdeploy_${HUGO_VERSION}_`))).toBe(true);
+    expect(sources.every(s => isFallback(s) || s.url.includes(`hugo_extended_withdeploy_${HUGO_VERSION}_`))).toBe(true);
   });
 
   it('env vars take precedence over npm config', async() => {
