@@ -1,4 +1,6 @@
 import { execFile } from 'node:child_process';
+import { cp, rm } from 'node:fs/promises';
+import path from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
@@ -15,9 +17,9 @@ const execFileAsync = promisify(execFile);
 const cliPath = fileURLToPath(new URL('../bin/cli.js', import.meta.url));
 const { hugoVersion: HUGO_VERSION } = pkg;
 
-async function runCli(args) {
+async function runCli(args, cli = cliPath) {
   try {
-    const { stdout, stderr } = await execFileAsync('node', [cliPath, ...args]);
+    const { stdout, stderr } = await execFileAsync('node', [cli, ...args]);
 
     return {
       code: 0,
@@ -60,5 +62,21 @@ describe('cli', () => {
 
     expect(code).toBe(1);
     expect(stderr).toContain('unknown flag: --no-such-flag');
+  });
+
+  it('fails with a clear message when the binary is missing', async() => {
+    // removing the real vendor/ would break the other test files
+    const root = path.join(process.cwd(), 'temp-cli-missing');
+    const copy = name => cp(fileURLToPath(new URL(`../${name}`, import.meta.url)), path.join(root, name), { recursive: true });
+
+    try {
+      await Promise.all(['bin', 'lib', 'index.js', 'package.json'].map(name => copy(name)));
+      const { code, stderr } = await runCli(['version'], path.join(root, 'bin', 'cli.js'));
+
+      expect(code).toBe(1);
+      expect(stderr).toContain('Hugo binary not found');
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
   });
 });

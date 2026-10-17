@@ -14,6 +14,8 @@ See [Installation options](#installation-options) for more details.
 npm install hugo-bin --save-dev
 ```
 
+Hugo is downloaded by hugo-bin's `postinstall` script. If it didn't run (`--ignore-scripts`, or your package manager doesn't allow it), run `npm rebuild hugo-bin`. With npm's `allowScripts`, approve it first with `npm approve-scripts hugo-bin`.
+
 ## Usage
 
 ### API
@@ -64,8 +66,7 @@ See the [Hugo Documentation](https://gohugo.io/) for more information.
 
 ## Installation options
 
-> [!NOTE]
-> You have to run `npm install hugo-bin` to reinstall Hugo itself if you change any of these options.
+> **Note:** If you change any of these options, run `npm rebuild hugo-bin` to download Hugo again.
 
 `hugo-bin` supports options to change the variation of Hugo binaries, to overwrite the download repository and the Hugo version.
 
