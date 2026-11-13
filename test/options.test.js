@@ -101,12 +101,20 @@ describe('options', () => {
     expect(sources.every(s => !s.url.includes('vv122.0'))).toBe(true);
   });
 
-  it('extended tag picks the extended artifact', async() => {
+  it('extended tag is ignored', async() => {
     process.env.HUGO_BIN_BUILD_TAGS = 'extended';
     const sources = await getSources();
 
+    expect(sources.every(s => s.url.includes(`hugo_${HUGO_VERSION}_`))).toBe(true);
+    expect(sources.every(s => !s.url.includes('extended'))).toBe(true);
+  });
+
+  it('withdeploy tag picks the withdeploy artifact', async() => {
+    process.env.HUGO_BIN_BUILD_TAGS = 'withdeploy';
+    const sources = await getSources();
+
     for (const source of sources) {
-      const expected = isFallback(source) ? `hugo_${HUGO_VERSION}_` : `hugo_extended_${HUGO_VERSION}_`;
+      const expected = isFallback(source) ? `hugo_${HUGO_VERSION}_` : `hugo_withdeploy_${HUGO_VERSION}_`;
       expect(source.url).toContain(expected);
     }
   });
@@ -116,34 +124,63 @@ describe('options', () => {
     const sources = await getSources();
 
     for (const source of sources) {
-      const expected = isFallback(source) ? `hugo_${HUGO_VERSION}_` : `hugo_extended_withdeploy_${HUGO_VERSION}_`;
+      const expected = isFallback(source) ? `hugo_${HUGO_VERSION}_` : `hugo_withdeploy_${HUGO_VERSION}_`;
       expect(source.url).toContain(expected);
     }
-  });
 
-  it('withdeploy without extended is ignored', async() => {
-    process.env.HUGO_BIN_BUILD_TAGS = 'withdeploy';
-    const sources = await getSources();
-
-    expect(sources.every(s => s.url.includes(`hugo_${HUGO_VERSION}_`))).toBe(true);
     expect(sources.every(s => !s.url.includes('extended'))).toBe(true);
-    expect(sources.every(s => !s.url.includes('withdeploy'))).toBe(true);
   });
 
   it('build tags are trimmed, lowercased and unknown ones dropped', async() => {
     process.env.HUGO_BIN_BUILD_TAGS = '  Extended , WithDeploy , Other ';
     const sources = await getSources();
 
-    expect(sources.every(s => isFallback(s) || s.url.includes(`hugo_extended_withdeploy_${HUGO_VERSION}_`))).toBe(true);
+    expect(sources.every(s => isFallback(s) || s.url.includes(`hugo_withdeploy_${HUGO_VERSION}_`))).toBe(true);
     expect(sources.every(s => !s.url.includes('other'))).toBe(true);
   });
 
   it('build tags from the env var and npm config are merged', async() => {
-    process.env.HUGO_BIN_BUILD_TAGS = 'extended';
+    process.env.HUGO_BIN_BUILD_TAGS = 'other';
     process.env.npm_config_hugo_bin_build_tags = 'withdeploy';
     const sources = await getSources();
 
-    expect(sources.every(s => isFallback(s) || s.url.includes(`hugo_extended_withdeploy_${HUGO_VERSION}_`))).toBe(true);
+    expect(sources.every(s => isFallback(s) || s.url.includes(`hugo_withdeploy_${HUGO_VERSION}_`))).toBe(true);
+  });
+
+  describe('before 0.170.0', () => {
+    const LEGACY_VERSION = '0.169.0';
+
+    beforeEach(() => {
+      process.env.HUGO_BIN_HUGO_VERSION = LEGACY_VERSION;
+    });
+
+    it('extended tag picks the extended artifact', async() => {
+      process.env.HUGO_BIN_BUILD_TAGS = 'extended';
+      const sources = await getSources();
+
+      for (const source of sources) {
+        const expected = isFallback(source) ? `hugo_${LEGACY_VERSION}_` : `hugo_extended_${LEGACY_VERSION}_`;
+        expect(source.url).toContain(expected);
+      }
+    });
+
+    it('extended + withdeploy tags pick the extended withdeploy artifact', async() => {
+      process.env.HUGO_BIN_BUILD_TAGS = 'extended,withdeploy';
+      const sources = await getSources();
+
+      for (const source of sources) {
+        const expected = isFallback(source) ? `hugo_${LEGACY_VERSION}_` : `hugo_extended_withdeploy_${LEGACY_VERSION}_`;
+        expect(source.url).toContain(expected);
+      }
+    });
+
+    it('withdeploy without extended is ignored', async() => {
+      process.env.HUGO_BIN_BUILD_TAGS = 'withdeploy';
+      const sources = await getSources();
+
+      expect(sources.every(s => s.url.includes(`hugo_${LEGACY_VERSION}_`))).toBe(true);
+      expect(sources.every(s => !s.url.includes('withdeploy'))).toBe(true);
+    });
   });
 
   it('env vars take precedence over npm config', async() => {
